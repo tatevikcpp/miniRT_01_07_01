@@ -1,4 +1,5 @@
 #include <math.h>
+#include "../include/struct.h"
 
 t_coords	*new_vec(float x, float, y, float z)
 {
@@ -42,4 +43,3 @@ void vec_normalize(t_coords *vec)
 	vec->y /= len;
 	vec->z /= len;
 }
-
