@@ -74,7 +74,7 @@ void	read_map(int fd, t_base *obj)
 			{
 				ambient_lightning(obj->a_amb, arr); //arayjm aysqany :D
 				if (flag & 4)
-					print_exit_error("erkrord angam\n");
+					print_error_exit("erkrord angam\n");
 				else
 					flag |= 4;
 			}
@@ -82,7 +82,7 @@ void	read_map(int fd, t_base *obj)
 			{
 				camera(obj->a_camera, arr);
 				if (flag & 2)
-					print_exit_error("erkrord angam\n");
+					print_error_exit("erkrord angam\n");
 				else
 					flag |= 2;
 			}
@@ -90,7 +90,7 @@ void	read_map(int fd, t_base *obj)
 			{
 				light(obj->a_light, arr);
 				if (flag & 1)
-					print_exit_error("erkrord angam\n");
+					print_error_exit("erkrord angam\n");
 				else
 					flag |= 1;
 			}

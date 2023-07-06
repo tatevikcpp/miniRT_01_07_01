@@ -29,9 +29,6 @@ static int	count(int n)
 
 int	absolut(int n)
 {
-	int	i;
-
-	i = 0;
 	if (n < 0)
 		return (-n);
 	return (n);
