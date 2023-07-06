@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:06 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/07/01 17:15:23 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:48:57 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char *func_space(char *str)
 			printf("smb /%c/\n", *str);
 			print_error_exit("sxal simvol\n");
 		}
-		else if (ft_strchr(SPACES, *str))
+		else if (ft_strchr(SPACES, *str) || *str == '\n')
 			*str = '\1';
 		str++;
 	}
@@ -61,38 +61,64 @@ void	read_map(int fd, t_base *obj)
 	char *line;
 	char *str;
 	char **arr;
+	unsigned char flag = 0;
+	unsigned char fig = 0; // gone mek patkeri hamar :D 
 
-	line = get_next_line(fd); 
-	while (*line)
-	{	
-		str = ft_strtrim(line, SPACES);
+	line = get_next_line(fd);
+	while (line && *line)
+	{
+		str = ft_strtrim(line, SPACES); // TODO free str
 		if (*str == 'A' || *str == 'L' || *str == 'C')
 		{
 			arr = helper(str, 1);
 			if (*str == 'A')
+			{
 				ambient_lightning(obj->a_amb, arr); //arayjm aysqany :D
+				if (flag == 7)
+					flag = flag & 4;
+				else
+					flag = flag | 4;
+			}
 			if (*str == 'C')
+			{
 				camera(obj->a_camera, arr);
+				if (flag == 7)
+					flag = flag & 2;
+				else
+					flag = flag | 2;
+			}
 			if (*str == 'L')
+			{
 				light(obj->a_light, arr);
+				if (flag == 7)
+					flag = flag & 1;
+				else
+					flag = flag | 1;
+			}
 		}
 		else if (*str && *str != '\n')
 		{
 			if ((ft_strncmp(str, "pl", 2) == 0) ||  (ft_strncmp(str, "sp", 2) == 0) ||
 			 (ft_strncmp(str, "cy", 2) == 0))
 			{
+				fig++;
 				arr = helper(str, 2);
 				if ((ft_strncmp(str, "pl", 2) == 0))
-					plane(obj->a_plane, arr);
+					plane(&obj->a_plane, arr);
 				if ((ft_strncmp(str, "sp", 2) == 0))
-					sphere(obj->a_sphere, arr);
+					sphere(&obj->a_sphere, arr);
 				if ((ft_strncmp(str, "cy", 2) == 0))
-					cylinder(/* obj->a_cylinder, */ obj, arr);
+				{
+					cylinder(&obj->a_cylinder, arr);
+					// print_list_cy(obj->a_cylinder);
+				}
 			}
 			else
 				print_error_exit("eli sxal argument\n");
 		}
-		// free(line);
+		// free(line); 
 		line = get_next_line(fd);
 	}
+	if (flag != 7)
+		print_error_exit("ERROR_flag_not_7\n");
 }

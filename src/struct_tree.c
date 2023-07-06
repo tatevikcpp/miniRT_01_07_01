@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_tree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 17:50:18 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/07/01 17:24:25 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:33:05 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,13 @@
 
 void struct_tree(t_base *obj)
 {
-    printf("obj->amb->rgb->r = %d\n", obj->a_amb->rgb->r);
-    printf("obj->a_sphere->sphere_diameter = %f\n", obj->a_sphere->sphere_diameter);
-    printf("obj->a_cylinder->cy_diameter, %f\n", obj->a_cylinder->cy_diameter);
-}
-
-
-void    print_list(t_list *list)
-{
-    t_list *new;
-    t_cylinder *cy;
+    // printf("obj->amb->rgb->r = %d\n", obj->a_amb->rgb->r);
+    // printf("obj->a_sphere->sphere_diameter = %f\n", obj->a_sphere->sphere_diameter);
     
-    new = list;
-    
-    while (new)
+    while (obj->a_cylinder)
     {
-        cy = new->content;
-        printf("dm = %f\n", cy->cy_diameter);
-        new = new->next;
+        printf("obj->a_cylin    der->cy_diameter, %f\n", obj->a_cylinder->cy_diameter);
+        obj->a_cylinder = obj->a_cylinder->next;
     }
+    // printf("plane->r = %d\n", obj->a_plane->rgb->r);
 }

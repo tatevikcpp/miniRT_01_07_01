@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type_of_element.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:12 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/07/01 12:18:18 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:25:14 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void    ambient_lightning(t_ambient_lightning *obj, char **v)
     char **split;
     if (!obj)
         print_error_exit("chka amb_skizb\n");
-    printf("count = %d\n", count_of_rows(v));
-    print_matrix(v);
+    // printf("count = %d\n", count_of_rows(v));
+    // print_matrix(v);
     if (count_of_rows(v) == 2 && is_in_float_limit(v[0]))
     {
         split = ft_split(v[1], ',');
@@ -51,7 +51,7 @@ void    ambient_lightning(t_ambient_lightning *obj, char **v)
             if (!obj)
                 print_error_exit("chka amb\n");
             obj->amb = str_to_float(v[0]);
-            check_valid_rgb(obj->rgb, split);
+            check_valid_rgb(&obj->rgb, split);
         }
     }
     else
@@ -100,8 +100,8 @@ void    camera(t_camera *obj, char **v)
             print_error_exit("sxal split qanak Camera\n");
         else
         {
-            check_valid_coords(obj->coord_view_point,split_coord, 0);
-            check_valid_coords(obj->norm_orientation_vec,split_norm, 1);
+            check_valid_coords(&obj->coord_view_point,split_coord, 0);
+            check_valid_coords(&obj->norm_orientation_vec,split_norm, 1);
         }
     }
     else
@@ -113,7 +113,6 @@ void    light(t_light *obj, char **v)
     char **split_coord;
     char **split_rgb;
 
-    print_matrix(v);
     if (count_of_rows(v) == 3 && is_in_float_limit(v[1]))
     {
         split_coord = ft_split(v[0], ',');
@@ -123,8 +122,8 @@ void    light(t_light *obj, char **v)
                 print_error_exit("sxal split qanak light\n");
         else
         {
-            check_valid_coords(obj->coord_light_point,split_coord, 0);
-            check_valid_rgb(obj->rgb, split_rgb);
+            check_valid_coords(&obj->coord_light_point,split_coord, 0);
+            check_valid_rgb(&obj->rgb, split_rgb);
             obj->light_brightness = str_to_float(v[1]);
         }
     }

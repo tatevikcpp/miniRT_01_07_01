@@ -6,11 +6,12 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 20:37:18 by sokhacha          #+#    #+#             */
-/*   Updated: 2023/06/28 19:30:04 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:30:49 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 long long	ft_atoi(char	*str)
 {
@@ -35,5 +36,5 @@ long long	ft_atoi(char	*str)
 		res = res * 10 + str[i] - '0' ;
 		i++;
 	}
-	return (res * j);
+	return (res * j > INT_MAX ? INT_MAX : res * j); // LONG_MAX
 }
