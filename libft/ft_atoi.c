@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <limits.h>
+#include "libft.h"
+#include "../ft_printf/ft_printf.h"
 
 long long	ft_atoi(char	*str)
 {
@@ -25,6 +26,8 @@ long long	ft_atoi(char	*str)
 	while (str && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
 		|| str[i] == '\f' || str[i] == '\r'))
 			i++;
+	if (ft_strlen(str) > 13)
+		ft_printf("error atoi\n", 2);
 	if (str && (str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i] == '-')
