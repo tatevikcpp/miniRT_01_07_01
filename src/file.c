@@ -62,8 +62,7 @@ void	read_map(int fd, t_base *obj)
 	char *str;
 	char **arr;
 	unsigned char flag = 0;
-	unsigned char fig = 0; // gone mek patkeri hamar :D 
-
+	
 	line = get_next_line(fd);
 	while (line && *line)
 	{
@@ -74,26 +73,26 @@ void	read_map(int fd, t_base *obj)
 			if (*str == 'A')
 			{
 				ambient_lightning(obj->a_amb, arr); //arayjm aysqany :D
-				if (flag == 7)
-					flag = flag & 4;
+				if (flag & 4)
+					print_exit_error("erkrord angam\n");
 				else
-					flag = flag | 4;
+					flag |= 4;
 			}
 			if (*str == 'C')
 			{
 				camera(obj->a_camera, arr);
-				if (flag == 7)
-					flag = flag & 2;
+				if (flag & 2)
+					print_exit_error("erkrord angam\n");
 				else
-					flag = flag | 2;
+					flag |= 2;
 			}
 			if (*str == 'L')
 			{
 				light(obj->a_light, arr);
-				if (flag == 7)
-					flag = flag & 1;
+				if (flag & 1)
+					print_exit_error("erkrord angam\n");
 				else
-					flag = flag | 1;
+					flag |= 1;
 			}
 		}
 		else if (*str && *str != '\n')
@@ -101,7 +100,7 @@ void	read_map(int fd, t_base *obj)
 			if ((ft_strncmp(str, "pl", 2) == 0) ||  (ft_strncmp(str, "sp", 2) == 0) ||
 			 (ft_strncmp(str, "cy", 2) == 0))
 			{
-				fig++;
+				flag |= 8;
 				arr = helper(str, 2);
 				if ((ft_strncmp(str, "pl", 2) == 0))
 					plane(&obj->a_plane, arr);
@@ -119,6 +118,6 @@ void	read_map(int fd, t_base *obj)
 		// free(line); 
 		line = get_next_line(fd);
 	}
-	if (flag != 7)
+	if (flag != 15)
 		print_error_exit("ERROR_flag_not_7\n");
 }
