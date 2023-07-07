@@ -18,11 +18,11 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(char *str);
-char	*ft_strdup(char *str);
-char	*ft_strchr(char *str, int c);
-char	*ft_strjoin(char *str_1, char *str_2);
-char	*ft_substr(char *str, unsigned int start, size_t len);
+size_t	ft_strlen_gnl(char *str);
+char	*ft_strdup_gnl(char *str);
+char	*ft_strchr_gnl(char *str, int c);
+char	*ft_strjoin_gnl(char *str_1, char *str_2);
+char	*ft_substr_gnl(char *str, unsigned int start, size_t len);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

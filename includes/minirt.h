@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include "../libft/libft.h"
 # include "struct.h"
 
@@ -37,14 +37,7 @@ void    valid_map(char **map);
 char    *func(char *str);
 void	split_one(char **map);
 void    print_struct(t_ambient_lightning *a);
-void    init_base(t_base *obj);
-void    init_amb(t_ambient_lightning *obj);
-void    init_camera(t_camera *obj);
-void	init_light(t_light *obj);
-void	init_sphere(t_sphere *obj);
-void    init_cylinder(t_cylinder *obj);
-void    init_plane(t_plane *obj);
-void    read_map(int fd, t_base *obj);
+void    read_map(int fd, t_base *obj, int flag);
 
 //porcnakan
 char *ft_strcat(char *start, int len);
@@ -53,11 +46,7 @@ int	is_space(char c);
 float	str_to_float(char *s);
 int	is_in_float_limit(char *s);
 
-//lcnel
-
 int     is_in_float_limit(char *s);
-void    init_rgb(t_rgb *obj);
-void    init_coord(t_coords *obj);
 void    ambient_lightning( t_ambient_lightning *obj, char **v);
 void    camera(t_camera *obj, char **v);
 void    light(t_light *obj, char **v);
@@ -68,6 +57,7 @@ void    check_valid_coords(t_coords *obj, char **split, int flag);
 void    check_valid_rgb(t_rgb *obj, char **split);
 
 void    struct_tree(t_base *obj);
+void    free_matrix(char **arr);
 
 
 //lists

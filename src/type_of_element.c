@@ -38,8 +38,6 @@ void    ambient_lightning(t_ambient_lightning *obj, char **v)
     char **split;
     if (!obj)
         print_error_exit("chka amb_skizb\n");
-    // printf("count = %d\n", count_of_rows(v));
-    // print_matrix(v);
     if (count_of_rows(v) == 2 && is_in_float_limit(v[0]))
     {
         split = ft_split(v[1], ',');
@@ -56,6 +54,7 @@ void    ambient_lightning(t_ambient_lightning *obj, char **v)
     }
     else
         print_error_exit("error_argument_in_AMB\n");
+    free_matrix(split);
 }
 
 void check_valid_coords(t_coords *obj, char **split, int flag)
@@ -73,10 +72,7 @@ void check_valid_coords(t_coords *obj, char **split, int flag)
                      print_error_exit("sxal float argument_in norm_coord\n");
             }
             if (!is_in_float_limit(split[i]))
-            {
-                
                 print_error_exit("float argument error coord\n");
-            }
             i++;
         }
         obj->x = str_to_float(split[0]);
@@ -106,6 +102,8 @@ void    camera(t_camera *obj, char **v)
     }
     else
         print_error_exit("error_argument_in CAMERA\n");
+    free_matrix(split_coord);
+    free_matrix(split_norm);
 }
 
 void    light(t_light *obj, char **v)
@@ -129,4 +127,6 @@ void    light(t_light *obj, char **v)
     }
     else
         print_error_exit("sxal split qanak LIGHT\n");
+    free_matrix(split_coord);
+    free_matrix(split_rgb);
 }

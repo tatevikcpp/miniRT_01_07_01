@@ -80,9 +80,6 @@ typedef struct s_base
     t_sphere            *a_sphere;
     t_cylinder          *a_cylinder;
     t_plane             *a_plane;
-    // t_list              *a_list_cy;
-    // t_list              *a_list_pl;
-    // t_list              *a_list_sp;
 }   t_base;
 
 typedef struct s_test

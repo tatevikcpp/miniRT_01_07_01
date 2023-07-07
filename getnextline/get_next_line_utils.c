@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen_gnl(char *str)
 {
 	size_t	i;
 
@@ -24,26 +24,12 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(char *str, int c)
-{
-	int	i;
-
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != (char)c)
-		i++;
-	if (str[i] == (char)c)
-		return ((char *)&str[i]);
-	return (NULL);
-}
-
-char	*ft_strdup(char *str)
+char	*ft_strdup_gnl(char *str)
 {
 	int		i;
 	char	*ptr;
 
-	ptr = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen_gnl(str) + 1));
 	if (!str || !ptr)
 		return (NULL);
 	i = 0;
@@ -56,15 +42,15 @@ char	*ft_strdup(char *str)
 	return (ptr);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*ft_strjoin_gnl(char *str1, char *str2)
 {
 	size_t	i;
 	size_t	j;
 	char	*ptr;
 
 	i = 0;
-	ptr = (char *)malloc((ft_strlen(str1)
-				+ ft_strlen(str2) + 1) * sizeof(char));
+	ptr = (char *)malloc((ft_strlen_gnl(str1)
+				+ ft_strlen_gnl(str2) + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
 	while (str1[i] && str1)
@@ -81,7 +67,7 @@ char	*ft_strjoin(char *str1, char *str2)
 	return (ptr);
 }
 
-char	*ft_substr(char *str, unsigned int start, size_t len)
+char	*ft_substr_gnl(char *str, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;
@@ -90,7 +76,7 @@ char	*ft_substr(char *str, unsigned int start, size_t len)
 
 	if (!str || !*str)
 		return (0);
-	k = ft_strlen(str);
+	k = ft_strlen_gnl(str);
 	if (k < start || len == 0)
 		i = 0;
 	else if (len <= k - start)
@@ -101,6 +87,8 @@ char	*ft_substr(char *str, unsigned int start, size_t len)
 	if (!ptr)
 		return (NULL);
 	j = 0;
+	if (ft_strlen_gnl(str) < start)
+		start--;
 	while (str[start] && j < i)
 		ptr[j++] = str[start++];
 	ptr[j] = '\0';

@@ -55,9 +55,5 @@ t_sphere	*ft_lstnew_sp(void)
 	obj = (t_sphere *)ft_calloc(sizeof(t_sphere), 1);
 	if (!obj)
 		return (NULL);
-	init_coord(&obj->coord_sphere_center);
-	obj->sphere_diameter = 0;
-	init_rgb(&obj->rgb);
-	obj->next = NULL;
 	return (obj);
 }

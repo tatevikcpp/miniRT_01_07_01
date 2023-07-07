@@ -17,9 +17,9 @@ int	count(unsigned long int nbr, const char *base, int fd)
 	int	counter;
 
 	counter = 0;
-	if (nbr >= ft_strlen(base))
-		counter = counter + ft_nbr_count(nbr / ft_strlen(base), base, fd);
-	counter = counter + write(fd, &base[nbr % ft_strlen(base)], 1);
+	if (nbr >= ft_strlen_ft(base))
+		counter = counter + ft_nbr_count(nbr / ft_strlen_ft(base), base, fd);
+	counter = counter + write(fd, &base[nbr % ft_strlen_ft(base)], 1);
 	return (counter);
 }
 

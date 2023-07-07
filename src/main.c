@@ -12,47 +12,37 @@
 
 #include "minirt.h"
 
-static void init_all(t_base *obj)
+static void init_base(t_base *obj)
 {
-  if (!obj)
-	print_error_exit("chak init obj\n");
-  init_base(obj);
-//   init_amb(obj->a_amb);
-//   init_camera(obj->a_camera);
-//   init_light(obj->a_light);
-//   init_sphere(obj->a_sphere);
-//   init_cylinder(obj->a_cylinder);
-//   init_plane(obj->a_plane);
+	if (!obj)
+		print_error_exit("chak init obj\n");
+	obj->a_amb			= (t_ambient_lightning *)ft_calloc(sizeof(t_ambient_lightning), 1);
+	obj->a_camera		= (t_camera *)malloc(sizeof(t_camera));
+	obj->a_light		= (t_light *)ft_calloc(sizeof(t_light), 1);
+	obj->a_plane		= NULL;
+	obj->a_cylinder		= NULL;
+	obj->a_sphere		= NULL;
+	if (!obj->a_amb || !obj->a_camera || !obj->a_light || !obj->a_plane || !obj->a_cylinder)
+		return ;
 }
 
 int main(int c, char **v)
 {
-	t_base *obj = (t_base *)ft_calloc(sizeof(t_base), 1);
+	int	fd;
+	unsigned char flag;
 
+	flag = 0;
+	t_base *obj = (t_base *)ft_calloc(sizeof(t_base), 1);
 	if (!obj)
 		print_error_exit("chka obj main\n");
 	if (c != 2)
 		print_error_exit("error argument\n");
-	init_all(obj);
-	printf("hasav\n");
-	read_map(check_file(v[1]), obj);  // TODO check if
+	init_base(obj);
+	fd = check_file(v[1]); // esim
+	if (fd)
+		read_map(fd, obj, flag);  // TODO check if
 	struct_tree(obj);
+	free(obj);
 	printf("\n---------******----------\n\n");
-	// printf("flot = %d\n", is_in_float_limit("5"));
-
-	// print_list(obj->a_list_cy);
 	return (0);
 }
-
-// void test(t_test obj)
-// {
-// 	obj.a = 5;
-// }
-
-// int main()
-// {
-// 	t_test obj;
-// 	obj.a = 1;
-// 	test(obj);
-// 	printf("%d\n", obj.a);
-// }

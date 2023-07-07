@@ -26,6 +26,6 @@ int				ft_u(unsigned int n, int fd);
 int				ft_p(unsigned long int n, int fd);
 int				ft_d(int n, int fd);
 int				ft_nbr_count(long long int n, const char *base, int fd);
-unsigned int	ft_strlen(char const *str);
+unsigned int	ft_strlen_ft(char const *str);
 
 #endif

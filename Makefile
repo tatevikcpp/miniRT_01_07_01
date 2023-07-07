@@ -2,7 +2,7 @@ NAME = miniRT
 
 CC = cc
 
-CFLAGS = -g -fsanitize=address#-Wall -Wextra -Werror   -g3 -ggdb3
+CFLAGS =   -Wall -Wextra -Werror   -g -fsanitize=address  -g3 -ggdb3
 
 SRCS = $(wildcard ./src/*.c) 
 
@@ -10,7 +10,7 @@ OBJS = $(patsubst %.c, %.o, $(SRCS))
 
 HEADER = $(wildcard ./src/*.h)
 
-MLX = -lmlx -framework OpenGL -framework Appkit
+# MLX = -lmlx -framework OpenGL -framework Appkit
 
 INCLUDES = -I./libft  -I./includes -I./getnextline
 
@@ -35,8 +35,12 @@ RM = rm -f
 
 all: $(NAME) 
 	
+# $(NAME): $(OBJS) $(LIBFT) $(GNL) $(LIBFTPRINFT)
+# 	$(CC) $(CFLAGS) $(INCLUDES) $(MLX) $(LINKERS)  $(OBJS) -o $(NAME)
+
+
 $(NAME): $(OBJS) $(LIBFT) $(GNL) $(LIBFTPRINFT)
-	$(CC) $(CFLAGS) $(INCLUDES) $(MLX) $(LINKERS)  $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(MLX) $(OBJS) $(LINKERS) -o $(NAME)
 
 $(LIBFT) :
 	$(MAKE) -C $(LIBFTDIR)

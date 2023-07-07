@@ -27,7 +27,7 @@ long long	ft_atoi(char	*str)
 		|| str[i] == '\f' || str[i] == '\r'))
 			i++;
 	if (ft_strlen(str) > 13)
-		ft_printf("error atoi\n", 2);
+		ft_printf(2, "error atoi\n");
 	if (str && (str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i] == '-')
@@ -36,7 +36,7 @@ long long	ft_atoi(char	*str)
 	}
 	while (str && (str[i] >= '0' && str[i] <= '9'))
 	{
-		res = res * 10 + str[i] - '0' ;
+		res = res * 10 + str[i] - '0';
 		i++;
 	}
 	return (res * j > INT_MAX ? INT_MAX : res * j); // LONG_MAX
