@@ -33,7 +33,7 @@ void    print_list_cy(t_cylinder *obj)
     tmp = obj;
     while (tmp)
     {
-        printf("cy_diameter r = %f\n", tmp->cy_diameter);
+        printf("cy_diameter r = %f\n", tmp->dm);
         if (!tmp->next)
             return ;
         tmp = tmp->next;

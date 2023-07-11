@@ -16,7 +16,7 @@ static void init_base(t_base *obj) // 48
 {
 	if (!obj)
 		print_error_exit("chak init obj\n");
-	obj->a_amb			= (t_ambient_lightning *)ft_calloc(sizeof(t_ambient_lightning), 1);
+	obj->a_amb			= (t_amb *)ft_calloc(sizeof(t_amb), 1);
 	obj->a_camera		= (t_camera *)malloc(sizeof(t_camera));
 	obj->a_light		= (t_light *)ft_calloc(sizeof(t_light), 1);
 	obj->a_plane		= NULL;
@@ -30,6 +30,7 @@ int main(int c, char **v)
 {
 	int	fd;
 	unsigned char flag;
+	void	*mlx;
 
 	flag = 0;
 	t_base *obj = (t_base *)ft_calloc(sizeof(t_base), 1);
@@ -43,16 +44,14 @@ int main(int c, char **v)
 		read_map(fd, obj, flag);  // TODO check if
 	struct_tree(obj);
 	// free_base(obj);
-
-
-	void	*mlx;
-	// void	*mlx_win;
+	
+	/////*************************
 
 	mlx = mlx_init();
-	// mlx_win = 
-	mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_new_window(mlx, 600, 600, "Hello world!");
 	mlx_loop(mlx);
 
+	/////*************************
 
 	free(obj);
 	printf("\n---------******----------\n\n");

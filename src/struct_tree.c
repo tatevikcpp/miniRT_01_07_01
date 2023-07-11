@@ -18,26 +18,25 @@ void struct_tree(t_base *obj)
     tmp = obj->a_sphere;
     while (obj->a_cylinder)
     {
-        printf("der->cy_diameter, %f\n", obj->a_cylinder->cy_diameter);
+        printf("der->cy_diameter, %f\n", obj->a_cylinder->dm);
         obj->a_cylinder = obj->a_cylinder->next;
     }
 
     while (obj->a_plane)
     {
-        printf("obj->a_plane, %f\n", obj->a_plane->coord_point_in_plane.x);
+        printf("obj->a_plane, %f\n", obj->a_plane->coord.x);
         obj->a_plane = obj->a_plane->next;
     }
 
     while (obj->a_sphere)
     {
-        printf("obj->a_sphere, %f\n", obj->a_sphere->sphere_diameter);
+        printf("obj->a_sphere, %f\n", obj->a_sphere->dm);
         obj->a_sphere = obj->a_sphere->next;
     }
 
 
     while (tmp)
     {
-        printf("xiii\n");
         printf("obj->a_RRR, %d\n", tmp->rgb.r);
         tmp = tmp->next;
     }

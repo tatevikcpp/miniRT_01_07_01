@@ -33,7 +33,7 @@ void check_valid_rgb(t_rgb *obj, char **split)
     }
 }
 
-void    ambient_lightning(t_ambient_lightning *obj, char **v)
+void    ambient_lightning(t_amb *obj, char **v)
 {
     char **split;
     if (!obj)
@@ -57,7 +57,7 @@ void    ambient_lightning(t_ambient_lightning *obj, char **v)
     // free_matrix(split);
 }
 
-void check_valid_coords(t_coords *obj, char **split, int flag)
+void check_valid_coords(t_vec *obj, char **split, int flag)
 {
     int i;
   
@@ -96,8 +96,8 @@ void    camera(t_camera *obj, char **v)
             print_error_exit("sxal split qanak Camera\n");
         else
         {
-            check_valid_coords(&obj->coord_view_point,split_coord, 0);
-            check_valid_coords(&obj->norm_orientation_vec,split_norm, 1);
+            check_valid_coords(&obj->view,split_coord, 0);
+            check_valid_coords(&obj->norm,split_norm, 1);
         }
     }
     else
@@ -120,9 +120,9 @@ void    light(t_light *obj, char **v)
                 print_error_exit("sxal split qanak light\n");
         else
         {
-            check_valid_coords(&obj->coord_light_point,split_coord, 0);
+            check_valid_coords(&obj->light,split_coord, 0);
             check_valid_rgb(&obj->rgb, split_rgb);
-            obj->light_brightness = str_to_float(v[1]);
+            obj->brigh = str_to_float(v[1]);
         }
     }
     else

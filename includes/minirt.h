@@ -36,7 +36,7 @@ void    valid_map(char **map);
 //ankap
 char    *func(char *str);
 void	split_one(char **map);
-void    print_struct(t_ambient_lightning *a);
+void    print_struct(t_amb *a);
 void    read_map(int fd, t_base *obj, int flag);
 void free_base(t_base *obj);
 
@@ -48,13 +48,13 @@ float	str_to_float(char *s);
 int	is_in_float_limit(char *s);
 
 int     is_in_float_limit(char *s);
-void    ambient_lightning( t_ambient_lightning *obj, char **v);
+void    ambient_lightning(t_amb *obj, char **v);
 void    camera(t_camera *obj, char **v);
 void    light(t_light *obj, char **v);
 void    sphere(t_sphere **obj, char **v);
 void    plane(t_plane **obj, char **v);
 void    cylinder(t_cylinder **obj, /* t_base *obj, */ char **v);
-void    check_valid_coords(t_coords *obj, char **split, int flag);
+void    check_valid_coords(t_vec *obj, char **split, int flag);
 void    check_valid_rgb(t_rgb *obj, char **split);
 
 void    struct_tree(t_base *obj);
