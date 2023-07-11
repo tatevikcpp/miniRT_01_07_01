@@ -12,9 +12,9 @@ HEADER = $(wildcard ./src/*.h)
 
 # MLX = -lmlx -framework OpenGL -framework Appkit
 
-INCLUDES = -I./libft  -I./includes -I./getnextline
+INCLUDES = -I./libft  -I./includes -I./getnextline -I/usr/include -Imlx_linux
 
-LINKERS	= -L./libft -lft  -L./getnextline -lgnl  -L./ft_printf -lftprintf
+LINKERS	= -L./libft -lft  -L./getnextline -lgnl  -L./ft_printf -lftprintf -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 LIBFT = ./libft/libft.a
 
@@ -31,7 +31,7 @@ GNLDIR = ./getnextline
 RM = rm -f
 
 %.o: %.c  ${HEADER} Makefile
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -O3 -c $< -o $@
 
 all: $(NAME) 
 	

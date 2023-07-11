@@ -54,7 +54,7 @@ void    ambient_lightning(t_ambient_lightning *obj, char **v)
     }
     else
         print_error_exit("error_argument_in_AMB\n");
-    free_matrix(split);
+    // free_matrix(split);
 }
 
 void check_valid_coords(t_coords *obj, char **split, int flag)
@@ -91,7 +91,7 @@ void    camera(t_camera *obj, char **v)
         split_coord = ft_split(v[0], ',');
         split_norm = ft_split(v[1], ',');
         if ((count_of_rows(split_coord) != 3 || count_of_rows(split_norm) != 3) ||
-            (ft_atoi(v[2]) < 0 || ft_atoi(v[2]) > 180))
+            (ft_atoi(v[2]) < 0 || ft_atoi(v[2]) > 180)) // TODO float sarqel
             // (str_to_float(v[2]) < 0.0 || str_to_float(v[2]) > 180.0)) //der ktesnenq
             print_error_exit("sxal split qanak Camera\n");
         else
@@ -102,8 +102,8 @@ void    camera(t_camera *obj, char **v)
     }
     else
         print_error_exit("error_argument_in CAMERA\n");
-    free_matrix(split_coord);
-    free_matrix(split_norm);
+    // free_matrix(split_coord);
+    // free_matrix(split_norm);
 }
 
 void    light(t_light *obj, char **v)
@@ -127,6 +127,6 @@ void    light(t_light *obj, char **v)
     }
     else
         print_error_exit("sxal split qanak LIGHT\n");
-    free_matrix(split_coord);
-    free_matrix(split_rgb);
+    // free_matrix(split_coord);
+    // free_matrix(split_rgb);
 }

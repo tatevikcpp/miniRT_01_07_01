@@ -12,14 +12,14 @@
 
 #include "minirt.h"
 
-void  init_base(t_base *obj)  // TODO restur error code
-{
-	obj->a_amb			= (t_ambient_lightning *)ft_calloc(sizeof(t_ambient_lightning), 1);
-	obj->a_camera		= (t_camera *)malloc(sizeof(t_camera));
-	obj->a_light		= (t_light *)ft_calloc(sizeof(t_light), 1);
-	obj->a_plane		= NULL;
-	obj->a_cylinder		= NULL;
-	obj->a_sphere		= NULL;
-	if (!obj->a_amb || !obj->a_camera || !obj->a_light || !obj->a_plane || !obj->a_cylinder)
-		return ;
-}
+// void  init_base(t_base *obj)  // TODO restur error code
+// {
+// 	obj->a_amb			= (t_ambient_lightning *)ft_calloc(sizeof(t_ambient_lightning), 1);
+// 	obj->a_camera		= (t_camera *)malloc(sizeof(t_camera));
+// 	obj->a_light		= (t_light *)ft_calloc(sizeof(t_light), 1);
+// 	obj->a_plane		= NULL;
+// 	obj->a_cylinder		= NULL;
+// 	obj->a_sphere		= NULL;
+// 	if (!obj->a_amb || !obj->a_camera || !obj->a_light || !obj->a_plane || !obj->a_cylinder)
+// 		return ;
+// }

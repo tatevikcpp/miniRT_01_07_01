@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-// # include <mlx.h>
+# include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
 # include "struct.h"
 
@@ -38,6 +38,7 @@ char    *func(char *str);
 void	split_one(char **map);
 void    print_struct(t_ambient_lightning *a);
 void    read_map(int fd, t_base *obj, int flag);
+void free_base(t_base *obj);
 
 //porcnakan
 char *ft_strcat(char *start, int len);

@@ -12,12 +12,12 @@
 
 #include "minirt.h"
 
-static void free_arr(char **a1, char **a2, char **a3)
-{
-    free_matrix(a1);
-    free_matrix(a2);
-    free_matrix(a3);
-}
+// static void free_arr(char **a1, char **a2, char **a3)
+// {
+//     free_matrix(a1);
+//     free_matrix(a2);
+//     free_matrix(a3);
+// }
 
 void    sphere(t_sphere **obj, char **v)
 {
@@ -25,10 +25,13 @@ void    sphere(t_sphere **obj, char **v)
     char        **split_coord;
     t_sphere    *tmp;
 
+    split_coord = NULL;
+    // split_rgb
     if (count_of_rows(v) == 3 && is_in_float_limit(v[1]) && 
         str_to_float(v[1]) >= 0)
     {
         split_coord = ft_split(v[0], ',');
+        printf("%p\n", split_coord);
         split_rgb = ft_split(v[2], ',');
         if ((count_of_rows(split_coord) != 3 || count_of_rows(split_rgb) != 3))
                 print_error_exit("sxal split qanak sphere\n");
@@ -43,7 +46,7 @@ void    sphere(t_sphere **obj, char **v)
     }
     else
         print_error_exit("sxal split qanak SPHERE\n");
-    free_matrix(split_rgb);
+    // free_matrix(split_rgb);
     free_matrix(split_coord);
 }
 
@@ -73,7 +76,7 @@ void    plane(t_plane **obj, char **v)
     }
     else
         print_error_exit("sxal split qanak PLANE\n");
-   free_arr(split_rgb, split_norm, split_coord);
+//    free_arr(split_rgb, split_norm, split_coord);
 }
 
 void    cylinder(t_cylinder **obj, char **v) // TODO 25 toxic avel e
@@ -105,5 +108,5 @@ void    cylinder(t_cylinder **obj, char **v) // TODO 25 toxic avel e
     }
     else
         print_error_exit("sxal_split_qanak_CYLINDER\n");
-    free_arr(split_rgb, split_norm, split_coord);
+    // free_arr(split_rgb, split_norm, split_coord);
 }

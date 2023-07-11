@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minirt.h"
 #include <stdlib.h>
 
 void    free_matrix(char **arr)
@@ -27,4 +28,30 @@ void    free_matrix(char **arr)
     }
     free(arr);
 }
+
+static void free_plane(t_plane *obj)
+{
+    t_plane *tmp;
+
+    while (obj)
+    {
+        tmp = obj;
+        obj = obj->next;
+        free(tmp);
+    }
+}
+
+void free_base(t_base *obj)
+{
+    free(obj->a_amb);
+    free(obj->a_camera);
+    free(obj->a_light);
+    // free(obj->a_plane);
+    free_plane(obj->a_plane);
+    free(obj->a_sphere);
+    free(obj->a_cylinder);
+    free(obj->a_sphere);
+    // free_plane(obj->a_plane);
+}
+
 

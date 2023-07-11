@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-static void init_base(t_base *obj)
+static void init_base(t_base *obj) // 48
 {
 	if (!obj)
 		print_error_exit("chak init obj\n");
@@ -42,6 +42,18 @@ int main(int c, char **v)
 	if (fd)
 		read_map(fd, obj, flag);  // TODO check if
 	struct_tree(obj);
+	// free_base(obj);
+
+
+	void	*mlx;
+	// void	*mlx_win;
+
+	mlx = mlx_init();
+	// mlx_win = 
+	mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
+
+
 	free(obj);
 	printf("\n---------******----------\n\n");
 	return (0);
