@@ -6,11 +6,14 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:36:55 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/07/06 18:20:30 by vaghazar         ###   ########.fr       */
+/*   Updated: 2023/07/12 20:53:46 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef STRUCT_H
+# define STRUCT_H
+
+//#include "minirt.h"
 
 typedef struct s_rgb
 {
@@ -87,3 +90,4 @@ typedef struct s_test
     int a;
 }   t_test;
 
+#endif
