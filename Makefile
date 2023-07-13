@@ -10,11 +10,13 @@ OBJS = $(patsubst %.c, %.o, $(SRCS))
 
 HEADER = $(wildcard ./src/*.h)
 
-# MLX = -lmlx -framework OpenGL -framework Appkit
-
 INCLUDES = -I./libft  -I./includes -I./getnextline -I/usr/include -Imlx_linux
 
+ifeq ($(uname), Linux)
 LINKERS	= -L./libft -lft  -L./getnextline -lgnl  -L./ft_printf -lftprintf -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+else
+LINKERS	= -L./libft -lft  -L./getnextline -lgnl  -L./ft_printf -lftprintf -lmlx -framework OpenGL -framework Appkit
+endif
 
 LIBFT = ./libft/libft.a
 
@@ -34,13 +36,9 @@ RM = rm -f
 	$(CC) $(CFLAGS) $(INCLUDES) -O3 -c $< -o $@
 
 all: $(NAME) 
-	
-# $(NAME): $(OBJS) $(LIBFT) $(GNL) $(LIBFTPRINFT)
-# 	$(CC) $(CFLAGS) $(INCLUDES) $(MLX) $(LINKERS)  $(OBJS) -o $(NAME)
-
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL) $(LIBFTPRINFT)
-	$(CC) $(CFLAGS) $(INCLUDES) $(MLX) $(OBJS) $(LINKERS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -o $(NAME)
 
 $(LIBFT) :
 	$(MAKE) -C $(LIBFTDIR)

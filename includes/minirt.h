@@ -6,7 +6,7 @@
 /*   By: vaghazar <vaghazar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:39:09 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/07/06 18:30:04 by vaghazar         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:20:08 by vaghazar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include "../mlx_linux/mlx.h"
+# include "../include/mlx.h"
 # include "../libft/libft.h"
 # include "struct.h"
 
