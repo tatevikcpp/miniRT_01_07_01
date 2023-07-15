@@ -26,6 +26,14 @@ static void init_base(t_base *obj) // 48
 		return ;
 }
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 int main(int c, char **v)
 {
 	int	fd;
@@ -43,13 +51,19 @@ int main(int c, char **v)
 	if (fd)
 		read_map(fd, obj, flag);  // TODO check if
 	struct_tree(obj);
+
 	// free_base(obj);
 	
 	/////*************************
+	t_data	img;
 
 	mlx = mlx_init();
+	img.img = mlx_new_image(mlx, 300, 300);
+
 	mlx_new_window(mlx, 600, 600, "Hello world!");
 	mlx_loop(mlx);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
 
 	/////*************************
 

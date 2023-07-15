@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "sstream": "c",
-        "minirt.h": "c"
+        "minirt.h": "c",
+        "struct.h": "c"
     }
 }

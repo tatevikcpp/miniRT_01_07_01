@@ -12,7 +12,7 @@ HEADER = $(wildcard ./src/*.h)
 
 INCLUDES = -I./libft  -I./includes -I./getnextline -I/usr/include -Imlx_linux
 
-ifeq ($(uname), Linux)
+ifeq ($(shell uname), Linux)
 LINKERS	= -L./libft -lft  -L./getnextline -lgnl  -L./ft_printf -lftprintf -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 else
 LINKERS	= -L./libft -lft  -L./getnextline -lgnl  -L./ft_printf -lftprintf -lmlx -framework OpenGL -framework Appkit

@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include "../include/mlx.h"
+# include "../includes/mlx.h"
 # include "../libft/libft.h"
 # include "struct.h"
 

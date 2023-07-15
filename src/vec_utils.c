@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "minirt.h"
+// #include "minirt.h"
 
 #include <math.h>
 #include <stdlib.h>

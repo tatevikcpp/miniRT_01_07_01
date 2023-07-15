@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "utils.h"
 
 void check_valid_rgb(t_rgb *obj, char **split)
 {
@@ -57,17 +58,17 @@ void    ambient_lightning(t_amb *obj, char **v)
     // free_matrix(split);
 }
 
-void check_valid_coords(t_vec *obj, char **split, int flag)
+void check_valid_coords(t_vec *obj, char **split, int norm_flag)
 {
     int i;
   
     i = 0;
     if (split)
     {
-        while (split[i])
+        while (split[i]) // 
         {
-            if (flag == 1)
-            {
+            if (norm_flag == 1)
+            { 
                 if (str_to_float(split[i]) < -1 || str_to_float(split[i]) > 1)
                      print_error_exit("sxal float argument_in norm_coord\n");
             }
@@ -78,6 +79,8 @@ void check_valid_coords(t_vec *obj, char **split, int flag)
         obj->x = str_to_float(split[0]);
         obj->y = str_to_float(split[1]);
         obj->z = str_to_float(split[2]);
+        if (norm_flag && vec_length(obj) != 1)
+             print_error_exit("sxal float argument_in norm_coord_lenght\n");
     }
 }
 
