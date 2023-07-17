@@ -24,6 +24,7 @@ t_sphere	*new_sphere(t_vec *center, float diameter, t_rgb *rgb)
 	sp->center = *center;
 	sp->dm = diameter;
 	sp->rgb = *rgb;
+	sp->next = NULL;
 	return (sp);
 }
 

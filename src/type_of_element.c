@@ -13,6 +13,7 @@
 #include "minirt.h"
 #include "utils.h"
 
+
 void check_valid_rgb(t_rgb *obj, char **split)
 {
     int i;
@@ -79,7 +80,7 @@ void check_valid_coords(t_vec *obj, char **split, int norm_flag)
         obj->x = str_to_float(split[0]);
         obj->y = str_to_float(split[1]);
         obj->z = str_to_float(split[2]);
-        if (norm_flag && vec_length(obj) != 1)
+        if (norm_flag && fabsf(vec_length(obj) - 1) > 0.01)
              print_error_exit("sxal float argument_in norm_coord_lenght\n");
     }
 }
