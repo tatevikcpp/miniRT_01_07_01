@@ -15,6 +15,7 @@
 
 # define SPACES " \t\v\f\r"
 # define NUMBERS ".,-0123456789"
+# define SIZE 600
 
 # include <stdio.h>
 # include <stdlib.h>
