@@ -6,7 +6,7 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 20:31:39 by mavardan          #+#    #+#             */
-/*   Updated: 2023/07/19 18:47:36 by tumolabs         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:49:04 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef UTILS_H
@@ -26,7 +26,16 @@ void	vec_normalize(t_vec *vec);
 t_sphere	*new_sphere(t_vec *center, float diameter, t_rgb *rgb);
 t_camera	*new_cam(t_vec *view_v, t_vec *norm_v, float fov);
 
+//rgb_utils.c
+t_rgb	*mul_rgb(t_rgb *rgb1, float mul);
+t_rgb	*sum_rgb(t_rgb *rgb1, t_rgb *rgb2);
+t_rgb	*sub_rgb(t_rgb *rgb1, t_rgb *rgb2);
+
 //utils.c
 int	is_int_in_range(int val, int left, int right);
+
+//utils_math.c
+int	min(int a, int b);
+int	max(int a, int b);
 
 #endif
