@@ -6,7 +6,7 @@
 /*   By: tumolabs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:34:02 by tumolabs          #+#    #+#             */
-/*   Updated: 2023/07/19 19:09:04 by tumolabs         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:39:49 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,32 @@ t_rgb	*mul_rgb(t_rgb *rgb, float mul)
 		mul = 255;
 	if (mul < 0)
 		return (rgb_from_ints(0, 0, 0));
-	r = (int)fmax(rgb->r * mul, 255);
-	g = (int)fmax(rgb->g * mul, 255);
-	b = (int)fmax(rgb->b * mul, 255);
+	r = max(rgb->r * mul, 255);
+	g = max(rgb->g * mul, 255);
+	b = max(rgb->b * mul, 255);
+	return (rgb_from_ints(r, g, b));
+}
+
+t_rgb	*sum_rgb(t_rgb *rgb1, t_rgb *rgb2)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = max(rgb1->r + rgb2->r, 255);
+	g = max(rgb1->g + rgb2->g, 255);
+	b = max(rgb1->b + rgb2->b, 255);
+	return (rgb_from_ints(r, g, b));
+}
+
+t_rgb	*sub_rgb(t_rgb *rgb1, t_rgb *rgb2)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = max(rgb1->r - rgb2->r, 0);
+	g = max(rgb1->g - rgb2->g, 0);
+	b = max(rgb1->b - rgb2->b, 0);
 	return (rgb_from_ints(r, g, b));
 }
