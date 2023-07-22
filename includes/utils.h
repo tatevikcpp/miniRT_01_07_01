@@ -37,5 +37,6 @@ int	is_int_in_range(int val, int left, int right);
 //utils_math.c
 int	min(int a, int b);
 int	max(int a, int b);
+int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2);
 
 #endif

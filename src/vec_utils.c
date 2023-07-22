@@ -23,7 +23,7 @@ t_vec	*new_vec(float x, float y, float z)
 
 	vec = malloc(sizeof(t_vec));
 	if (!vec)
-		print_error_exit("Allocation error\n");
+		print_error_exit("Allocation error");
 	vec->x = x;
 	vec->y = y;
 	vec->z = z;
@@ -60,6 +60,8 @@ void	vec_normalize(t_vec *vec)
 	float	len;
 
 	len = vec_length(vec);
+	if (0 == len)
+		print_error_exit("Try to divide by 0");
 	vec->x /= len;
 	vec->y /= len;
 	vec->z /= len;

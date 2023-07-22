@@ -15,5 +15,6 @@
 void	print_error_exit(char *str)
 {
 	ft_printf(2, str, ft_strlen(str));
+	ft_printf(2, "\n", 1);
 	exit(1);
 }

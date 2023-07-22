@@ -18,7 +18,7 @@ void check_valid_rgb(t_rgb *obj, char **split)
 {
     int i;
     int num;
-    
+
     i = 0;
     if (split)
     {
@@ -26,7 +26,7 @@ void check_valid_rgb(t_rgb *obj, char **split)
         {
             num = ft_atoi(split[i]);
             if (num < 0 || num > 255)
-                print_error_exit("sxal rgb_range argument\n");
+                print_error_exit("sxal rgb_range argument");
             i++;
         }
         obj->r = (ft_atoi(split[0]));
@@ -39,49 +39,49 @@ void    ambient_lightning(t_amb *obj, char **v)
 {
     char **split;
     if (!obj)
-        print_error_exit("chka amb_skizb\n");
+        print_error_exit("chka amb_skizb");
     if (count_of_rows(v) == 2 && is_in_float_limit(v[0]))
     {
         split = ft_split(v[1], ',');
         if ((str_to_float(v[0]) < 0.0 || str_to_float(v[0]) > 1.0) ||
             count_of_rows(split) != 3)
-                print_error_exit("sxal float argument\n");
+                print_error_exit("sxal float argument");
         else
         {
             if (!obj)
-                print_error_exit("chka amb\n");
+                print_error_exit("chka amb");
             obj->amb = str_to_float(v[0]);
             check_valid_rgb(&obj->rgb, split);
         }
     }
     else
-        print_error_exit("error_argument_in_AMB\n");
+        print_error_exit("error_argument_in_AMB");
     // free_matrix(split);
 }
 
 void check_valid_coords(t_vec *obj, char **split, int norm_flag)
 {
     int i;
-  
+
     i = 0;
     if (split)
     {
-        while (split[i]) // 
+        while (split[i]) //
         {
             if (norm_flag == 1)
-            { 
+            {
                 if (str_to_float(split[i]) < -1 || str_to_float(split[i]) > 1)
-                     print_error_exit("sxal float argument_in norm_coord\n");
+                     print_error_exit("sxal float argument_in norm_coord");
             }
             if (!is_in_float_limit(split[i]))
-                print_error_exit("float argument error coord\n");
+                print_error_exit("float argument error coord");
             i++;
         }
         obj->x = str_to_float(split[0]);
         obj->y = str_to_float(split[1]);
         obj->z = str_to_float(split[2]);
         if (norm_flag && fabsf(vec_length(obj) - 1) > 0.01)
-             print_error_exit("sxal float argument_in norm_coord_lenght\n");
+             print_error_exit("sxal float argument_in norm_coord_lenght");
     }
 }
 
@@ -97,7 +97,7 @@ void    camera(t_camera *obj, char **v)
         if ((count_of_rows(split_coord) != 3 || count_of_rows(split_norm) != 3) ||
             (ft_atoi(v[2]) < 0 || ft_atoi(v[2]) > 180)) // TODO float sarqel
             // (str_to_float(v[2]) < 0.0 || str_to_float(v[2]) > 180.0)) //der ktesnenq
-            print_error_exit("sxal split qanak Camera\n");
+            print_error_exit("sxal split qanak Camera");
         else
         {
             check_valid_coords(&obj->view,split_coord, 0);
@@ -105,7 +105,7 @@ void    camera(t_camera *obj, char **v)
         }
     }
     else
-        print_error_exit("error_argument_in CAMERA\n");
+        print_error_exit("error_argument_in CAMERA");
     // free_matrix(split_coord);
     // free_matrix(split_norm);
 }
@@ -121,7 +121,7 @@ void    light(t_light *obj, char **v)
         split_rgb = ft_split(v[2], ',');
         if ((count_of_rows(split_coord) != 3 || count_of_rows(split_rgb) != 3) ||
             (str_to_float(v[1]) < 0.0 || str_to_float(v[1]) > 1.0))
-                print_error_exit("sxal split qanak light\n");
+                print_error_exit("sxal split qanak light");
         else
         {
             check_valid_coords(&obj->light,split_coord, 0);
@@ -130,7 +130,7 @@ void    light(t_light *obj, char **v)
         }
     }
     else
-        print_error_exit("sxal split qanak LIGHT\n");
+        print_error_exit("sxal split qanak LIGHT");
     // free_matrix(split_coord);
     // free_matrix(split_rgb);
 }

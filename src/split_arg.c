@@ -27,7 +27,7 @@ char *func(char *str)
 			{
 				if ((str[i - 1] == '.' || str[i - 1] == ',') ||
 					(str[i + 1] == '.' || str[i + 1] == ','))
-					print_error_exit("space error\n");
+					print_error_exit("space error");
 				i++;
 			}
 		}

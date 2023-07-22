@@ -20,7 +20,7 @@ t_sphere	*new_sphere(t_vec *center, float diameter, t_rgb *rgb)
 
 	sp = malloc(sizeof(t_sphere));
 	if (!sp)
-		print_error_exit("Allocation error\n");
+		print_error_exit("Allocation error");
 	sp->center = *center;
 	sp->dm = diameter;
 	sp->rgb = *rgb;
@@ -35,7 +35,7 @@ t_camera	*new_cam(t_vec *view_v, t_vec *norm_v, float fov)
 
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
-		print_error_exit("Allocation error\n");
+		print_error_exit("Allocation error");
 	cam->view = *view_v;
 	cam->norm = *norm_v;
 	cam->fov = fov;

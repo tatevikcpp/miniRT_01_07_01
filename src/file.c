@@ -23,7 +23,7 @@ static char *func_space(char *str)
 		if (!ft_strchr(SPACES, *str) && !ft_strchr(NUMBERS, *str) && *str != '\n')
 		{
 			printf("smb /%c/\n", *str);
-			print_error_exit("sxal simvol\n");
+			print_error_exit("sxal simvol");
 		}
 		else if (ft_strchr(SPACES, *str) || *str == '\n')
 			*str = '\1';
@@ -38,11 +38,11 @@ int		check_file(char *file)
 
 	fd = 0;
 	if (ft_strcmp(file + (ft_strlen(file) - 3), ".rt"))
-		print_error_exit("error_.rt\n");
+		print_error_exit("error_.rt");
 	if (!access(file, F_OK | R_OK))
 		fd = open(file, O_RDONLY);
 	if (fd == -1)
-		print_error_exit("error_fd\n");
+		print_error_exit("error_fd");
 	return (fd);
 }
 
@@ -67,7 +67,7 @@ static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 		ambient_lightning(obj->a_amb, arr); //arayjm aysqany :D
 		free_matrix(arr);
 		if (flag & 4)
-			print_error_exit("erkrord angam\n");
+			print_error_exit("erkrord angam");
 		else
 			flag |= 4;
 	}
@@ -76,7 +76,7 @@ static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 		camera(obj->a_camera, arr);
 		free_matrix(arr);
 		if (flag & 2)
-			print_error_exit("erkrord angam\n");
+			print_error_exit("erkrord angam");
 		else
 			flag |= 2;
 	}
@@ -85,7 +85,7 @@ static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 		light(obj->a_light, arr);
 		free_matrix(arr);
 		if (flag & 1)
-			print_error_exit("erkrord angam\n");
+			print_error_exit("erkrord angam");
 		else
 			flag |= 1;
 	}
@@ -103,12 +103,12 @@ static unsigned char nor_CPS(char **arr, t_base *obj, char *str, int flag)
 		free_matrix(arr);
 	}
 	if ((ft_strncmp(str, "sp", 2) == 0))
-	{	
+	{
 		sphere(&obj->a_sphere, arr);
 		free_matrix(arr);
 	}
 	if ((ft_strncmp(str, "cy", 2) == 0))
-	{	
+	{
 		cylinder(&obj->a_cylinder, arr);
 		free_matrix(arr);
 	}
@@ -141,7 +141,7 @@ void	read_map(int fd, t_base *obj, int flag)
 				flag = nor_CPS(arr, obj, str, flag);
 			 }
 			else
-				print_error_exit("eli sxal argument\n");
+				print_error_exit("eli sxal argument");
 			printf("p_arr_8888 = %p\n", arr);
 		}
 		free(line);
@@ -149,5 +149,5 @@ void	read_map(int fd, t_base *obj, int flag)
 		line = get_next_line(fd);
 	}
 	if (flag != 15)
-		print_error_exit("ERROR_flag_not_7\n");
+		print_error_exit("Missing component in map file");
 }

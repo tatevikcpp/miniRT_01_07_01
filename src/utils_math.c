@@ -26,9 +26,19 @@ int	min(int a, int b)
 	return (b);
 }
 
-int	solve_quadratic_eq(float a, float b, float c, float *x1, float *x2)
+//use t_vec due to norminette limit for 4 arguments
+int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
 {
+	float	a;
+	float	b;
+	float	c;
 	float	discr;
+
+	a = t->x;
+	b = t->y;
+	c = t->z;
+	if (0 == a)
+		print_error_exit("Try to divide by 0");
 
 	discr = b * b - 4 * a *c;
 	if (discr < 0)

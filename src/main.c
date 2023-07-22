@@ -15,7 +15,7 @@
 static void init_base(t_base *obj) // 48
 {
 	if (!obj)
-		print_error_exit("chak init obj\n");
+		print_error_exit("chak init obj");
 	obj->a_amb			= (t_amb *)ft_calloc(sizeof(t_amb), 1);
 	obj->a_camera		= (t_camera *)malloc(sizeof(t_camera));
 	obj->a_light		= (t_light *)ft_calloc(sizeof(t_light), 1);
@@ -43,9 +43,9 @@ int main(int c, char **v)
 	flag = 0;
 	t_base *obj = (t_base *)ft_calloc(sizeof(t_base), 1);
 	if (!obj)
-		print_error_exit("chka obj main\n");
+		print_error_exit("chka obj main");
 	if (c != 2)
-		print_error_exit("error argument\n");
+		print_error_exit("error argument");
 	init_base(obj);
 	fd = check_file(v[1]); // esim
 	if (fd)
@@ -53,7 +53,7 @@ int main(int c, char **v)
 	struct_tree(obj);
 
 	// free_base(obj);
-	
+
 	/////*************************
 	t_data	img;
 
