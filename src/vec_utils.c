@@ -73,6 +73,8 @@ t_vec	*matrix_vec_mul(float mat[3][3], t_vec *vec)
 	float	y;
 	float	z;
 
+	if (!vec)
+		print_error_exit("Null pinter");
 	x = mat[0][0] * vec->x + mat[0][1] * vec->y + mat[0][2] * vec->z;
 	y = mat[1][0] * vec->x + mat[1][1] * vec->y + mat[1][2] * vec->z;
 	z = mat[2][0] * vec->x + mat[2][1] * vec->y + mat[2][2] * vec->z;
@@ -89,4 +91,47 @@ t_vec	*cross_product(t_vec *v1, t_vec *v2)
 	y = v1->z * v2->x - v1->x * v2->z;
 	z = v1->x * v2->y - v1->y * v2->x;
 	return (new_vec(x, y, z));
+}
+
+static void set_3x3_mat(float mat[3][3], t_vec *row1, t_vec *row2, t_vec *row3)
+{
+	if (!row1 || !row2 || !row3)
+		print_error_exit("NULL pointer");
+	mat[0][0] = row1->x;
+	mat[1][0] = row2->x;
+	mat[2][0] = row3->x;
+	mat[0][1] = row1->y;
+	mat[1][1] = row2->y;
+	mat[2][1] = row3->y;
+	mat[0][2] = row1->z;
+	mat[1][2] = row2->z;
+	mat[2][2] = row3->z;
+}
+
+t_vec	*rot_vec(t_vec *vec, float alpha, char axis)
+{
+	float mat[3][3];
+	float cosinus;
+	float sinus;
+
+	if (!vec)
+		print_error_exit("Null pointer");
+	cosinus = cos(alpha);
+	sinus = sin(alpha);
+	if ('x' == axis)
+	{
+		set_3x3_mat(mat, new_vec(1, 0, 0),
+				new_vec(0, cosinus, -sinus), new_vec(0, sinus, cosinus));
+	}
+	else if ('y' == axis)
+	{
+		set_3x3_mat(mat, new_vec(cosinus, 0, sinus),
+				new_vec(0, 1, 0), new_vec(-sinus, 0, cosinus));
+	}
+	else if ('z' == axis)
+	{
+		set_3x3_mat(mat, new_vec(cosinus, -sinus, 0),
+				new_vec(sinus, cosinus, 0), new_vec(0, 0, 1));
+	}
+	return (matrix_vec_mul(mat, vec));
 }
