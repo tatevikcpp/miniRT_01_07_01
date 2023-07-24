@@ -6,7 +6,7 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:24:09 by mavardan          #+#    #+#             */
-/*   Updated: 2023/07/24 21:17:37 by tumolabs         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:26:37 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_vec	*cross_product(t_vec *v1, t_vec *v2)
 	return (new_vec(x, y, z));
 }
 
-static void set_3x3_mat(float mat[3][3], t_vec *row1, t_vec *row2, t_vec *row3)
+static void	set_3x3_mat(float mat[3][3], t_vec *row1, t_vec *row2, t_vec *row3)
 {
 	if (!row1 || !row2 || !row3)
 		print_error_exit("NULL pointer");
@@ -110,9 +110,9 @@ static void set_3x3_mat(float mat[3][3], t_vec *row1, t_vec *row2, t_vec *row3)
 
 t_vec	*rot_vec(t_vec *vec, float alpha, char axis)
 {
-	float mat[3][3];
-	float cosinus;
-	float sinus;
+	float	mat[3][3];
+	float	cosinus;
+	float	sinus;
 
 	if (!vec)
 		print_error_exit("Null pointer");
@@ -121,17 +121,17 @@ t_vec	*rot_vec(t_vec *vec, float alpha, char axis)
 	if ('x' == axis)
 	{
 		set_3x3_mat(mat, new_vec(1, 0, 0),
-				new_vec(0, cosinus, -sinus), new_vec(0, sinus, cosinus));
+			new_vec(0, cosinus, -sinus), new_vec(0, sinus, cosinus));
 	}
 	else if ('y' == axis)
 	{
 		set_3x3_mat(mat, new_vec(cosinus, 0, sinus),
-				new_vec(0, 1, 0), new_vec(-sinus, 0, cosinus));
+			new_vec(0, 1, 0), new_vec(-sinus, 0, cosinus));
 	}
 	else if ('z' == axis)
 	{
 		set_3x3_mat(mat, new_vec(cosinus, -sinus, 0),
-				new_vec(sinus, cosinus, 0), new_vec(0, 0, 1));
+			new_vec(sinus, cosinus, 0), new_vec(0, 0, 1));
 	}
 	return (matrix_vec_mul(mat, vec));
 }
@@ -140,28 +140,27 @@ t_vec	*rot_vec(t_vec *vec, float alpha, char axis)
 //from - camera's coordinates, to - what the camera is looking at
 //??????? 3x4 dardznel, 3 hat,0-ner@ kareli a chgrel, qani vor 0 e init arvum
 //???????tox-syun
-void look_at(t_vec *from, t_vec *to, float mat[4][4])
+void	look_at(t_vec *from, t_vec *to, float mat[4][4])
 {
-    t_vec *forward;
-    t_vec *right;
-    t_vec *up;
+	t_vec	*forward;
+	t_vec	*right;
+	t_vec	*up;
 
-    forward = vec_sub(from, to);
-    vec_normalize(forward);
-    right = cross_product(new_vec(0, 1, 0), forward);
-    vec_normalize(right);
-    up = cross_product(forward, right);
-
-    mat[0][0] = right->x;
- 	mat[1][0] = right->y;
- 	mat[2][0] = right->z;
-    mat[0][1] = up->x;
- 	mat[1][1] = up->y;
+	forward = vec_sub(from, to);
+	vec_normalize(forward);
+	right = cross_product(new_vec(0, 1, 0), forward);
+	vec_normalize(right);
+	up = cross_product(forward, right);
+	mat[0][0] = right->x;
+	mat[1][0] = right->y;
+	mat[2][0] = right->z;
+	mat[0][1] = up->x;
+	mat[1][1] = up->y;
 	mat[2][1] = up->z;
-    mat[0][2] = forward->x;
-   	mat[1][2] = forward->y;
-   	mat[2][2] = forward->z;
-    mat[0][3] = from->x;
+	mat[0][2] = forward->x;
+	mat[1][2] = forward->y;
+	mat[2][2] = forward->z;
+	mat[0][3] = from->x;
 	mat[1][3] = from->y;
 	mat[2][3] = from->z;
 	mat[3][0] = 0;
