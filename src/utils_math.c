@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
+#include "minirt.h"
+// #include <math.h>
 
 int	max(int a, int b)
 {
@@ -34,9 +35,9 @@ int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
 	float	c;
 	float	discr;
 
-	a = t->x;
-	b = t->y;
-	c = t->z;
+	a = vec->x;
+	b = vec->y;
+	c = vec->z;
 	if (0 == a)
 		print_error_exit("Try to divide by 0");
 

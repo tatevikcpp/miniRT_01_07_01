@@ -85,7 +85,6 @@ typedef struct s_base
     t_plane *a_plane;
 }   t_base;
 
-
 typedef struct s_param
 {
     int   max;
@@ -94,6 +93,14 @@ typedef struct s_param
     float start_x;
     float start_y;
 }   t_param;
+
+typedef struct s_matrix_trans
+{
+    float rot[4][4];
+    float pos[4][4];
+    float tranc[4][4];
+}   t_matrix_tranc
+
 
 typedef struct s_test
 {
