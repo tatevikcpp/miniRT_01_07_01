@@ -26,13 +26,14 @@ static void init_base(t_base *obj) // 48
 		return ;
 }
 
-typedef struct	s_data {
+typedef struct	s_data 
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}	t_data;
 
 int main(int c, char **v)
 {

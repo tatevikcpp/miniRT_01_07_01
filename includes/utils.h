@@ -20,7 +20,8 @@ t_vec	*vec_sum(t_vec *v1, t_vec *v2);
 t_vec	*vec_sub(t_vec *v1, t_vec *v2);
 float	vec_dot_product(t_vec *v1, t_vec *v2);
 float	vec_length(t_vec *vec);
-void	vec_normalize(t_vec *vec);
+t_vec	*vec_normalize(t_vec *vec);
+t_vec	*rot_vec(t_vec *vec, float alpha, char axis);
 
 //sp_cam_utils.c
 t_sphere	*new_sphere(t_vec *center, float diameter, t_rgb *rgb);

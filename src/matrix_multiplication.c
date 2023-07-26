@@ -1,8 +1,8 @@
 #include "minirt.h"
 
-void    mult_matrix(int A[4][4], int B[4][4])
+void    mult_matrix(float A[4][4], float B[4][4]) // TODO return C[][] ?
 {
-    int C[4][4];
+    float C[4][4];
     int mult;
     int i;
     int j;
@@ -19,9 +19,10 @@ void    mult_matrix(int A[4][4], int B[4][4])
             while (k < 4)
             {
                 mult += A[i][k] * B[k][j];
-                k++
+                k++;
             }
             C[i][j] = mult;
+            printf("%f\n", C[i][j]);
             j++;
         }
         i++;

@@ -99,7 +99,21 @@ typedef struct s_matrix_trans
     float rot[4][4];
     float pos[4][4];
     float tranc[4][4];
-}   t_matrix_tranc
+}   t_matrix_tranc;
+
+
+typedef struct s_ray
+{
+    t_vec   or;
+    t_vec   dir;
+}   t_ray;
+
+
+typedef struct s_rt
+{
+    float cam_matrix[4][4];
+}   t_rt;
+
 
 
 typedef struct s_test

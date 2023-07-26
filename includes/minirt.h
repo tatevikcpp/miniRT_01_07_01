@@ -13,9 +13,6 @@
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define SPACES " \t\v\f\r"
-# define NUMBERS ".,-0123456789"
-# define SIZE 600
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,6 +21,11 @@
 # include "../includes/mlx.h"
 # include "../libft/libft.h"
 # include "struct.h"
+
+# define SPACES " \t\v\f\r"
+# define NUMBERS ".,-0123456789"
+# define PI  acos(-1)
+
 
 int     ft_printf(int fd, const char *s, ...);
 char    *get_next_line(int fd);
@@ -81,6 +83,17 @@ t_sphere	*ft_lstnew_sp(void);
 t_sphere	*ft_lstlast_sp(t_sphere *lst);
 void	ft_lstadd_back_sp(t_sphere **lst, t_sphere *new);
 void	ft_lstadd_front_sp(t_sphere **lst,t_sphere *new);
+
+
+
+//vec_utils.c
+t_vec	*new_vec(float x, float y, float z);
+t_vec	*vec_sum(t_vec *v1, t_vec *v2);
+t_vec	*vec_sub(t_vec *v1, t_vec *v2);
+float	vec_dot_product(t_vec *v1, t_vec *v2);
+float	vec_length(t_vec *vec);
+t_vec	*vec_normalize(t_vec *vec);
+t_vec	*rot_vec(t_vec *vec, float alpha, char axis);
 
 
 #endif

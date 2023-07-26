@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minirt.h"
 
 void	ft_lstadd_front_cy(t_cylinder **lst, t_cylinder *new)
