@@ -30,3 +30,39 @@ void    build_ray(t_ray *ray, t_vec *or, t_vec *dir)
     vec_normalize(&ray->dir);
 }
 
+void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y) // TODO veranayel
+{
+    t_camera *cam;
+
+    cam = &rt->cam;
+    ray->or = cam->view; // kam new_vector()
+    ray->dir.x = (2 * (pixel_x + 0.5) / (float)rt->widht - 1) * cam->tga * rt->aspectratio;
+    ray->dir.y = (1 - 2 * (pixel_y + 0.5) / (float)rt->height) * cam->tga;
+    ray->dir.z = 1; // TODO chshtell kam 0.5 ??
+    ray->dir = cam_to_world(rt->cam_matrix, &ray->dir);
+    vec_normalize(&ray->dir);
+}
+
+float   distance(t_vec a, t_vec b)
+{
+    float   x;
+    float   y;
+    float   z;
+
+    x = a.x - b.x;
+    y = a.y - b.y;
+    z = a.z - b.z;
+    x *= x;
+    y *= y;
+    z *= z;
+    return (sqrt(x + y +z));
+}
+
+t_vec	vec_inv(t_vec v)
+{
+	v.x = -v.x;
+	v.y = -v.y;
+	v.z = -v.z;
+	return (v);
+}
+

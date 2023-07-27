@@ -94,6 +94,8 @@ float	vec_dot_product(t_vec *v1, t_vec *v2);
 float	vec_length(t_vec *vec);
 t_vec	*vec_normalize(t_vec *vec);
 t_vec	*rot_vec(t_vec *vec, float alpha, char axis);
-
+t_vec	vec_inv(t_vec v);
+float   distance(t_vec a, t_vec b);
+void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y);
 
 #endif

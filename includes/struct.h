@@ -40,6 +40,7 @@ typedef struct s_Camera
     t_vec view; // x, y, z 
     t_vec norm; //[-1, 1] x, y , z
     float fov; // [0, 180]
+    float tga;
 }   t_camera;
 
 typedef struct s_Light
@@ -111,7 +112,12 @@ typedef struct s_ray
 
 typedef struct s_rt
 {
+    float widht;
+    float height;
     float cam_matrix[4][4];
+    float aspectratio;
+    t_camera cam;
+
 }   t_rt;
 
 
