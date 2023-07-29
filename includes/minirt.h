@@ -101,7 +101,7 @@ float	vec_dot_product(t_vec *v1, t_vec *v2);
 float	vec_length(t_vec *vec);
 t_vec	*vec_normalize(t_vec *vec);
 t_vec	*rot_vec(t_vec *vec, float alpha, char axis);
-t_vec	vec_inv(t_vec v);
+t_vec	*vec_inv(t_vec *v);
 float   distance(t_vec a, t_vec b);
 void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y);
 void	look_at(t_rt *rt);
@@ -109,7 +109,7 @@ void	look_at(t_rt *rt);
 // intersection
 
 t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit);
-
+t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit);
 
 //
 

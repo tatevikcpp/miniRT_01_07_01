@@ -118,11 +118,11 @@ float   distance(t_vec a, t_vec b)
     return (sqrt(x + y +z));
 }
 
-t_vec	vec_inv(t_vec v)
+t_vec	*vec_inv(t_vec *v)
 {
-	v.x = -v.x;
-	v.y = -v.y;
-	v.z = -v.z;
+	v->x = -v->x;
+	v->y = -v->y;
+	v->z = -v->z;
 	return (v);
 }
 

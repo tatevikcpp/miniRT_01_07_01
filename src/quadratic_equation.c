@@ -9,7 +9,7 @@ static void    swap(float x0, float x1)
     x1 = tmp;
 }
 
-t_bool solveQuadratic(const float a, const float b, const float c, float x0, float x1)
+t_bool solve_quadratic_eq(const float a, const float b, const float c, float t0, float t1)
 {
     float discr;
     float q;
@@ -19,8 +19,8 @@ t_bool solveQuadratic(const float a, const float b, const float c, float x0, flo
         return (FALSE);
     else if (discr == 0)
     {
-        x0 = - 0.5 * b / a;
-        x1 = - 0.5 * b / a;
+        t0 = - 0.5 * b / a;
+        t1 = - 0.5 * b / a;
     }
     else
     {
@@ -28,10 +28,10 @@ t_bool solveQuadratic(const float a, const float b, const float c, float x0, flo
             q = -0.5 * (b + sqrt(discr));
         else
             q = -0.5 * (b - sqrt(discr));
-        x0 = q / a;
-        x1 = c / q;
+        t0 = q / a;
+        t1 = c / q;
     }
-    if (x0 > x1) 
-        swap(x0, x1);
+    if (t0 > t1) 
+        swap(t0, t1);
     return (TRUE);
 }

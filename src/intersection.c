@@ -27,3 +27,30 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 	vec_normalize(&hit->nhit);
 	return (TRUE);
 }
+
+t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
+{
+	float	denom;
+	t_vec	*tmp;
+
+	denom = vec_dot_product(&pl->norm , &ray->dir);
+	if (denom == 0)
+		return (FALSE);
+	tmp = vec_sub(&ray->or, &pl->coord);
+	hit->t = vec_dot_product(tmp, &pl->norm ) / denom;
+	if (hit->t < EPSILON)
+		return (FALSE);
+	ray_mult(&hit->phit, ray, hit->t);
+	hit->nhit = &pl->norm;
+	// if (vec_dot_product(hit->nhit, &ray->dir) > 0) //chgitem ?
+	// 	hit->nhit = vec_inv(hit->nhit);
+	return (TRUE);
+}
+
+// int	intersect(t_ray *ray, t_utils *obj, t_hit *hit)
+// {
+// 	if (obj->id == id_sphere) // ? obj->id
+// 		return(sphere_intersect(/*la, la, la*/));
+// 	if (obj->id == id_plane)
+// 		return (plane_intersect(/*la, la, la*/));
+// }
