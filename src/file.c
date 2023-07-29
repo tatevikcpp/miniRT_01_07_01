@@ -53,7 +53,6 @@ static char **helper(char *str, int flag)
 
 	ptr = func_space(str + flag);
 	arr = ft_split(ptr, '\1');
-	printf("p_arr_helper = %p\n", arr);
 	return (arr);
 }
 
@@ -95,7 +94,6 @@ static unsigned char nor_CPS(char **arr, t_base *obj, char *str, int flag)
 {
 	flag |= 8;
 	arr = helper(str, 2);
-	printf("p_arr_CPS = %p\n", arr);
 	if ((ft_strncmp(str, "pl", 2) == 0))
 	{
 		plane(&obj->a_plane, arr);
@@ -127,21 +125,14 @@ void	read_map(int fd, t_base *obj, int flag)
 	{
 		str = ft_strtrim(line, SPACES); // TODO free str
 		if (*str == 'A' || *str == 'L' || *str == 'C')
-			{
 				flag = nor_ALC(arr, obj, str, flag);
-				// printf("p_arr_ALC_readmap = %p\n", arr);
-			}
 		else if (*str && *str != '\n')
 		{
 			if ((ft_strncmp(str, "pl", 2) == 0) ||  (ft_strncmp(str, "sp", 2) == 0) ||
 			 (ft_strncmp(str, "cy", 2) == 0))
-			 {
-				// printf("p_arr_CPS_readmap = %p\n", arr);
 				flag = nor_CPS(arr, obj, str, flag);
-			 }
 			else
 				print_error_exit("eli sxal argument");
-			// printf("p_arr_8888 = %p\n", arr);
 		}
 		free(line);
 		free(str);

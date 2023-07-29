@@ -16,6 +16,7 @@
 //#include "minirt.h"
 
 typedef enum e_bool {FALSE, TRUE}	t_bool;
+
 typedef struct	s_img_data t_img_data;
 
 typedef struct	s_img_data 
@@ -151,8 +152,8 @@ typedef struct s_matrix_trans
 {
     float rot[4][4];
     float pos[4][4];
-    float tranc[4][4];
-}   t_matrix_tranc;
+    float trans[4][4];
+}   t_matrix_trans;
 
 typedef struct s_ray
 {

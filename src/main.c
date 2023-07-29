@@ -50,7 +50,6 @@ int main(int c, char **v)
 	// free_base(obj);
 
 	/////*************************
-	printf("\n\n\n\n\n\n\n\n\n");
 	mlx = mlx_init();
 	obj->img_data.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEGHT);
 	
@@ -70,6 +69,5 @@ int main(int c, char **v)
 
 	mlx_loop(mlx);
 	free(obj);
-	printf("\n---------******----------\n\n");
 	return (0);
 }

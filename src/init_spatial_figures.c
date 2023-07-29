@@ -31,7 +31,7 @@ void    sphere(t_sphere **obj, char **v)
         str_to_float(v[1]) >= 0)
     {
         split_coord = ft_split(v[0], ',');
-        printf("%p\n", split_coord);
+       
         split_rgb = ft_split(v[2], ',');
         if ((count_of_rows(split_coord) != 3 || count_of_rows(split_rgb) != 3))
                 print_error_exit("sxal split qanak sphere");
