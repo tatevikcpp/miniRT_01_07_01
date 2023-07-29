@@ -56,7 +56,15 @@ float	vec_length(t_vec *vec)
 	return (sqrt(vec_dot_product(vec, vec)));
 }
 
-t_vec	*vec_normalize(t_vec *vec)
+t_vec   *ray_mult(t_vec *dst, t_ray *r, float t)
+{
+    dst->x = r->or.x + t * r->dir.x;
+    dst->y = r->or.y + t * r->dir.y;
+    dst->z = r->or.z + t * r->dir.z;
+    return (dst);
+}
+
+t_vec	*vec_normalize(t_vec *vec) // TODO return type ?
 {
 	float	len;
 
@@ -93,6 +101,29 @@ t_vec	*cross_product(t_vec *v1, t_vec *v2)
 	y = v1->z * v2->x - v1->x * v2->z;
 	z = v1->x * v2->y - v1->y * v2->x;
 	return (new_vec(x, y, z));
+}
+
+float   distance(t_vec a, t_vec b)
+{
+    float   x;
+    float   y;  
+    float   z;
+
+    x = a.x - b.x;
+    y = a.y - b.y;
+    z = a.z - b.z;
+    x *= x;
+    y *= y;
+    z *= z;
+    return (sqrt(x + y +z));
+}
+
+t_vec	vec_inv(t_vec v)
+{
+	v.x = -v.x;
+	v.y = -v.y;
+	v.z = -v.z;
+	return (v);
 }
 
 static void	set_3x3_mat(float mat[3][3], t_vec *row1, t_vec *row2, t_vec *row3)
@@ -142,13 +173,14 @@ t_vec	*rot_vec(t_vec *vec, float alpha, char axis)
 //from - camera's coordinates, to - what the camera is looking at
 //??????? 3x4 dardznel, 3 hat,0-ner@ kareli a chgrel, qani vor 0 e init arvum
 //???????tox-syun
-void	look_at(t_vec *from, t_vec *to, /*float mat[4][4]*/ t_rt *rt) // TODO 3x3 vra havanabar ))
+void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 vra havanabar ))
 {
 	t_vec	*forward;
 	t_vec	*right;
 	t_vec	*up;
 
-	forward = vec_sub(from, to);
+	// forward = vec_sub(from, to); 
+	forward = &rt->cam.norm; // havanabar
 	vec_normalize(forward);
 	right = cross_product(new_vec(0, 1, 0), forward);
 	vec_normalize(right);
@@ -162,9 +194,13 @@ void	look_at(t_vec *from, t_vec *to, /*float mat[4][4]*/ t_rt *rt) // TODO 3x3 v
 	rt->cam_matrix[0][2] = forward->x;
 	rt->cam_matrix[1][2] = forward->y;
 	rt->cam_matrix[2][2] = forward->z;
-	rt->cam_matrix[0][3] = from->x;
-	rt->cam_matrix[1][3] = from->y;
-	rt->cam_matrix[2][3] = from->z;
+	// rt->cam_matrix[0][3] = from->x;
+	// rt->cam_matrix[1][3] = from->y;
+	// rt->cam_matrix[2][3] = from->z;
+	rt->cam_matrix[0][3] = 0;
+	rt->cam_matrix[1][3] = 0;
+	rt->cam_matrix[2][3] = 0;
+	//erevi
 	rt->cam_matrix[3][0] = 0;
 	rt->cam_matrix[3][1] = 0;
 	rt->cam_matrix[3][2] = 0;

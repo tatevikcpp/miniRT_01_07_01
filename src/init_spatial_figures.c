@@ -41,6 +41,7 @@ void    sphere(t_sphere **obj, char **v)
             check_valid_coords(&tmp->center, split_coord, 0);
             check_valid_rgb(&tmp->rgb, split_rgb);
             tmp->dm = str_to_float(v[1]);
+            tmp->id = id_sphere;
             ft_lstadd_back_sp(obj, tmp);
         }
     }
@@ -71,6 +72,7 @@ void    plane(t_plane **obj, char **v)
             check_valid_coords(&tmp->coord, split_coord, 0);
             check_valid_coords(&tmp->norm, split_norm, 1);
             check_valid_rgb(&tmp->rgb, split_rgb);
+            tmp->id = id_plane;
             ft_lstadd_back_pl(obj,tmp);
         }
     }
@@ -101,6 +103,7 @@ void    cylinder(t_cylinder **obj, char **v) // TODO 25 toxic avel e
             check_valid_coords(&tmp->center ,split_coord, 0);
             check_valid_coords(&tmp->norm, split_norm, 1);
             check_valid_rgb(&tmp->rgb, split_rgb);
+            tmp->id = id_cylinder;
             tmp->dm = str_to_float(v[2]);
             tmp->hg = str_to_float(v[3]);
             ft_lstadd_back_cy(obj, tmp);

@@ -2,8 +2,9 @@
 # define DEFINES_H
 
 
-# define WIN_WIDTH 1920
-# define WIN_HEGHT 1080
+# define WIN_WIDTH 1200
+# define WIN_HEGHT 720
+# define EPSILON 0.0001
 # define KEY_X 7
 # define KEY_y 16
 # define KEY_z 6

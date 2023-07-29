@@ -21,6 +21,7 @@
 # include "../includes/mlx.h"
 # include "../libft/libft.h"
 # include "struct.h"
+# include "defines.h"
 
 # define SPACES " \t\v\f\r"
 # define NUMBERS ".,-0123456789"
@@ -56,7 +57,7 @@ void    camera(t_camera *obj, char **v);
 void    light(t_light *obj, char **v);
 void    sphere(t_sphere **obj, char **v);
 void    plane(t_plane **obj, char **v);
-void    cylinder(t_cylinder **obj, /* t_base *obj, */ char **v);
+void    cylinder(t_cylinder **obj, char **v);
 void    check_valid_coords(t_vec *obj, char **split, int flag);
 void    check_valid_rgb(t_rgb *obj, char **split);
 
@@ -84,6 +85,12 @@ t_sphere	*ft_lstlast_sp(t_sphere *lst);
 void	ft_lstadd_back_sp(t_sphere **lst, t_sphere *new);
 void	ft_lstadd_front_sp(t_sphere **lst,t_sphere *new);
 
+void    print_list_obj(t_utils *list);
+t_utils	*ft_lstnew_obj(void);
+t_utils	*ft_lstlast_obj(t_utils *lst);
+void	ft_lstadd_back_obj(t_utils **lst, t_utils *new);
+void	ft_lstadd_front_obj(t_utils **lst,t_utils *new);
+
 
 
 //vec_utils.c
@@ -97,5 +104,15 @@ t_vec	*rot_vec(t_vec *vec, float alpha, char axis);
 t_vec	vec_inv(t_vec v);
 float   distance(t_vec a, t_vec b);
 void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y);
+void	look_at(t_rt *rt);
+
+// intersection
+
+t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit);
+
+
+//
+
+void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 
 #endif

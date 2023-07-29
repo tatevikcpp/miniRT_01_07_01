@@ -2,13 +2,13 @@ NAME = miniRT
 
 CC = cc
 
-CFLAGS =   -Wall -Wextra -Werror   -g -fsanitize=address  -g3 -ggdb3
+CFLAGS =      -g -fsanitize=address  -g3 -ggdb3 #-Wall -Wextra -Werror
 
 SRCS = $(wildcard ./src/*.c) 
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
-HEADER = $(wildcard ./src/*.h)
+HEADER = $(wildcard ./includes/*.h)
 
 INCLUDES = -I./libft  -I./includes -I./getnextline -I/usr/include -Imlx_linux
 

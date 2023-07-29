@@ -59,9 +59,8 @@ static char **helper(char *str, int flag)
 
 static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 {
-	arr = helper(str, 1);
-	printf("p_arr = %p\n", arr);
 
+	arr = helper(str, 1);
 	if (*str == 'A')
 	{
 		ambient_lightning(obj->a_amb, arr); //arayjm aysqany :D
@@ -130,19 +129,19 @@ void	read_map(int fd, t_base *obj, int flag)
 		if (*str == 'A' || *str == 'L' || *str == 'C')
 			{
 				flag = nor_ALC(arr, obj, str, flag);
-				printf("p_arr_ALC_readmap = %p\n", arr);
+				// printf("p_arr_ALC_readmap = %p\n", arr);
 			}
 		else if (*str && *str != '\n')
 		{
 			if ((ft_strncmp(str, "pl", 2) == 0) ||  (ft_strncmp(str, "sp", 2) == 0) ||
 			 (ft_strncmp(str, "cy", 2) == 0))
 			 {
-				printf("p_arr_CPS_readmap = %p\n", arr);
+				// printf("p_arr_CPS_readmap = %p\n", arr);
 				flag = nor_CPS(arr, obj, str, flag);
 			 }
 			else
 				print_error_exit("eli sxal argument");
-			printf("p_arr_8888 = %p\n", arr);
+			// printf("p_arr_8888 = %p\n", arr);
 		}
 		free(line);
 		free(str);

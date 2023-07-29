@@ -13,7 +13,6 @@
 #include "minirt.h"
 #include "utils.h"
 
-
 void check_valid_rgb(t_rgb *obj, char **split)
 {
     int i;
@@ -50,6 +49,7 @@ void    ambient_lightning(t_amb *obj, char **v)
         {
             if (!obj)
                 print_error_exit("chka amb");
+            obj->id = id_amb;
             obj->amb = str_to_float(v[0]);
             check_valid_rgb(&obj->rgb, split);
         }
@@ -100,6 +100,7 @@ void    camera(t_camera *obj, char **v)
             print_error_exit("sxal split qanak Camera");
         else
         {
+            obj->id = id_camera;
             check_valid_coords(&obj->view,split_coord, 0);
             check_valid_coords(&obj->norm,split_norm, 1);
         }
@@ -124,6 +125,7 @@ void    light(t_light *obj, char **v)
                 print_error_exit("sxal split qanak light");
         else
         {
+            obj->id = id_light;
             check_valid_coords(&obj->light,split_coord, 0);
             check_valid_rgb(&obj->rgb, split_rgb);
             obj->brigh = str_to_float(v[1]);
