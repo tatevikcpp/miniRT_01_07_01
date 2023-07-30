@@ -187,6 +187,10 @@ typedef struct s_matrix_trans
 
 typedef struct s_rt
 {
+    t_vec	*forward;
+	t_vec	*right;
+	t_vec	*up;
+    float inverse_view;
     int widht;
     int height;
     float cam_matrix[4][4];

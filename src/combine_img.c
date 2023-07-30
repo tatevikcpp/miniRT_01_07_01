@@ -27,7 +27,7 @@ void combine_img(t_base *data)
             sphere_intersect(&data->utils->ray, data->a_sphere, &data->utils->ray.hit);
             if (data->utils->ray.hit.nhit)
             {
-		        my_mlx_pixel_put(&data->img_data, i++, j, 0x00bfff);
+		        my_mlx_pixel_put(&data->img_data, i, j, 0x00bfff);
                 // print_hit(&data->utils->ray.hit);
             }
             

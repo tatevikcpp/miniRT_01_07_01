@@ -19,11 +19,16 @@ void    function(t_rt *rt)
     t_camera *cam;
     t_utils *obj; // malloc
 
+    t_vec *from = new_vec(1, 1, 1);
+    t_vec *to = new_vec(200,200,20);
     cam = rt->cam;
     printf("cam->cam->fov = %f\n", cam->fov);
     cam->scale = tan(cam->fov / 2 * PI / 180);
     printf("cam->scale = %f\n", cam->scale);
-    look_at(rt);
+    // look_at(from, to, rt);
+    // look_at(rt);
+    lookat(rt, *new_vec(0, 0, 6), vec_sum(new_vec(0, 0, 6), new_vec(0, 0, -1)), new_vec(0, 1, 0));
+    rt->inverse_view = 
     // obj = rt->utils;
     // while (obj) 
     // {

@@ -6,7 +6,9 @@ CFLAGS =      -g -fsanitize=address  -g3 -ggdb3 #-Wall -Wextra -Werror
 
 SRCS = $(wildcard ./src/*.c) 
 
-OBJS = $(patsubst %.c, %.o, $(SRCS))
+OBJS = $(patsubst ./src/%.c, $(DIROBJS)/%.o, $(SRCS))
+
+DIROBJS = ./src/objs
 
 HEADER = $(wildcard ./includes/*.h)
 
@@ -30,12 +32,12 @@ GNL = ./getnextline/libgnl.a
 
 GNLDIR = ./getnextline
 
-RM = rm -f
+RM = rm -fr
 
-%.o: %.c  ${HEADER} Makefile
+$(DIROBJS)/%.o: src/%.c  ${HEADER} Makefile
 	$(CC) $(CFLAGS) $(INCLUDES) -O3 -c $< -o $@
 
-all: $(NAME) 
+all: $(DIROBJS) $(NAME) 
 
 $(NAME): $(OBJS) $(LIBFT) $(GNL) $(LIBFTPRINFT)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -o $(NAME)
@@ -49,16 +51,20 @@ $(GNL) :
 $(LIBFTPRINFT) :
 	$(MAKE) -C $(LIBFTPRINFTDIR)
 
+$(DIROBJS) :
+	mkdir $(DIROBJS)
+
 clean:
 	@$(MAKE) clean -C $(LIBFTDIR)
 	@$(MAKE) clean -C $(GNLDIR)
 	@$(MAKE) clean -C $(LIBFTPRINFTDIR)
 	@$(RM) $(OBJS)
+	@$(RM) $(DIROBJS)
 
 fclean: clean
-	@$(MAKE) fclean -C $(LIBFTDIR)	
-	@$(MAKE) fclean -C $(GNLDIR)	
-	@$(MAKE) fclean -C $(LIBFTPRINFTDIR)	
+	@$(MAKE) fclean -C $(LIBFTDIR)
+	@$(MAKE) fclean -C $(GNLDIR)
+	@$(MAKE) fclean -C $(LIBFTPRINFTDIR)
 	@$(RM) $(NAME)
 	@echo $(NONE) $(RED)"       >Removed< $(NAME)" $(NONE)
 
