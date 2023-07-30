@@ -42,6 +42,7 @@ void    sphere(t_sphere **obj, char **v)
             check_valid_rgb(&tmp->rgb, split_rgb);
             tmp->dm = str_to_float(v[1]);
             tmp->id = id_sphere;
+            tmp->r2 = ft_atof(v[1]) / 2;
             ft_lstadd_back_sp(obj, tmp);
         }
     }

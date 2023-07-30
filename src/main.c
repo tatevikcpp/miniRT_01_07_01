@@ -19,7 +19,8 @@ static void init_base(t_base *obj) // 48
 	obj->a_amb			= (t_amb *)ft_calloc(sizeof(t_amb), 1);
 	obj->a_camera		= (t_camera *)ft_calloc(sizeof(t_camera), 1);
 	obj->a_light		= (t_light *)ft_calloc(sizeof(t_light), 1);
-	obj->obj 			= (t_utils *)ft_calloc(sizeof(t_utils), 1);
+	obj->utils 			= (t_utils *)ft_calloc(sizeof(t_utils), 1);
+	obj->rt 			= new_rt(obj);
 	obj->a_plane		= NULL;
 	obj->a_cylinder		= NULL;
 	obj->a_sphere		= NULL;
@@ -50,24 +51,23 @@ int main(int c, char **v)
 	// free_base(obj);
 
 	/////*************************
-	mlx = mlx_init();
-	obj->img_data.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEGHT);
+	obj->mlx.mlx_ptr = mlx_init();
+	obj->img_data.img = mlx_new_image(obj->mlx.mlx_ptr, WIN_WIDTH, WIN_HEGHT);
 	
-	mlx_win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEGHT, "Hello world!");
+	obj->mlx.win_ptr = mlx_new_window(obj->mlx.mlx_ptr, WIN_WIDTH, WIN_HEGHT, "Hello world!");
 	obj->img_data.addr = mlx_get_data_addr(obj->img_data.img, &obj->img_data.bits_per_pixel, &obj->img_data.line_length,
 								&obj->img_data.endian);
-	int i = 0;
-	while (i < 100 )
-	{
-		my_mlx_pixel_put(&obj->img_data, i++, 5, 0x00bfff);
-		/* code */
-	}
-	combine_img(obj);	
-	mlx_put_image_to_window(mlx, mlx_win, obj->img_data.img, 0, 0);
+	obj->rt->widht = WIN_WIDTH;
+	obj->rt->height = WIN_HEGHT;
+    // mlx_get_screen_size(obj->mlx.mlx_ptr, &obj->rt->widht, &obj->rt->height);
+    obj->rt->aspectratio = (float) obj->rt->widht / obj->rt->height;
+	combine_img(obj);
+	mlx_put_image_to_window(obj->mlx.mlx_ptr, obj->mlx.win_ptr, obj->img_data.img, 0, 0);
 
 	/////*************************
 
-	mlx_loop(mlx);
+	mlx_loop(obj->mlx.mlx_ptr);
 	free(obj);
+	pause();
 	return (0);
 }

@@ -36,7 +36,7 @@ t_camera	*new_cam(t_vec *view_v, t_vec *norm_v, float fov)
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
 		print_error_exit("Allocation error");
-	cam->view = *view_v;
+	cam->coord = *view_v;
 	cam->norm = *norm_v;
 	cam->fov = fov;
 	return (cam);

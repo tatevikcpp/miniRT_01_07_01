@@ -112,7 +112,15 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit);
 t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit);
 
 //
-
+void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y);
+void	set_vec(t_vec *vec, float x, float y, float z);
+t_vec	cam_to_world(float m[4][4], t_vec *v);
+t_vec   *ray_mult(t_vec *dst, t_ray *r, float t);
+void    build_ray(t_ray *ray, t_vec *or, t_vec *dir);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
-
+void combine_img(t_base *data);
+void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt); // TODO 3x3 vra havanabar ));
+void    function(t_rt *rt);
+t_rt *new_rt(t_base *base);
+void print_vec(t_vec *vec);
 #endif

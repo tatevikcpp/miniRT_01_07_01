@@ -31,6 +31,13 @@ t_vec	*new_vec(float x, float y, float z)
 	return (vec);
 }
 
+void	set_vec(t_vec *vec, float x, float y, float z)
+{
+	vec->x = x;
+	vec->y = y;
+	vec->z = z;
+}
+
 t_vec	*vec_sum(t_vec *v1, t_vec *v2)
 {
 	return (new_vec(v1->x + v2->x, v1->y + v2->y, v1->z + v2->z));
@@ -180,7 +187,7 @@ void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 v
 	t_vec	*up;
 
 	// forward = vec_sub(from, to); 
-	forward = &rt->cam.norm; // havanabar
+	forward = &rt->cam->norm; // havanabar
 	vec_normalize(forward);
 	right = cross_product(new_vec(0, 1, 0), forward);
 	vec_normalize(right);
@@ -197,12 +204,12 @@ void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 v
 	// rt->cam_matrix[0][3] = from->x;
 	// rt->cam_matrix[1][3] = from->y;
 	// rt->cam_matrix[2][3] = from->z;
-	rt->cam_matrix[0][3] = 0;
-	rt->cam_matrix[1][3] = 0;
-	rt->cam_matrix[2][3] = 0;
-	//erevi
-	rt->cam_matrix[3][0] = 0;
-	rt->cam_matrix[3][1] = 0;
-	rt->cam_matrix[3][2] = 0;
-	rt->cam_matrix[3][3] = 1;
+	// rt->cam_matrix[0][3] = 0;
+	// rt->cam_matrix[1][3] = 0;
+	// rt->cam_matrix[2][3] = 0;
+	// //erevi
+	// rt->cam_matrix[3][0] = 0;
+	// rt->cam_matrix[3][1] = 0;
+	// rt->cam_matrix[3][2] = 0;
+	// rt->cam_matrix[3][3] = 1;
 }

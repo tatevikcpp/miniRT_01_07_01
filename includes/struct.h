@@ -17,7 +17,16 @@
 
 typedef enum e_bool {FALSE, TRUE}	t_bool;
 
-typedef struct	s_img_data t_img_data;
+typedef struct s_img_data t_img_data;
+typedef struct s_ray t_ray;
+typedef struct s_hit t_hit;
+typedef struct s_rt t_rt;
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}   t_mlx;
 
 typedef struct	s_img_data 
 {
@@ -62,7 +71,7 @@ typedef struct s_amb
 typedef struct s_camera
 {
     t_obj_id	id;
-    t_vec view; // x, y, z 
+    t_vec coord; // x, y, z 
     t_vec norm; //[-1, 1] x, y , z
     float fov; // [0, 180]
     float scale;
@@ -115,6 +124,22 @@ typedef struct s_plane
 // 	t_cylinder	cylinder;
 // }	t_obj_union;
 
+typedef struct s_hit
+{
+	t_vec	*nhit;
+	t_vec	*phit;
+	t_rgb	color;
+	float	t;
+}	t_hit;
+
+
+typedef struct s_ray
+{
+    t_vec   or;
+    t_vec   dir;
+    t_hit   hit;
+}   t_ray;
+
 typedef struct s_utils
 {
     t_vec x;
@@ -123,6 +148,7 @@ typedef struct s_utils
     t_vec coord;
     // t_obj_id id;
     // t_obj_union objects;
+    t_ray ray;
     struct s_utils *next;
     // clcor;
 }   t_utils;
@@ -135,8 +161,10 @@ typedef struct s_base
     t_sphere *a_sphere;
     t_cylinder *a_cylinder;
     t_plane *a_plane;
-    t_utils *obj;
+    t_utils *utils;
     t_img_data img_data;
+    t_rt        *rt;
+    t_mlx       mlx;
 }   t_base;
 
 typedef struct s_param
@@ -155,29 +183,16 @@ typedef struct s_matrix_trans
     float trans[4][4];
 }   t_matrix_trans;
 
-typedef struct s_ray
-{
-    t_vec   or;
-    t_vec   dir;
-}   t_ray;
+
 
 typedef struct s_rt
 {
-    float widht;
-    float height;
+    int widht;
+    int height;
     float cam_matrix[4][4];
     float aspectratio;
-    t_camera cam;
-    t_utils *obj;
+    t_camera *cam;
 }   t_rt;
-
-typedef struct s_hit
-{
-	t_vec	*nhit;
-	t_vec	*phit;
-	t_rgb	*color;
-	float	t;
-}	t_hit;
 
 typedef struct s_test
 {

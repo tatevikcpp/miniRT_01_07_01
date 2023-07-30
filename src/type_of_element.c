@@ -94,6 +94,7 @@ void    camera(t_camera *obj, char **v)
     {
         split_coord = ft_split(v[0], ',');
         split_norm = ft_split(v[1], ',');
+
         if ((count_of_rows(split_coord) != 3 || count_of_rows(split_norm) != 3) ||
             (ft_atoi(v[2]) < 0 || ft_atoi(v[2]) > 180)) // TODO float sarqel
             // (str_to_float(v[2]) < 0.0 || str_to_float(v[2]) > 180.0)) //der ktesnenq
@@ -101,7 +102,8 @@ void    camera(t_camera *obj, char **v)
         else
         {
             obj->id = id_camera;
-            check_valid_coords(&obj->view,split_coord, 0);
+            obj->fov = ft_atof(v[2]);
+            check_valid_coords(&obj->coord,split_coord, 0);
             check_valid_coords(&obj->norm,split_norm, 1);
         }
     }
