@@ -71,3 +71,8 @@ t_rgb	*sub_rgb(t_rgb *rgb1, t_rgb *rgb2)
 	b = max(rgb1->b - rgb2->b, 0);
 	return (rgb_from_ints(r, g, b));
 }
+
+int	rgb_to_int(t_rgb rgb)
+{
+	return (rgb.r << 16 | rgb.g << 8 | rgb.b);
+}

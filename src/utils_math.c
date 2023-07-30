@@ -62,7 +62,7 @@ int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
 		*x1 = (-b + sqrt(discr)) / (2 * a);
 		*x2 = (-b - sqrt(discr)) / (2 * a);
 	}
-	if (*x1 > *x2) 
+	if (*x1 > *x2)
         swap(x1, x2);
 	return (1);
 }
