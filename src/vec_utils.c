@@ -180,14 +180,14 @@ t_vec	*rot_vec(t_vec *vec, float alpha, char axis)
 //from - camera's coordinates, to - what the camera is looking at
 //??????? 3x4 dardznel, 3 hat,0-ner@ kareli a chgrel, qani vor 0 e init arvum
 //???????tox-syun
-void	look_at(t_vec *from, t_vec *to, t_rt *rt) // TODO 3x3 vra havanabar ))
+void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 vra havanabar ))
 {
 	t_vec	*forward;
 	t_vec	*right;
 	t_vec	*up;
 
-	forward = vec_sub(from, to); 
-	// forward = &rt->cam->norm; // havanabar
+	// forward = vec_sub(from, to); 
+	forward = &rt->cam->norm; // havanabar
 	vec_normalize(forward);
 	right = cross_product(new_vec(0, 1, 0), forward);
 	vec_normalize(right);
@@ -213,49 +213,3 @@ void	look_at(t_vec *from, t_vec *to, t_rt *rt) // TODO 3x3 vra havanabar ))
 	// rt->cam_matrix[3][2] = 0;
 	// rt->cam_matrix[3][3] = 1;
 }
-
-void lookat(t_rt *rt, t_vec  const eye, t_vec  const center, t_vec  const up)
-{
-    vec3  f = normalize(center - eye);
-    vec3  u = normalize(up);
-    vec3  s = normalize(cross_product(f, u));
-    u = cross_product(s, f);
-
-    rt->cam_matrix[0][0] = s.x;
-    rt->cam_matrix[1][0] = s.y;
-    rt->cam_matrix[2][0] = s.z;
-    rt->cam_matrix[0][1] = u.x;
-    rt->cam_matrix[1][1] = u.y;
-    rt->cam_matrix[2][1] = u.z;
-    rt->cam_matrix[0][2] =-f.x;
-    rt->cam_matrix[1][2] =-f.y;
-    rt->cam_matrix[2][2] =-f.z;
-    rt->cam_matrix[3][0] = -vec_dot_product(s, eye);
-    rt->cam_matrix[3][1] = -vec_dot_product(u, eye);
-    rt->cam_matrix[3][2] = vec_dot_product(f, eye);
-}
-
-
-
-// void	look_at(t_rt *rt)
-// {
-// 	t_vec	*forward;
-// 	t_vec	*right;
-// 	t_vec	*up;
-// 	t_vec	*tmp;
-
-// 	tmp = new_vec(0, 1, 0);
-// 	forward = &rt->cam->norm;
-// 	vec_normalize(forward);
-// 	right = cross_product(tmp, forward);
-// 	up = cross_product(forward, right);
-// 	rt->cam_matrix[0][0] = right->x;
-// 	rt->cam_matrix[0][1] = right->y;
-// 	rt->cam_matrix[0][2] = right->z;
-// 	rt->cam_matrix[1][0] = up->x;
-// 	rt->cam_matrix[1][1] = up->y;
-// 	rt->cam_matrix[1][2] = up->z;
-// 	rt->cam_matrix[2][0] = forward->x;
-// 	rt->cam_matrix[2][1] = forward->y;
-// 	rt->cam_matrix[2][2] = forward->z;
-// }

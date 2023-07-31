@@ -104,8 +104,7 @@ t_vec	*rot_vec(t_vec *vec, float alpha, char axis);
 t_vec	*vec_inv(t_vec *v);
 float   distance(t_vec a, t_vec b);
 void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y);
-// void	look_at(t_rt *rt);
-void	look_at(t_vec *from, t_vec *to, t_rt *rt);
+void	look_at(t_rt *rt);
 
 // intersection
 
@@ -120,9 +119,8 @@ t_vec   *ray_mult(t_vec *dst, t_ray *r, float t);
 void    build_ray(t_ray *ray, t_vec *or, t_vec *dir);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void combine_img(t_base *data);
-// void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt); // TODO 3x3 vra havanabar ));
+void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt); // TODO 3x3 vra havanabar ));
 void    function(t_rt *rt);
 t_rt *new_rt(t_base *base);
 void print_vec(t_vec *vec);
-void lookat(t_rt *rt, t_vec  const eye, t_vec  const center, t_vec  const up);
 #endif
