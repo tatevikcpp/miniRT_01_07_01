@@ -201,15 +201,8 @@ void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 v
 	rt->cam_matrix[0][2] = forward->x;
 	rt->cam_matrix[1][2] = forward->y;
 	rt->cam_matrix[2][2] = forward->z;
-	// rt->cam_matrix[0][3] = from->x;
-	// rt->cam_matrix[1][3] = from->y;
-	// rt->cam_matrix[2][3] = from->z;
-	// rt->cam_matrix[0][3] = 0;
-	// rt->cam_matrix[1][3] = 0;
-	// rt->cam_matrix[2][3] = 0;
-	// //erevi
-	// rt->cam_matrix[3][0] = 0;
-	// rt->cam_matrix[3][1] = 0;
-	// rt->cam_matrix[3][2] = 0;
-	// rt->cam_matrix[3][3] = 1;
+	rt->cam_matrix[0][3] = 0;
+	rt->cam_matrix[1][3] = 0;
+	rt->cam_matrix[2][3] = 0;
+	rt->cam_matrix[3][3] = 1;
 }
