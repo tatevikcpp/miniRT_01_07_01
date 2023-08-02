@@ -2,9 +2,9 @@
 
 void	compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col)
 {
-	p_col->x = max(p_col->x - 255 + amb_col->x, 0);
-	p_col->y = max(p_col->y - 255 + amb_col->y, 0);
-	p_col->z = max(p_col->z - 255 + amb_col->z, 0);
+	p_col->r = max(p_col->r - 255 + amb_col->r, 0);
+	p_col->g = max(p_col->g - 255 + amb_col->g, 0);
+	p_col->b = max(p_col->b - 255 + amb_col->b, 0);
 }
 
 //t_rgb compute_light (t_base *base, t_vec *p, t_vec *norm, t_vec *view) {

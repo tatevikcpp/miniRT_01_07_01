@@ -51,3 +51,4 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 	return (TRUE);
 }
 
+

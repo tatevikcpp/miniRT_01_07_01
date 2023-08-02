@@ -117,6 +117,14 @@ void		function(t_rt *rt);
 t_rt		*new_rt(t_base *base);
 void		print_vec(t_vec *vec);
 int         rgb_to_int(t_rgb rgb);
-t_hit    *get_closest_sp(t_base *base, t_hit *hit, t_ray *ray);
+
+
+t_hit       *get_closest_sp(t_base *base, t_hit *hit, t_ray *ray);
+t_hit       *get_closest_pl(t_base *base, t_hit *hit, t_ray *ray);
+t_hit       *get_closest_cy(t_base *base, t_hit *hit, t_ray *ray);
+
+//utils_math.c
+
+int	max(int a, int b);
 
 #endif
