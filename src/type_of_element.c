@@ -129,7 +129,7 @@ void	light(t_light *obj, char **v)
 		else
 		{
 			obj->id = id_light;
-			check_valid_coords(&obj->light,split_coord, 0);
+			check_valid_coords(&obj->coords,split_coord, 0);
 			check_valid_rgb(&obj->rgb, split_rgb);
 			obj->brigh = str_to_float(v[1]);
 		}

@@ -23,8 +23,10 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 	if (hit->t < EPSILON || t2 < hit->t)
 		hit->t = t2;
 	hit->phit = ray_mult(hit->phit, ray, hit->t); // TODO offff
-	hit->nhit = vec_sub(&sp->center , hit->phit);
-	vec_normalize(hit->nhit);
+	hit->nhit = vec_normalize(vec_sub(&sp->center , hit->phit));
+	hit->obj_type = id_sphere;
+	hit->obj = (void *)sp;
+	hit->color = sp->rgb;
 	return (TRUE);
 }
 
@@ -42,15 +44,10 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 		return (FALSE);
 	ray_mult(hit->phit, ray, hit->t);
 	hit->nhit = &pl->norm;
-	// if (vec_dot_product(hit->nhit, &ray->dir) > 0) //chgitem ?
+	hit->obj_type = id_plane;
+	hit->obj = (void *)pl;
+	// if (vec_dot_product(hit->nhit, &ray->dir) > 0) //TODO chgitem ?
 	// 	hit->nhit = vec_inv(hit->nhit);
 	return (TRUE);
 }
 
-// int	intersect(t_ray *ray, t_utils *obj, t_hit *hit)
-// {
-// 	if (obj->id == id_sphere) // ? obj->id
-// 		return(sphere_intersect(/*la, la, la*/));
-// 	if (obj->id == id_plane)
-// 		return (plane_intersect(/*la, la, la*/));
-// }

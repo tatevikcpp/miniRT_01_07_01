@@ -80,7 +80,7 @@ typedef struct s_camera
 typedef struct s_Light
 {
 	t_obj_id	id;
-	t_vec		light; //x, y, z
+	t_vec		coords; //x, y, z
 	t_rgb		rgb; // 0 - 255
 	float		brigh; // [0.0, 1.0]
 }				t_light;
@@ -129,6 +129,8 @@ typedef struct s_hit
 	t_vec	*nhit;
 	t_vec	*phit;
 	t_rgb	color;
+	void	*obj;
+	t_obj_id	obj_type;
 	float	t;
 }			t_hit;
 

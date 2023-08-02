@@ -116,5 +116,7 @@ void		look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt); // TODO 3x3
 void		function(t_rt *rt);
 t_rt		*new_rt(t_base *base);
 void		print_vec(t_vec *vec);
+int         rgb_to_int(t_rgb rgb);
+t_hit    *get_closest_sp(t_base *base, t_hit *hit, t_ray *ray);
 
 #endif
