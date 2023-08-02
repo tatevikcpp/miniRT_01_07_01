@@ -186,8 +186,7 @@ void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 v
 	t_vec	*right;
 	t_vec	*up;
 
-	// forward = vec_sub(from, to); 
-	forward = &rt->cam->norm; // havanabar
+	forward = &rt->cam->norm;
 	vec_normalize(forward);
 	right = cross_product(new_vec(0, 1, 0), forward);
 	vec_normalize(right);
@@ -201,8 +200,8 @@ void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 v
 	rt->cam_matrix[0][2] = forward->x;
 	rt->cam_matrix[1][2] = forward->y;
 	rt->cam_matrix[2][2] = forward->z;
-	rt->cam_matrix[0][3] = 0;
-	rt->cam_matrix[1][3] = 0;
-	rt->cam_matrix[2][3] = 0;
-	rt->cam_matrix[3][3] = 1;
+	// rt->cam_matrix[0][3] = 0;
+	// rt->cam_matrix[1][3] = 0;
+	// rt->cam_matrix[2][3] = 0;
+	// rt->cam_matrix[3][3] = 1;
 }

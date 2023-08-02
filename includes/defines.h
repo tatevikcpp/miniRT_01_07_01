@@ -25,5 +25,6 @@
 # define UP 126
 # define ESC 53
 # define CLOSE_BTN 17
+# define ALBEDO 0.18
 
 #endif

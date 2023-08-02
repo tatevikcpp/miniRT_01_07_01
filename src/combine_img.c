@@ -13,11 +13,10 @@ void combine_img(t_base *data)
 {
     int i;
     int j;
+    int hit_color;
 
     i = 0;
     function(data->rt);
-    // cam_to_world()
-    // build_ray(&data->utils->ray, &data->a_camera->coord, &data->a_camera->norm);
     while (i < WIN_WIDTH - 1)
     {
         j = 0;
@@ -27,6 +26,8 @@ void combine_img(t_base *data)
             sphere_intersect(&data->utils->ray, data->a_sphere, &data->utils->ray.hit);
             if (data->utils->ray.hit.nhit)
             {
+                // hit_color = ALBEDO / PI * data->a_light->bright * data->a_light->color * ft
+                // hitColor = hitObject->albedo / M_PI * light->intensity * light->color * std::max(0.f, hitNormal.dotProduct(L));
 		        my_mlx_pixel_put(&data->img_data, i, j, 0x00bfff);
                 // print_hit(&data->utils->ray.hit);
             }
