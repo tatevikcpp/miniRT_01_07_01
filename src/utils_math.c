@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utils_math.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tumolabs <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 20:46:25 by tumolabs          #+#    #+#             */
-/*   Updated: 2023/07/20 21:00:44 by tumolabs         ###   ########.fr       */
+/*   Created: 2023/07/20 20:46:25 by mavardan          #+#    #+#             */
+/*   Updated: 2023/08/02 12:17:33 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 // #include <math.h>
 
-static void    swap(float *x1, float *x2)
+static void	swap(float *x1, float *x2)
 {
-    float tmp;
+	float	tmp;
 
-    tmp = *x1;
-    *x1 = *x2;
-    *x2 = tmp;
+	tmp = *x1;
+	*x1 = *x2;
+	*x2 = tmp;
 }
 
 int	max(int a, int b)
@@ -39,30 +39,24 @@ int	min(int a, int b)
 //use t_vec due to norminette limit for 4 arguments
 int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
 {
-	float	a;
-	float	b;
-	float	c;
 	float	discr;
 
-	a = vec->x;
-	b = vec->y;
-	c = vec->z;
-	if (0 == a)
+	if (0 == vec->x)
 		print_error_exit("Try to divide by 0");
-	discr = b * b - 4 * a *c;
+	discr = vec->y * vec->y - 4 * vec->x * vec->z;
 	if (discr < 0)
 		return (0);
 	if (0 == discr)
 	{
-		*x1 = -b / (2 * a);
+		*x1 = -vec->y / (2 * vec->x);
 		*x2 = *x1;
 	}
 	else
 	{
-		*x1 = (-b + sqrt(discr)) / (2 * a);
-		*x2 = (-b - sqrt(discr)) / (2 * a);
+		*x1 = (-vec->y + sqrt(discr)) / (2 * vec->x);
+		*x2 = (-vec->y - sqrt(discr)) / (2 * vec->x);
 	}
 	if (*x1 > *x2)
-        swap(x1, x2);
+		swap(x1, x2);
 	return (1);
 }

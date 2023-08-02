@@ -6,7 +6,7 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:24:09 by mavardan          #+#    #+#             */
-/*   Updated: 2023/07/24 21:26:37 by tumolabs         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:07:25 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ float	vec_length(t_vec *vec)
 	return (sqrt(vec_dot_product(vec, vec)));
 }
 
-t_vec   *ray_mult(t_vec *dst, t_ray *r, float t)
+t_vec	*ray_mult(t_vec *dst, t_ray *r, float t)
 {
-    dst->x = r->or.x + t * r->dir.x;
-    dst->y = r->or.y + t * r->dir.y;
-    dst->z = r->or.z + t * r->dir.z;
-    return (dst);
+	dst->x = r->or.x + t * r->dir.x;
+	dst->y = r->or.y + t * r->dir.y;
+	dst->z = r->or.z + t * r->dir.z;
+	return (dst);
 }
 
 t_vec	*vec_normalize(t_vec *vec) // TODO return type ?
@@ -110,19 +110,19 @@ t_vec	*cross_product(t_vec *v1, t_vec *v2)
 	return (new_vec(x, y, z));
 }
 
-float   distance(t_vec a, t_vec b)
+float	distance(t_vec a, t_vec b)
 {
-    float   x;
-    float   y;  
-    float   z;
+	float	x;
+	float	y;
+	float	z;
 
-    x = a.x - b.x;
-    y = a.y - b.y;
-    z = a.z - b.z;
-    x *= x;
-    y *= y;
-    z *= z;
-    return (sqrt(x + y +z));
+	x = a.x - b.x;
+	y = a.y - b.y;
+	z = a.z - b.z;
+	x *= x;
+	y *= y;
+	z *= z;
+	return (sqrt(x + y + z));
 }
 
 t_vec	*vec_inv(t_vec *v)
