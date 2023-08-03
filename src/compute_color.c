@@ -1,11 +1,30 @@
+#include <stdlib.h>
 #include "../includes/struct.h"
+#include "../includes/defines.h"
+#include "../includes/minirt.h"
 
-void	compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col)
+
+static void	compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col)
 {
 	p_col->r = max(p_col->r - 255 + amb_col->r, 0);
 	p_col->g = max(p_col->g - 255 + amb_col->g, 0);
 	p_col->b = max(p_col->b - 255 + amb_col->b, 0);
 }
+
+t_rgb	*compute_color(t_base *base, t_rgb *p_col) // TODO piti vor
+{
+	float sum_ratio;
+	t_rgb *tmp;
+
+	tmp = p_col;
+
+	sum_ratio = ALBEDO + base->a_amb->amb + base->a_light->brigh;
+	p_col = mul_rgb(p_col, sum_ratio);
+	// free(tmp);
+	compute_color_with_amb(p_col, &base->a_amb->rgb);
+	return (p_col);
+}
+
 
 //t_rgb compute_light (t_base *base, t_vec *p, t_vec *norm, t_vec *view) {
 //  float intensity;

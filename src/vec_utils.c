@@ -22,7 +22,7 @@ t_vec	*new_vec(float x, float y, float z)
 {
 	t_vec	*vec;
 
-	vec = malloc(sizeof(t_vec));
+	vec = ft_calloc(sizeof(t_vec), 1);
 	if (!vec)
 		print_error_exit("Allocation error");
 	vec->x = x;

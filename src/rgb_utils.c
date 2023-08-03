@@ -42,9 +42,9 @@ t_rgb	*mul_rgb(t_rgb *rgb, float mul)
 		mul = 255;
 	if (mul < 0)
 		return (rgb_from_ints(0, 0, 0));
-	r = max(rgb->r * mul, 255);
-	g = max(rgb->g * mul, 255);
-	b = max(rgb->b * mul, 255);
+	r = min(rgb->r * mul, 255);
+	g = min(rgb->g * mul, 255);
+	b = min(rgb->b * mul, 255);
 	return (rgb_from_ints(r, g, b));
 }
 
@@ -72,7 +72,7 @@ t_rgb	*sub_rgb(t_rgb *rgb1, t_rgb *rgb2)
 	return (rgb_from_ints(r, g, b));
 }
 
-int	rgb_to_int(t_rgb rgb)
+int	rgb_to_int(t_rgb *rgb)
 {
-	return (rgb.r << 16 | rgb.g << 8 | rgb.b);
+	return (rgb->r << 16 | rgb->g << 8 | rgb->b);
 }

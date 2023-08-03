@@ -32,7 +32,7 @@ t_rgb		*mul_rgb(t_rgb *rgb1, float mul);
 t_rgb		*sum_rgb(t_rgb *rgb1, t_rgb *rgb2);
 t_rgb		*sub_rgb(t_rgb *rgb1, t_rgb *rgb2);
 t_rgb		*rgb_from_ints(int r, int g, int b);
-int			rgb_to_int(t_rgb rgb);
+// int			rgb_to_int(t_rgb *rgb);
 
 //utils.c
 int			is_int_in_range(int val, int left, int right);

@@ -115,16 +115,25 @@ void		combine_img(t_base *data);
 void		look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt); // TODO 3x3 vra havanabar ));
 void		function(t_rt *rt);
 t_rt		*new_rt(t_base *base);
-void		print_vec(t_vec *vec);
-int         rgb_to_int(t_rgb rgb);
+void		print_vec(char *s, t_vec *vec);
+int         rgb_to_int(t_rgb *rgb);
 
 
-t_hit       *get_closest_sp(t_base *base, t_hit *hit, t_ray *ray);
-t_hit       *get_closest_pl(t_base *base, t_hit *hit, t_ray *ray);
-t_hit       *get_closest_cy(t_base *base, t_hit *hit, t_ray *ray);
+// t_hit       *get_closest_sp(t_base *base, t_ray *ray);
+// t_hit       *get_closest_pl(t_base *base, t_ray *ray);
+// t_hit       *get_closest_cy(t_base *base, t_ray *ray);
+
+t_hit *get_closest_obj(t_base *base, t_ray *ray);
+void free_hit(t_hit *obj);
+t_vec	*ray_mult(t_vec *dst, t_ray *r, float t);
+t_rgb	*compute_color(t_base *base, t_rgb *p_col);
+t_rgb	*mul_rgb(t_rgb *rgb, float mul);
+
 
 //utils_math.c
 
 int	max(int a, int b);
+int	min(int a, int b);
+
 
 #endif
