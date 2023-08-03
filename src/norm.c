@@ -20,9 +20,9 @@ void    function(t_rt *rt)
     t_utils *obj; // malloc
 
     cam = rt->cam;
-    printf("cam->cam->fov = %f\n", cam->fov);
+    // printf("cam->cam->fov = %f\n", cam->fov);
     cam->scale = tan(cam->fov / 2 * PI / 180);
-    printf("cam->scale = %f\n", cam->scale);
+    // printf("cam->scale = %f\n", cam->scale);
     look_at(rt);
     // obj = rt->utils;
     // while (obj) 

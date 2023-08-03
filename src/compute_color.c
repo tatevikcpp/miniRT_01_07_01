@@ -11,19 +11,34 @@ static void	compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col)
 	p_col->b = max(p_col->b - 255 + amb_col->b, 0);
 }
 
-t_rgb	*compute_color(t_base *base, t_rgb *p_col) // TODO piti vor
+t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor
 {
+	//printf("----------------------------1111111111--------------------------------------------");
 	float sum_ratio;
+	float cosa;
+	t_vec *light_ray;
 	t_rgb *tmp;
 
 	tmp = p_col;
+	//printf("-----------------------------2222222222-------------------------------------------");
 
-	sum_ratio = ALBEDO + base->a_amb->amb + base->a_light->brigh;
+	//light_ray = vec_sub(&base->a_light->coords, hit->phit);
+	//cosa = vec_dot_product(light_ray, hit->nhit) / vec_length(light_ray); 
+
+	sum_ratio = ALBEDO + base->a_amb->amb + base->a_light->brigh * cosa;
+	// sum_ratio = ALBEDO + base->a_amb->amb + base->a_light->brigh;
 	p_col = mul_rgb(p_col, sum_ratio);
 	// free(tmp);
 	compute_color_with_amb(p_col, &base->a_amb->rgb);
 	return (p_col);
 }
+
+
+// var n_dot_l = DotProduct(normal, vec_l);
+//      if (n_dot_l > 0) 
+//    intensity += light.intensity * n_dot_l / (length_n * Length(vec_l));
+
+
 
 
 //t_rgb compute_light (t_base *base, t_vec *p, t_vec *norm, t_vec *view) {

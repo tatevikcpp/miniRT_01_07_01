@@ -16,6 +16,7 @@ static t_hit    *get_closest_sp(t_base *base, t_ray *ray)
     {
         if (sphere_intersect(ray, tmp, min_obj))
         {
+            // printf("mtav\n");
             len = vec_length(vec_sub(min_obj->phit, &base->a_light->coords));
             if (len < min_len)
             {
@@ -25,6 +26,9 @@ static t_hit    *get_closest_sp(t_base *base, t_ray *ray)
         }
         tmp = tmp->next;
     }
+            // printf("\nr get_clocet_sp = %d\n",min_obj->color.r);
+            // printf("g get_clocet_sp = %d\n",min_obj->color.g);
+            // printf("b get_clocet_sp = %d\n",min_obj->color.b);
     return (min_obj);
 }
 
@@ -90,6 +94,10 @@ t_hit *get_closest_obj(t_base *data, t_ray *ray)
     t_hit *obj_min;
 
     obj_min = get_closest_sp(data, &data->utils->ray);
+    // printf("r = %d\n", obj_min->color.r);
+    // printf("g = %d\n", obj_min->color.g);
+    // printf("b = %d\n", obj_min->color.b);
+
     // obj = get_closest_pl(data, &data->utils->ray);
     // tmp = obj;
     // if (obj->t < obj_min->t)

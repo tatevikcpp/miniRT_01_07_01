@@ -15,6 +15,7 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 	d2 = vec_dot_product(l, l) - tca * tca;
 	if (d2 > sp->r2)
 		return (FALSE);
+	// printf("--------------------in intersect--------------\n");
 	thc = sqrt(sp->r2 - d2);
 	hit->t = tca - thc;
 	t2 = tca + thc;
@@ -23,11 +24,19 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 	if (hit->t < EPSILON || t2 < hit->t)
 		hit->t = t2;
 	hit->phit = new_vec(0, 0, 0);
-	hit->phit = ray_mult(hit->phit, ray, hit->t); // TODO offff
+	ray_mult(hit->phit, ray, hit->t); // TODO offff
+	// print_vec("hit->phit", hit->phit);
+
 	hit->nhit = vec_normalize(vec_sub(&sp->center , hit->phit));
+	// print_vec("hit->nhit", hit->nhit);
+
 	hit->obj_type = id_sphere;
 	hit->obj = (void *)sp;
 	hit->color = sp->rgb;
+	// printf("inter = %d\n", hit->color.r);
+    // printf("inter = %d\n", hit->color.g);
+    // printf("inter = %d\n", hit->color.b);
+
 	return (TRUE);
 }
 
