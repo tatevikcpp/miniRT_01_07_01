@@ -197,6 +197,16 @@ typedef struct s_rt
 	int			height;
 }				t_rt;
 
+typedef struct s_quadratic
+{
+	float	a;
+	float	b;
+	float	c;
+	float	discr;
+	float	x1;
+	float	x2;
+}	t_quadratic;
+
 typedef struct s_test
 {
 	int	a;

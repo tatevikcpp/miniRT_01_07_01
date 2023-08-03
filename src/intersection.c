@@ -15,7 +15,6 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 	d2 = vec_dot_product(l, l) - tca * tca;
 	if (d2 > sp->r2)
 		return (FALSE);
-	// printf("--------------------in intersect--------------\n");
 	thc = sqrt(sp->r2 - d2);
 	hit->t = tca - thc;
 	t2 = tca + thc;
@@ -49,9 +48,7 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 	if (denom == 0)
 		return (FALSE);
 	tmp = vec_sub(&ray->or, &pl->coord);
-	//print_vec("-------------in plane_intersect pl->norm-------------", &pl->norm);
 	hit->t = vec_dot_product(tmp, &pl->norm) / denom;
-	//printf("ok\n");
 	if (hit->t < EPSILON)
 		return (FALSE);
 	hit->phit = new_vec(0, 0, 0);
@@ -61,6 +58,33 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 	hit->obj = (void *)pl;
 	// if (vec_dot_product(hit->nhit, &ray->dir) > 0) //TODO chgitem ?
 	// 	hit->nhit = vec_inv(hit->nhit);
+	return (TRUE);
+}
+
+t_bool	infinite_cyl_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
+{
+	t_quadratic	*q;
+	t_vec		*u;
+	t_vec		*v;
+
+	u = cross_product(&r->dir, &cy->norm);
+	v = vec_sub(&cy->center, &r->or);
+	v = cross_product(v, &cy->norm);
+	q->a = vec_dot_product(u, u);
+	q->b = 2 * vec_dot_product(u, v);
+	q->c = vec_dot_product(v, v) - cy->rd;
+	if (!quadratic_eq_solution(q) || (q->x2 <= EPSILON && q->x1 <= EPSILON))
+		return (FALSE);
+	if (q->x1 <= EPSILON || (q->x2 > EPSILON && (q->x2 < q->x1)))
+		q->x1 = q->x2; 
+	hit->t = q->x1;
+	ray_mult(hit->phit, r, q->x1);
+	v = vec_sub(&cy->center, hit->phit);
+	hit->nhit = cross_product(v, &cy->norm);
+	hit->nhit = cross_product(hit->nhit, &cy->norm);
+	vec_normalize(hit->nhit);
+	if (vec_dot_product(hit->nhit, &r->dir))
+		hit->nhit = vec_inv(hit->nhit);
 	return (TRUE);
 }
 

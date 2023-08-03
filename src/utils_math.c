@@ -37,26 +37,50 @@ int	min(int a, int b)
 }
 
 //use t_vec due to norminette limit for 4 arguments
-int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
+// int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
+// {
+// 	float	discr;
+
+// 	if (0 == vec->x)
+// 		print_error_exit("Try to divide by 0");
+// 	discr = vec->y * vec->y - 4 * vec->x * vec->c;
+// 	if (discr < 0)
+// 		return (0);
+// 	if (0 == discr)
+// 	{
+// 		*x1 = -vec->y / (2 * vec->x);
+// 		*x2 = *x1;
+// 	}
+// 	else
+// 	{
+// 		*x1 = (-vec->y + sqrt(discr)) / (2 * vec->x);
+// 		*x2 = (-vec->y - sqrt(discr)) / (2 * vec->x);
+// 	}
+// 	if (*x1 > *x2)
+// 		swap(x1, x2);
+// 	return (1);
+// }
+
+int	quadratic_eq_solution(t_quadratic *q)
 {
 	float	discr;
 
-	if (0 == vec->x)
+	if (0 == q->a)
 		print_error_exit("Try to divide by 0");
-	discr = vec->y * vec->y - 4 * vec->x * vec->z;
+	discr = q->b * q->b - 4 * q->a * q->c;
 	if (discr < 0)
 		return (0);
 	if (0 == discr)
 	{
-		*x1 = -vec->y / (2 * vec->x);
-		*x2 = *x1;
+		q->x1 = -q->b / (2 * q->a);
+		q->x2 = q->x1;
 	}
 	else
 	{
-		*x1 = (-vec->y + sqrt(discr)) / (2 * vec->x);
-		*x2 = (-vec->y - sqrt(discr)) / (2 * vec->x);
+		q->x1 = (-q->b + sqrt(discr)) / (2 * q->a);
+		q->x2 = (-q->b - sqrt(discr)) / (2 * q->a);
 	}
-	if (*x1 > *x2)
-		swap(x1, x2);
+	if (q->x1 > q->x2)
+		swap(&q->x1, &q->x2);
 	return (1);
 }
