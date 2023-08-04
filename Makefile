@@ -2,7 +2,7 @@ NAME = miniRT
 
 CC = cc
 
-CFLAGS =      -g -fsanitize=address  -g3 -ggdb3 -Wall -Wextra -Werror
+CFLAGS =      -g -fsanitize=address  -g3 -ggdb3# -Wall -Wextra -Werror
 
 SRCS = $(wildcard ./src/*.c) 
 

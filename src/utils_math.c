@@ -62,6 +62,11 @@ int	min(int a, int b)
 // 	return (1);
 // }
 
+float	to_rad(const float angle)
+{
+	return (angle * PI / 180);
+}
+
 int	quadratic_eq_solution(t_quadratic *q)
 {
 	float	discr;

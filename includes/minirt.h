@@ -91,6 +91,8 @@ void		ft_lstadd_front_obj(t_utils **lst, t_utils *new);
 t_vec		*new_vec(float x, float y, float z);
 t_vec		*vec_sum(t_vec *v1, t_vec *v2);
 t_vec		*vec_sub(t_vec *v1, t_vec *v2);
+t_vec	    *vec_mult(t_vec *v1, t_vec *v2);
+t_vec	    *vec_num_mul(t_vec *v, float mul);
 float		vec_dot_product(t_vec *v1, t_vec *v2);
 float		vec_length(t_vec *vec);
 t_vec		*vec_normalize(t_vec *vec);
@@ -117,6 +119,7 @@ void		function(t_rt *rt);
 t_rt		*new_rt(t_base *base);
 void		print_vec(char *s, t_vec *vec);
 int         rgb_to_int(t_rgb *rgb);
+float		to_rad(const float angle);
 
 
 // t_hit       *get_closest_sp(t_base *base, t_ray *ray);

@@ -43,6 +43,11 @@ t_vec	*vec_sum(t_vec *v1, t_vec *v2)
 	return (new_vec(v1->x + v2->x, v1->y + v2->y, v1->z + v2->z));
 }
 
+t_vec	*vec_mult(t_vec *v1, t_vec *v2)
+{
+	return (new_vec(v1->x * v2->x, v1->y * v2->y, v1->z * v2->z));
+}
+
 t_vec	*vec_sub(t_vec *v1, t_vec *v2)
 {
 	return (new_vec(v1->x - v2->x, v1->y - v2->y, v1->z - v2->z));
@@ -76,6 +81,7 @@ t_vec	*vec_normalize(t_vec *vec) // TODO return type ?
 	float	len;
 
 	len = vec_length(vec);
+	// print_vec("1111", vec);
 	if (0 == len)
 		print_error_exit("Try to normalize 0 vector");
 	vec->x /= len;

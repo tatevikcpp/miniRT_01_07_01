@@ -25,6 +25,7 @@ static t_hit    *get_closest_sp(t_base *base, t_ray *ray)
             {
                 min_len = min_obj->t;
                 min_obj->obj = (void *)tmp;
+                min_obj->obj_type = id_sphere;
             }
         }
         tmp = tmp->next;
@@ -63,7 +64,7 @@ static t_hit    *get_closest_sp(t_base *base, t_ray *ray)
 // static t_hit    *get_closest_cy(t_base *base, t_ray *ray)
 // {
 //     t_cylinder *tmp;
-    // t_hit *min_obj;
+//     t_hit *min_obj;
 //     float min_len;
 //     float len;
     
@@ -92,8 +93,16 @@ t_hit *get_closest_obj(t_base *data /*, t_ray *ray*/)
     // t_hit *obj;
     // t_hit *tmp;
     t_hit *obj_min;
+    t_hit *tmp;
+    t_ray *from_light;
+
 
     obj_min = get_closest_sp(data, &data->utils->ray);
+    set_vec(&from_light->or, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);
+    from_light.dir = *vec_normalize(vec_sub(obj_min->phit, &from_light.or));
+    // set_vec(&from_light.dir, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);
+    if (sphere_intersect(from_light, data->a_sphere, tmp))
+        ;
     // printf("r = %d\n", obj_min->color.r);
     // printf("g = %d\n", obj_min->color.g);
     // printf("b = %d\n", obj_min->color.b);

@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-static t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
+t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 {
 	t_vec	*l;
 	float	tca;
@@ -48,8 +48,8 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 	hit->nhit = &pl->norm;
 	hit->obj_type = id_plane;
 	hit->obj = (void *)pl;
-	// if (vec_dot_product(hit->nhit, &ray->dir) > 0) //TODO chgitem ?
-	// 	hit->nhit = vec_inv(hit->nhit);
+	if (vec_dot_product(hit->nhit, &ray->dir) > 0) //TODO chgitem ?
+		hit->nhit = vec_inv(hit->nhit);
 	return (TRUE);
 }
 
