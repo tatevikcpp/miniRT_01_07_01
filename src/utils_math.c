@@ -13,7 +13,7 @@
 #include "minirt.h"
 // #include <math.h>
 
-static void	swap(float *x1, float *x2)
+void	swap(float *x1, float *x2)
 {
 	float	tmp;
 
@@ -29,7 +29,7 @@ int	max(int a, int b)
 	return (b);
 }
 
-int	min(int a, int b)
+float	min(float a, float b)
 {
 	if (a < b)
 		return (a);

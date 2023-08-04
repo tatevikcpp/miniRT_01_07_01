@@ -13,8 +13,13 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp)
 	if (tca < 0)
 		return (FALSE);
 	d2 = vec_dot_product(l, l) - tca * tca;
+	// sp->r2 *= 4;
 	if (d2 > sp->r2)
+	{
+		if (ray->ray_type == 1)
+			printf("stex\n");
 		return (FALSE);
+	}
 	thc = sqrt(sp->r2 - d2);
 	ray->hit.t = tca - thc;
 	t2 = tca + thc;
@@ -29,6 +34,59 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp)
 	ray->hit.obj = (void *)sp;
 	ray->hit.color = sp->rgb;
 	return (TRUE);
+}
+
+int	solve_quadratic(const t_vec point, float *x0, float *x1)
+{
+	float	discr;
+	float	q;
+
+	discr = point.y * point.y - 4 * point.x * point.z;
+	if (discr < 0)
+		return (0);
+	else if (discr == 0)
+	{
+		*x0 = -0.5 * point.y / point.x;
+		*x1 = -0.5 * point.y / point.x;
+	}
+	else
+	{
+		if (point.y > 0)
+			q = -0.5 * (point.y + sqrt(discr));
+		else
+			q = -0.5 * (point.y - sqrt(discr));
+		*x0 = q / point.x;
+		*x1 = point.z / q;
+	}
+	if (*x0 > *x1)
+		swap(x0, x1);
+	return (1);
+}
+
+int	intersect_sphere(t_ray ray,  t_sphere sphere, t_hit *impact)
+{
+	float	x0;
+	float	x1;
+	t_vec	vect;
+	
+	// sphere.radius2 /= 2;
+	vect = *vec_sub(&ray.or, &sphere.center);
+	if (!solve_quadratic(*new_vec(vec_dot_product(&ray.dir, &ray.dir),
+				2 * vec_dot_product(&ray.dir, &vect),
+				vec_dot_product(&vect, &vect) - sphere.r2), &x0, &x1))
+		return (0);
+	if ((x0 < 0 && x1 < 0) || (x0 > impact->t && x1 > impact->t))
+		return (0);
+	else if (x0 <= 0.)
+		x0 = x1;
+	else if (x1 <= 0.)
+		x1 = x0;
+	// printf("return (1);\n");
+	impact->t = min(x0, x1);
+	impact->phit = vec_sum(&ray.or, vec_num_mul(&ray.dir, x1));
+	impact->nhit = vec_normalize(vec_sub(impact->phit, &sphere.center));
+	impact->phit = vec_sum(impact->phit, vec_num_mul(impact->nhit, EPSILON));
+	return (1);
 }
 
 t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)

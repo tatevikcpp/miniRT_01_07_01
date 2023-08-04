@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:18:26 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/02 11:50:45 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 00:21:33 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void    sphere(t_sphere **obj, char **v)
             check_valid_rgb(&tmp->rgb, split_rgb);
             tmp->dm = str_to_float(v[1]);
             tmp->id = id_sphere;
-            tmp->r2 = ft_atof(v[1]) / 2;
+            tmp->r2 = ft_atof(v[1]);
+            tmp->r2 *= tmp->r2; // TODO ysenc pah ka
             ft_lstadd_back_sp(obj, tmp);
         }
     }

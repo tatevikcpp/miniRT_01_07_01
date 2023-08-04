@@ -4,33 +4,40 @@ void light_ray(t_light *light, t_ray *ray, t_hit *min_hit)
 {
     ray->or = *min_hit->phit;
     // ray->dir = light->coords;
-    ray->dir = *vec_normalize(vec_sub(min_hit->phit, &light->coords));
+    ray->dir = *vec_sub(&light->coords, min_hit->phit);
     ray->hit.t = vec_length(&ray->dir);
     vec_normalize(&ray->dir);
     // vec_inv(&ray->dir);
     // ray->hit = *min_hit;
     ray->hit.phit = min_hit->phit;
     ray->hit.nhit = min_hit->nhit;
+    ray->ray_type = 1;
     // printf("ray->hit.nhit = %ld\n", ray->hit.nhit);
 }
+
+int	intersect_sphere(t_ray ray,  t_sphere sphere, t_hit *impact);
 
 static t_bool   is_in_shadow_sp(t_base *base, t_ray *ray)
 {
     t_sphere *tmp;
-    t_hit *obj;
-    float len;
+    // t_hit *obj;
+    // float len;
     
 
-    len = vec_length(vec_sub(&ray->or, ray->hit.phit));// - EPSILON; // TODO eps?
+    // len = vec_length(vec_sub(&ray->or, ray->hit.phit));// - EPSILON; // TODO eps?
     tmp = base->a_sphere;
-    obj = ft_calloc(sizeof(t_hit), 1);
+    // obj = ft_calloc(sizeof(t_hit), 1);
     while (tmp)
     {
-        if (sphere_intersect(ray, tmp))
+        // if (sphere_intersect(ray, tmp))
+        // {
+        //     printf("sphere_intersect\n");
+        //     return(TRUE);
+        // }
+        if (intersect_sphere(*ray, *tmp, &ray->hit))
         {
             // printf("sphere_intersect\n");
-            if (obj->t < len)
-                return(TRUE);
+            return(TRUE);
         }
         tmp = tmp->next;
     }

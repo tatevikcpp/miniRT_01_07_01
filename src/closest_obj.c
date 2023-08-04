@@ -1,6 +1,8 @@
 #include "minirt.h"
 
 
+int	intersect_sphere(t_ray ray,  t_sphere sphere, t_hit *impact);
+
 static t_hit *get_closest_sp(t_base *base, t_ray *ray)
 {
     t_sphere *tmp;
@@ -11,23 +13,26 @@ static t_hit *get_closest_sp(t_base *base, t_ray *ray)
     result = NULL;
     min_len = INFINITY;
     tmp = base->a_sphere;
+    ray->hit.t = INFINITY;
     while (tmp)
     {
         // print_vec("ray = ", &ray->dir);
-        if (sphere_intersect(ray, tmp))
+        // if (sphere_intersect(ray, tmp))
+        // {
+        if (intersect_sphere(*ray, *tmp, &ray->hit))
         {
             // len = vec_length(vec_sub(min_obj->phit, &base->a_light->coords));
             // len = vec_length(vec_sub(min_obj->phit, &ray->or));
             // printf("min_len = %f\n", min_len);
             // printf(" min_obj->t = %f\n",  ray->hit.t);
-            if (min_len > ray->hit.t)
-            {
-                min_len = ray->hit.t;
+            // if (min_len > ray->hit.t)
+            // {
+                // min_len = ray->hit.t;
                 ray->hit.obj = (void *)tmp;
                 ray->hit.obj_type = id_sphere;
                 free(result);
                 result = hit_dup(&ray->hit);
-            }
+            // }
         }
         tmp = tmp->next;
     }

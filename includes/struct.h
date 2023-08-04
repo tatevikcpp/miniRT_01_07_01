@@ -139,6 +139,7 @@ typedef struct s_hit
 
 typedef struct s_ray
 {
+	int ray_type;
 	t_vec	or;
 	t_vec	dir;
 	t_hit	hit;

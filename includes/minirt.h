@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:39:09 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/04 21:42:15 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 00:54:40 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ t_rgb	*compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col);
 //utils_math.c
 
 int	max(int a, int b);
-int	min(int a, int b);
+float	min(float a, float b);
 
 
 //
@@ -150,5 +150,7 @@ int	min(int a, int b);
 t_vec *vec_dup(t_vec *vec);
 t_hit *hit_dup(t_hit *hit);
 t_hit *new_hit();
-
+t_ray *new_ray();
+t_ray *ray_dup(t_ray *ray);
+void	swap(float *x1, float *x2);
 #endif

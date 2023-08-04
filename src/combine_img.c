@@ -36,15 +36,20 @@ void combine_img(t_base *data)
             if (min_hit)
             {
                 // printf("min_hit->nhit = %ld\n", min_hit->nhit);
-                light_ray(data->a_light, &data->utils->ray, hit_dup(min_hit));
+                light_ray(data->a_light, &data->utils->ray, min_hit);
                 if (is_in_shadow(data, &data->utils->ray))
 				{
-                    printf("is_in_shadow\n");
-					tmp_col = mul_rgb(&min_hit->color, 1);
-					color = rgb_to_int(compute_color_with_amb(tmp_col, &data->a_light->rgb));
+                    // printf("is_in_shadow\n");
+					// tmp_col = mul_rgb(&min_hit->color, 1);
+					// color = rgb_to_int(compute_color_with_amb(tmp_col, &data->a_light->rgb));
+                    color = 0x00ff00;
 				}
                 else
+                {
+
                     color = rgb_to_int(compute_color(data, &min_hit->color, min_hit));
+                    color = 0xff0000;
+                }
 		        my_mlx_pixel_put(&data->img_data, i, j, color);
             }
             j++;

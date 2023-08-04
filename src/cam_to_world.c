@@ -37,6 +37,7 @@ void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y) // TODO vera
     ray->hit.phit = new_vec(0, 0, 0);
     ray->hit.nhit = NULL;
     ray->hit.obj = NULL;
+    ray->ray_type = 0;
     vec_normalize(&ray->dir);
 }
 
