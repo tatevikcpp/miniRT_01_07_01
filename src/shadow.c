@@ -5,6 +5,7 @@ void light_ray(t_light *light, t_ray *ray, t_hit *min_hit)
     ray->or = light->coords;
     ray->dir = light->coords;
     vec_normalize(&ray->dir);
+    vec_inv(&ray->dir);
     // ray->hit = *min_hit;
     ray->hit.phit = min_hit->phit;
     ray->hit.t = min_hit->t;
@@ -57,23 +58,23 @@ static t_bool   is_in_shadow_pl(t_base *base, t_ray *ray, t_vec *vec)
 
 static t_bool   is_in_shadow_cy(t_base *base, t_ray *ray, t_vec *vec)
 {
-    t_cylinder *tmp;
-    t_hit *obj;
-    float len;
+    // t_cylinder *tmp;
+    // t_hit *obj;
+    // float len;
     
 
-    len = vec_length(vec_sub(&ray->or, vec)) - 2 * EPSILON; // TODO eps?
-    tmp = base->a_cylinder;
-    obj = ft_calloc(sizeof(t_hit), 1);
-    while (tmp)
-    {
-        if (cylinder_intersect(ray, tmp, obj)) // cheka der
-        {
-            if (obj->t < len)
-                return(TRUE);
-        }
-        tmp = tmp->next;
-    }
+    // len = vec_length(vec_sub(&ray->or, vec)) - 2 * EPSILON; // TODO eps?
+    // tmp = base->a_cylinder;
+    // obj = ft_calloc(sizeof(t_hit), 1);
+    // while (tmp)
+    // {
+    //     if (cylinder_intersect(ray, tmp, obj)) // cheka der
+    //     {
+    //         if (obj->t < len)
+    //             return(TRUE);
+    //     }
+    //     tmp = tmp->next;
+    // }
     return (FALSE);
 }
 

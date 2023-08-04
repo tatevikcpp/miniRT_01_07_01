@@ -77,7 +77,7 @@ t_vec	*vec_normalize(t_vec *vec) // TODO return type ?
 
 	len = vec_length(vec);
 	if (0 == len)
-		print_error_exit("Try to divide by 0");
+		print_error_exit("Try to normalize 0 vector");
 	vec->x /= len;
 	vec->y /= len;
 	vec->z /= len;

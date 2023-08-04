@@ -36,7 +36,7 @@ void combine_img(t_base *data)
             {
                 light_ray(data->a_light, &data->utils->ray, min_hit);
                 if (is_in_shadow(data, &data->utils->ray, min_hit->phit))
-                    color = BG_COLOR;
+                   color = BG_COLOR;
                 else
                     color = rgb_to_int(compute_color(data, &min_hit->color, min_hit));
                 // hit_color = ALBEDO / PI * data->a_light->bright * data->a_light->color * ft

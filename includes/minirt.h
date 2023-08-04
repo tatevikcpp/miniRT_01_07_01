@@ -123,7 +123,7 @@ int         rgb_to_int(t_rgb *rgb);
 // t_hit       *get_closest_pl(t_base *base, t_ray *ray);
 // t_hit       *get_closest_cy(t_base *base, t_ray *ray);
 
-t_hit *get_closest_obj(t_base *base, t_ray *ray);
+t_hit *get_closest_obj(t_base *base /*, t_ray *ray*/);
 void free_hit(t_hit *obj);
 t_vec	*ray_mult(t_vec *dst, t_ray *r, float t);
 t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit);
