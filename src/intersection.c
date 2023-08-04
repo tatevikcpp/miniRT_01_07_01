@@ -53,7 +53,7 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 	return (TRUE);
 }
 
-t_bool	infinite_cyl_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
+static t_bool	infinite_cyl_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
 {
 	t_quadratic	q;
 	t_vec		*u;
