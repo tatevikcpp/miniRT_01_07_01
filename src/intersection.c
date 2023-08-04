@@ -24,18 +24,10 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 		hit->t = t2;
 	hit->phit = new_vec(0, 0, 0);
 	ray_mult(hit->phit, ray, hit->t); // TODO offff
-	// print_vec("hit->phit", hit->phit);
-
 	hit->nhit = vec_normalize(vec_sub(&sp->center , hit->phit));
-	// print_vec("hit->nhit", hit->nhit);
-
 	hit->obj_type = id_sphere;
 	hit->obj = (void *)sp;
 	hit->color = sp->rgb;
-	// printf("inter = %d\n", hit->color.r);
-    // printf("inter = %d\n", hit->color.g);
-    // printf("inter = %d\n", hit->color.b);
-
 	return (TRUE);
 }
 
@@ -76,7 +68,7 @@ t_bool	infinite_cyl_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
 	if (!quadratic_eq_solution(q) || (q->x2 <= EPSILON && q->x1 <= EPSILON))
 		return (FALSE);
 	if (q->x1 <= EPSILON || (q->x2 > EPSILON && (q->x2 < q->x1)))
-		q->x1 = q->x2; 
+		q->x1 = q->x2;
 	hit->t = q->x1;
 	ray_mult(hit->phit, r, q->x1);
 	v = vec_sub(&cy->center, hit->phit);
@@ -88,4 +80,27 @@ t_bool	infinite_cyl_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
 	return (TRUE);
 }
 
+// t_bool	cylinder_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
+// {
+// 	t_plane	*pl;
+// 	t_hit	*tmp_hit;
 
+// 	hit->t = INFINITY;
+// 	pl->coord = cy->p1;
+// 	pl->norm = cy->norm;
+// 	if (plane_intersect(r, &pl, &tmp_hit)
+// 		&& distance(tmp_hit->phit, cy->p1)// distance ???
+// 		<= cy->dm * 0.5 && hit->t > tmp_hit->t)
+// 		hit = tmp_hit;
+// 	pl->coord = cy->p2;
+// 	if (plane_inter(r, &pl, &tmp_hit)
+// 		&& distance(tmp_hit->phit, cy->p2) <= cy->dm * 0.5
+// 		&& hit->t > tmp_hit->t)
+// 		hit = tmp_hit;
+// 	if (infinite_cyl_intersect(r, cy, &tmp_hit)
+// 		&& pow(distance(cy->center, tmp_hit->phit), 2)
+// 		<= pow(cy->hg * 0.5, 2) + cy->rd
+// 		&& hit->t > tmp_hit->t)
+// 		hit = tmp_hit;
+// 	return (hit->t < INFINITY && hit->t > EPSILON);
+// }

@@ -202,7 +202,6 @@ typedef struct s_quadratic
 	float	a;
 	float	b;
 	float	c;
-	float	discr;
 	float	x1;
 	float	x2;
 }	t_quadratic;

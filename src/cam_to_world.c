@@ -32,3 +32,4 @@ void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y) // TODO vera
     vec_normalize(&ray->dir);
 }
 
+

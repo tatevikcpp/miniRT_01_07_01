@@ -130,6 +130,9 @@ t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit);
 t_rgb	*mul_rgb(t_rgb *rgb, float mul);
 t_vec   *norm_sp(t_vec *c, t_vec *p);
 t_vec	*cross_product(t_vec *v1, t_vec *v2);
+int	    quadratic_eq_solution(t_quadratic *q);
+void    light_ray(t_light *light, t_ray *ray, t_hit *min_hit);
+t_bool  is_in_shadow(t_base *base, t_ray *ray, t_vec *vec);
 
 
 //utils_math.c

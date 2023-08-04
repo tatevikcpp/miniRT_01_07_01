@@ -26,5 +26,7 @@
 # define ESC 53
 # define CLOSE_BTN 17
 # define ALBEDO 0.18
+//# define BG_COLOR 0
+# define BG_COLOR 16777215
 
 #endif

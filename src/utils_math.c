@@ -37,6 +37,7 @@ int	min(int a, int b)
 }
 
 //use t_vec due to norminette limit for 4 arguments
+
 // int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
 // {
 // 	float	discr;
