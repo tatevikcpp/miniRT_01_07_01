@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 14:18:26 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 00:21:33 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 02:14:15 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void    sphere(t_sphere **obj, char **v)
        
         split_rgb = ft_split(v[2], ',');
         if ((count_of_rows(split_coord) != 3 || count_of_rows(split_rgb) != 3))
-                print_error_exit("sxal split qanak sphere");
+			print_error_exit("Something invalid for sphere");
         else
         {
             tmp = ft_lstnew_sp();
@@ -48,7 +48,7 @@ void    sphere(t_sphere **obj, char **v)
         }
     }
     else
-        print_error_exit("sxal split qanak SPHERE");
+		print_error_exit("Something invalid for sphere");
     // free_matrix(split_rgb);
     free_matrix(split_coord);
 }
@@ -67,7 +67,7 @@ void    plane(t_plane **obj, char **v)
         split_rgb = ft_split(v[2], ',');
         if (count_of_rows(split_coord) != 3 || count_of_rows(split_rgb) != 3 ||
             count_of_rows(split_norm) != 3)
-                print_error_exit("sxal split qanak plane");
+			print_error_exit("Something invalid for plane");
         else
         {
             tmp = ft_lstnew_pl();
@@ -79,8 +79,7 @@ void    plane(t_plane **obj, char **v)
         }
     }
     else
-        print_error_exit("sxal split qanak PLANE");
-//    free_arr(split_rgb, split_norm, split_coord);
+		print_error_exit("Something invalid for plane");
 }
 
 void    cylinder(t_cylinder **obj, char **v) // TODO 25 toxic avel e
@@ -98,7 +97,7 @@ void    cylinder(t_cylinder **obj, char **v) // TODO 25 toxic avel e
         split_rgb = ft_split(v[4], ',');
         if (count_of_rows(split_coord) != 3 || count_of_rows(split_rgb) != 3 ||
             count_of_rows(split_norm) != 3 || (str_to_float(v[2]) <  0 && str_to_float(v[3]) < 0))
-                print_error_exit("sxal_split_qanak_cylinder");
+			print_error_exit("Something invalid for cylinder");
         else
         {
             tmp = ft_lstnew_cy();
@@ -112,6 +111,6 @@ void    cylinder(t_cylinder **obj, char **v) // TODO 25 toxic avel e
         }
     }
     else
-        print_error_exit("sxal_split_qanak_CYLINDER");
+		print_error_exit("Something invalid for cylinder");
     // free_arr(split_rgb, split_norm, split_coord);
 }
