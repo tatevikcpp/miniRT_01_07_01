@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 17:54:19 by mavardan          #+#    #+#             */
-/*   Updated: 2023/07/01 11:56:58 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 00:30:51 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,48 @@ static int	is_str_float(char *s)
 
 	len = ft_strlen(s);
 	if (!s || ('-' == s[0] && len < 4) || ('-' != s[0] && len < 3))
-	{
-		printf("arajin\n");
 		return (0);
-	}
 	if ('-' == s[0] && '.' == s[++i])
-	{
-		printf("erkrord\n");
 		return (0);
-	}
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]) && ('.' != s[i]))
-		{
-			printf("ket\n");
 			return (0);
-		}
 		if ('.' == s[i] && (is_dot || 0 == i || len - 1 == i))
 			return (0);
 		if ('.' == s[i])
 			is_dot = 1;
 		++i;
 	}
+	return (1);
+}
+
+static int	is_str_float_wo_point(char *s)
+{
+	int	i;
+	int	is_dot;
+	int	len;
+
+	if (!s)
+		return (0);
+	len = ft_strlen(s);
+	i = 0;
+	if ('-' == s[i])
+	{
+		if (len > 1 && '0' == s[i + 1])
+			return (0);
+		++i;
+	}
+	if (len - i < 1)
+		return (0);
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		++i;
+	}
+	if (len != 1 && '0' == s[0])
+		return (0);
 	return (1);
 }
 
@@ -110,12 +130,13 @@ int	is_in_float_limit(char *s)
 
 	i = 0;
 	sign = 0;
-	if (!s || !is_str_float(s))
+	if (!s || (!is_str_float(s) && !is_str_float_wo_point(s)))
 		return (0);
 	if ('-' == s[i] && ++i)
 		sign = 1;
-	while ('.' != s[i])
-		++i;
+	if(is_str_float(s))
+		while ('.' != s[i])
+			++i;
 	if (i++ > 40)
 		return (0);
 	j = 0;
