@@ -98,10 +98,10 @@ t_hit *get_closest_obj(t_base *data /*, t_ray *ray*/)
 
 
     obj_min = get_closest_sp(data, &data->utils->ray);
-    set_vec(&from_light->or, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);
-    from_light.dir = *vec_normalize(vec_sub(obj_min->phit, &from_light.or));
+    // set_vec(&from_light->or, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);
+    // from_light.dir = *vec_normalize(vec_sub(obj_min->phit, &from_light.or));
     // set_vec(&from_light.dir, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);
-    if (sphere_intersect(from_light, data->a_sphere, tmp))
+    // if (sphere_intersect(from_light, data->a_sphere, tmp))
         ;
     // printf("r = %d\n", obj_min->color.r);
     // printf("g = %d\n", obj_min->color.g);

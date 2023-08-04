@@ -86,5 +86,5 @@ t_rgb	*int_to_rgb(int col)
 	b = col & 255;
 	g = (col >> 8) & 255;
 	r = (col >> 16) & 255;
-	return (rgb_from_ints(r, g, b);
+	return (rgb_from_ints(r, g, b));
 }
