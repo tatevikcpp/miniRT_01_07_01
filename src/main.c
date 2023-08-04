@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:36 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/02 11:50:54 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/04 21:32:53 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int main(int c, char **v)
 	/////*************************
 
 	mlx_loop(obj->mlx.mlx_ptr);
-	free(obj);
+	// free(obj);
 	pause();
 	return (0);
 }

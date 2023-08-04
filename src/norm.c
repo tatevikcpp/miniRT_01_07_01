@@ -23,7 +23,7 @@ void    function(t_rt *rt)
     // printf("cam->cam->fov = %f\n", cam->fov);
     cam->scale = tan(cam->fov / 2 * PI / 180);
     // printf("cam->scale = %f\n", cam->scale);
-    look_at(rt);
+    // look_at(rt);
     // obj = rt->utils;
     // while (obj) 
     // {

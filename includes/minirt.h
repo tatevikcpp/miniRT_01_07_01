@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:39:09 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/02 11:50:01 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/04 21:14:43 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void		cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y);
 void		look_at(t_rt *rt);
 
 // intersection
-t_bool		sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit);
+t_bool		sphere_intersect(t_ray *ray, t_sphere *sp);
 t_bool		plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit);
 
 //
@@ -126,7 +126,7 @@ float		to_rad(const float angle);
 // t_hit       *get_closest_pl(t_base *base, t_ray *ray);
 // t_hit       *get_closest_cy(t_base *base, t_ray *ray);
 
-t_hit *get_closest_obj(t_base *base /*, t_ray *ray*/);
+void get_closest_obj(t_base *base /*, t_ray *ray*/);
 void free_hit(t_hit *obj);
 t_vec	*ray_mult(t_vec *dst, t_ray *r, float t);
 t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit);
@@ -135,7 +135,7 @@ t_vec   *norm_sp(t_vec *c, t_vec *p);
 t_vec	*cross_product(t_vec *v1, t_vec *v2);
 int	    quadratic_eq_solution(t_quadratic *q);
 void    light_ray(t_light *light, t_ray *ray, t_hit *min_hit);
-t_bool  is_in_shadow(t_base *base, t_ray *ray, t_vec *vec);
+t_bool  is_in_shadow(t_base *base, t_ray *ray);
 t_rgb	*compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col);
 
 
@@ -144,5 +144,11 @@ t_rgb	*compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col);
 int	max(int a, int b);
 int	min(int a, int b);
 
+
+//
+
+t_vec *vec_dup(t_vec *vec);
+t_hit *hit_dup(t_hit *hit);
+t_hit *new_hit();
 
 #endif

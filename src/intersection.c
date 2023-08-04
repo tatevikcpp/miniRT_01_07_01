@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
+t_bool	sphere_intersect(t_ray *ray, t_sphere *sp)
 {
 	t_vec	*l;
 	float	tca;
@@ -16,18 +16,19 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 	if (d2 > sp->r2)
 		return (FALSE);
 	thc = sqrt(sp->r2 - d2);
-	hit->t = tca - thc;
+	ray->hit.t = tca - thc;
 	t2 = tca + thc;
-	if (hit->t < EPSILON && t2 < EPSILON)
+	if (ray->hit.t < EPSILON && t2 < EPSILON)
 		return (FALSE);
-	if (hit->t < EPSILON || t2 < hit->t)
-		hit->t = t2;
-	hit->phit = new_vec(0, 0, 0);
-	ray_mult(hit->phit, ray, hit->t); // TODO offff
-	hit->nhit = vec_normalize(vec_sub(&sp->center , hit->phit));
-	hit->obj_type = id_sphere;
-	hit->obj = (void *)sp;
-	hit->color = sp->rgb;
+	if (ray->hit.t < EPSILON || t2 < ray->hit.t)
+		ray->hit.t = t2;
+	ray->hit.phit = new_vec(0, 0, 0);
+	ray_mult(ray->hit.phit, ray, ray->hit.t); // TODO offff
+	ray->hit.nhit = vec_normalize(vec_sub(&sp->center , ray->hit.phit));
+	// printf("sphere_intersect ray->hit.nhit = %ld\n", ray->hit.nhit);
+	ray->hit.obj_type = id_sphere;
+	ray->hit.obj = (void *)sp;
+	ray->hit.color = sp->rgb;
 	return (TRUE);
 }
 

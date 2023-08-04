@@ -39,6 +39,7 @@ typedef struct s_img_data
 
 typedef enum e_obj_id
 {
+	id_null,
 	id_amb,
 	id_light,
 	id_camera,
