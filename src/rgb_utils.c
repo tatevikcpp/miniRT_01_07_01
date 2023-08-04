@@ -76,3 +76,15 @@ int	rgb_to_int(t_rgb *rgb)
 {
 	return (rgb->r << 16 | rgb->g << 8 | rgb->b);
 }
+
+t_rgb	*int_to_rgb(int col)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	b = col & 255;
+	g = (col >> 8) & 255;
+	r = (col >> 16) & 255;
+	return (rgb_from_ints(r, g, b);
+}

@@ -4,11 +4,12 @@
 #include "../includes/minirt.h"
 
 
-static void	compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col)
+t_rgb	*compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col)
 {
-	p_col->r = max(p_col->r - 255 + amb_col->r, 0);
-	p_col->g = max(p_col->g - 255 + amb_col->g, 0);
-	p_col->b = max(p_col->b - 255 + amb_col->b, 0);
+	p_col->r = max(p_col->r + amb_col->r, 0);
+	p_col->g = max(p_col->g + amb_col->g, 0);
+	p_col->b = max(p_col->b + amb_col->b, 0);
+	return (p_col);
 }
 
 t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor

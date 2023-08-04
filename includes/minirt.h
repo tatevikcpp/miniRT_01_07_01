@@ -136,6 +136,7 @@ t_vec	*cross_product(t_vec *v1, t_vec *v2);
 int	    quadratic_eq_solution(t_quadratic *q);
 void    light_ray(t_light *light, t_ray *ray, t_hit *min_hit);
 t_bool  is_in_shadow(t_base *base, t_ray *ray, t_vec *vec);
+void	compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col);
 
 
 //utils_math.c
