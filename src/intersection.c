@@ -55,22 +55,23 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 
 t_bool	infinite_cyl_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
 {
-	t_quadratic	*q;
+	t_quadratic	q;
 	t_vec		*u;
 	t_vec		*v;
+
 
 	u = cross_product(&r->dir, &cy->norm);
 	v = vec_sub(&cy->center, &r->or);
 	v = cross_product(v, &cy->norm);
-	q->a = vec_dot_product(u, u);
-	q->b = 2 * vec_dot_product(u, v);
-	q->c = vec_dot_product(v, v) - cy->rd;
-	if (!quadratic_eq_solution(q) || (q->x2 <= EPSILON && q->x1 <= EPSILON))
+	q.a = vec_dot_product(u, u);
+	q.b = 2 * vec_dot_product(u, v);
+	q.c = vec_dot_product(v, v) - cy->rd;
+	if (!quadratic_eq_solution(&q) || (q.x2 <= EPSILON && q.x1 <= EPSILON))
 		return (FALSE);
-	if (q->x1 <= EPSILON || (q->x2 > EPSILON && (q->x2 < q->x1)))
-		q->x1 = q->x2;
-	hit->t = q->x1;
-	ray_mult(hit->phit, r, q->x1);
+	if (q.x1 <= EPSILON || (q.x2 > EPSILON && (q.x2 < q.x1)))
+		q.x1 = q.x2;
+	hit->t = q.x1;
+	ray_mult(hit->phit, r, q.x1);
 	v = vec_sub(&cy->center, hit->phit);
 	hit->nhit = cross_product(v, &cy->norm);
 	hit->nhit = cross_product(hit->nhit, &cy->norm);

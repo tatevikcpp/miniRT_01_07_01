@@ -12,7 +12,7 @@ void combine_img(t_base *data)
 {
     int i;
     int j;
-    int hit_color;
+    // int hit_color;
     t_hit *min_hit;
     int color;
 
@@ -29,7 +29,7 @@ void combine_img(t_base *data)
             // sphere_intersect(&data->utils->ray, data->a_sphere->next, &data->utils->ray.hit);
             // color = get_closest_sp(data, &data->utils->ray.hit, &data->utils->ray);
             // color = get_closest_pl(data, &data->utils->ray.hit, &data->utils->ray);
-            min_hit = get_closest_obj(data, &data->utils->ray);
+            min_hit = get_closest_obj(data /*, &data->utils->ray*/);
             //print_vec("min_hit->p_hit = ", min_hit->phit);
             //if (data->utils->ray.hit.nhit)
             if (min_hit->obj)

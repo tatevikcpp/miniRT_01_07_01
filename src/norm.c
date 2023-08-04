@@ -17,7 +17,7 @@ void	cylinder_norm(t_cylinder *cy)
 void    function(t_rt *rt)
 {
     t_camera *cam;
-    t_utils *obj; // malloc
+    // t_utils *obj; // malloc
 
     cam = rt->cam;
     // printf("cam->cam->fov = %f\n", cam->fov);

@@ -56,8 +56,8 @@ static t_bool   is_in_shadow_pl(t_base *base, t_ray *ray, t_vec *vec)
     return (FALSE);
 }
 
-static t_bool   is_in_shadow_cy(t_base *base, t_ray *ray, t_vec *vec)
-{
+// static t_bool   is_in_shadow_cy(t_base *base, t_ray *ray, t_vec *vec)
+// {
     // t_cylinder *tmp;
     // t_hit *obj;
     // float len;
@@ -75,8 +75,8 @@ static t_bool   is_in_shadow_cy(t_base *base, t_ray *ray, t_vec *vec)
     //     }
     //     tmp = tmp->next;
     // }
-    return (FALSE);
-}
+    // return (FALSE);
+// }
 
 t_bool is_in_shadow(t_base *base, t_ray *ray, t_vec *vec)
 {

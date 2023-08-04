@@ -6,4 +6,5 @@ t_rt *new_rt(t_base *base)
 
     rt = ft_calloc(sizeof(t_rt), 1);
     rt->cam = base->a_camera;
+    return (rt);
 }

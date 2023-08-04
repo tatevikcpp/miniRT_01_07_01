@@ -16,9 +16,9 @@ t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor
 	float sum_ratio;
 	float cosa;
 	t_vec *light_ray;
-	t_rgb *tmp;
+	// t_rgb *tmp;
 
-	tmp = p_col;
+	// tmp = p_col;
 
 	light_ray = vec_sub(&base->a_light->coords, hit->phit);
 	cosa = vec_dot_product(light_ray, hit->nhit) / vec_length(light_ray); 

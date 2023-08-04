@@ -33,8 +33,8 @@ int main(int c, char **v)
 {
 	int	fd;
 	unsigned char flag;
-	void	*mlx;
-	void	*mlx_win;
+	// void	*mlx;
+	// void	*mlx_win;
 
 	flag = 0;
 	t_base *obj = (t_base *)ft_calloc(sizeof(t_base), 1);
