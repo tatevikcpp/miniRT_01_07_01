@@ -104,6 +104,8 @@ typedef struct s_cylinder
 	float				dm;
 	float				rd;
 	float				hg;
+	t_vec				p1;
+	t_vec				p2;
 	struct s_cylinder	*next;
 }						t_cylinder;
 

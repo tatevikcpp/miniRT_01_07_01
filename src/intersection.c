@@ -81,27 +81,27 @@ t_bool	infinite_cyl_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
 	return (TRUE);
 }
 
-// t_bool	cylinder_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
-// {
-// 	t_plane	*pl;
-// 	t_hit	*tmp_hit;
+t_bool	cylinder_intersect(t_ray *r, t_cylinder *cy, t_hit *hit)
+{
+	t_plane	pl;
+	t_hit	tmp_hit;
 
-// 	hit->t = INFINITY;
-// 	pl->coord = cy->p1;
-// 	pl->norm = cy->norm;
-// 	if (plane_intersect(r, &pl, &tmp_hit)
-// 		&& distance(tmp_hit->phit, cy->p1)// distance ???
-// 		<= cy->dm * 0.5 && hit->t > tmp_hit->t)
-// 		hit = tmp_hit;
-// 	pl->coord = cy->p2;
-// 	if (plane_inter(r, &pl, &tmp_hit)
-// 		&& distance(tmp_hit->phit, cy->p2) <= cy->dm * 0.5
-// 		&& hit->t > tmp_hit->t)
-// 		hit = tmp_hit;
-// 	if (infinite_cyl_intersect(r, cy, &tmp_hit)
-// 		&& pow(distance(cy->center, tmp_hit->phit), 2)
-// 		<= pow(cy->hg * 0.5, 2) + cy->rd
-// 		&& hit->t > tmp_hit->t)
-// 		hit = tmp_hit;
-// 	return (hit->t < INFINITY && hit->t > EPSILON);
-// }
+	hit->t = INFINITY;
+	pl.coord = cy->p1;
+	pl.norm = cy->norm;
+	if (plane_intersect(r, &pl, &tmp_hit)
+		&& vec_length(vec_sub(tmp_hit.phit, &cy->p1))
+		<= cy->dm * 0.5 && hit->t > tmp_hit.t)
+		*hit = tmp_hit;
+	pl.coord = cy->p2;
+	if (plane_intersect(r, &pl, &tmp_hit)
+		&& vec_length(vec_sub(tmp_hit.phit, &cy->p2)) <= cy->dm * 0.5
+		&& hit->t > tmp_hit.t)
+		*hit = tmp_hit;
+	if (infinite_cyl_intersect(r, cy, &tmp_hit)
+		&& pow(vec_length(vec_sub(&cy->center, tmp_hit.phit)), 2)
+		<= pow(cy->hg * 0.5, 2) + cy->rd
+		&& hit->t > tmp_hit.t)
+		hit = &tmp_hit;
+	return (hit->t < INFINITY && hit->t > EPSILON);
+}
