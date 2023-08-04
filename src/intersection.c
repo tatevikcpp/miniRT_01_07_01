@@ -86,6 +86,7 @@ int	intersect_sphere(t_ray ray,  t_sphere sphere, t_hit *impact)
 	impact->phit = vec_sum(&ray.or, vec_num_mul(&ray.dir, x1));
 	impact->nhit = vec_normalize(vec_sub(impact->phit, &sphere.center));
 	impact->phit = vec_sum(impact->phit, vec_num_mul(impact->nhit, EPSILON));
+	impact->color = sphere.rgb;;
 	return (1);
 }
 
