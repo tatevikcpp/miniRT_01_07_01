@@ -21,9 +21,9 @@ t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor
 	// tmp = p_col;
 
 	light_ray = vec_sub(&base->a_light->coords, hit->phit);
-	cosa = vec_dot_product(light_ray, hit->nhit) / vec_length(light_ray); 
+	cosa = vec_dot_product(light_ray, hit->nhit) / vec_length(light_ray);
 
-	sum_ratio = ALBEDO + base->a_amb->amb + base->a_light->brigh * cosa;
+	sum_ratio = ALBEDO + base->a_light->brigh * cosa;
 	//printf("sum_ratio = %f, cosa = %f\n", sum_ratio, cosa);
 	// sum_ratio = ALBEDO + base->a_amb->amb + base->a_light->brigh;
 	p_col = mul_rgb(p_col, sum_ratio);

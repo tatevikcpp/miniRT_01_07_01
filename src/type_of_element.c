@@ -53,6 +53,9 @@ void	ambient_lightning(t_amb *obj, char **v)
 			obj->id = id_amb;
 			obj->amb = str_to_float(v[0]);
 			check_valid_rgb(&obj->rgb, split);
+			obj->rgb.r = (int)(obj->rgb.r * obj->amb);
+			obj->rgb.g = (int)(obj->rgb.g * obj->amb);
+			obj->rgb.b = (int)(obj->rgb.b * obj->amb);
 		}
 	}
 	else
