@@ -1,16 +1,19 @@
 #include "minirt.h"
 
 
-static void get_closest_sp(t_base *base, t_ray *ray)
+static t_hit *get_closest_sp(t_base *base, t_ray *ray)
 {
     t_sphere *tmp;
     float min_len;
     // float len;
+    t_hit   *result;
 
+    result = NULL;
     min_len = INFINITY;
     tmp = base->a_sphere;
     while (tmp)
     {
+        // print_vec("ray = ", &ray->dir);
         if (sphere_intersect(ray, tmp))
         {
             // len = vec_length(vec_sub(min_obj->phit, &base->a_light->coords));
@@ -19,14 +22,16 @@ static void get_closest_sp(t_base *base, t_ray *ray)
             // printf(" min_obj->t = %f\n",  ray->hit.t);
             if (min_len > ray->hit.t)
             {
-                // printf("")
                 min_len = ray->hit.t;
                 ray->hit.obj = (void *)tmp;
                 ray->hit.obj_type = id_sphere;
+                free(result);
+                result = hit_dup(&ray->hit);
             }
         }
         tmp = tmp->next;
     }
+    return (result);
 }
 
 
@@ -84,14 +89,14 @@ static void get_closest_sp(t_base *base, t_ray *ray)
 //     return (min_obj);
 // }
 
-void get_closest_obj(t_base *data /*, t_ray *ray*/)
+t_hit *get_closest_obj(t_base *data /*, t_ray *ray*/)
 {
     // t_hit *obj;
     // t_hit *tmp;
     t_hit *tmp;
 
 
-    get_closest_sp(data, &data->utils->ray);
+    tmp = get_closest_sp(data, &data->utils->ray);
     // set_vec(&from_light->or, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);
     // from_light.dir = *vec_normalize(vec_sub(obj_min->phit, &from_light.or));
     // set_vec(&from_light.dir, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);
@@ -118,4 +123,5 @@ void get_closest_obj(t_base *data /*, t_ray *ray*/)
     //     obj_min = obj;
     // }
     // free_hit(tmp);
+    return (tmp);
 }

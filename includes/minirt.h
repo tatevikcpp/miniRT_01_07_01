@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:39:09 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/04 21:14:43 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/04 21:42:15 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ float		to_rad(const float angle);
 // t_hit       *get_closest_pl(t_base *base, t_ray *ray);
 // t_hit       *get_closest_cy(t_base *base, t_ray *ray);
 
-void get_closest_obj(t_base *base /*, t_ray *ray*/);
+t_hit *get_closest_obj(t_base *base /*, t_ray *ray*/);
 void free_hit(t_hit *obj);
 t_vec	*ray_mult(t_vec *dst, t_ray *r, float t);
 t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit);

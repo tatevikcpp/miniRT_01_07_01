@@ -25,7 +25,6 @@ t_bool	sphere_intersect(t_ray *ray, t_sphere *sp)
 	ray->hit.phit = new_vec(0, 0, 0);
 	ray_mult(ray->hit.phit, ray, ray->hit.t); // TODO offff
 	ray->hit.nhit = vec_normalize(vec_sub(&sp->center , ray->hit.phit));
-	// printf("sphere_intersect ray->hit.nhit = %ld\n", ray->hit.nhit);
 	ray->hit.obj_type = id_sphere;
 	ray->hit.obj = (void *)sp;
 	ray->hit.color = sp->rgb;
