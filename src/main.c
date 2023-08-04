@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:36 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/04 21:32:53 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/04 22:13:53 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int main(int c, char **v)
 
 	flag = 0;
 	t_base *obj = (t_base *)ft_calloc(sizeof(t_base), 1);
-	if (!obj)
-		print_error_exit("chka obj main");
 	if (c != 2)
-		print_error_exit("error argument");
+		print_error_exit("Invalid number of arguments");
+	if (!obj)
+		print_error_exit("Allocation error");
 	init_base(obj);
 	fd = check_file(v[1]); // esim
 	if (fd)

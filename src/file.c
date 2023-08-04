@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:06 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/02 11:50:26 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/04 22:23:16 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ int		check_file(char *file)
 
 	fd = 0;
 	if (ft_strcmp(file + (ft_strlen(file) - 3), ".rt"))
-		print_error_exit("error_.rt");
+		print_error_exit("File extension must be .rt");
 	if (!access(file, F_OK | R_OK))
 		fd = open(file, O_RDONLY);
+	else
+		print_error_exit("File access error");
 	if (fd == -1)
-		print_error_exit("error_fd");
+		print_error_exit("File descriptor error");
 	return (fd);
 }
 
@@ -65,7 +67,7 @@ static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 		ambient_lightning(obj->a_amb, arr); //arayjm aysqany :D
 		free_matrix(arr);
 		if (flag & 4)
-			print_error_exit("erkrord angam");
+			print_error_exit("Ambient light is specified twice");
 		else
 			flag |= 4;
 	}
@@ -74,7 +76,7 @@ static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 		camera(obj->a_camera, arr);
 		free_matrix(arr);
 		if (flag & 2)
-			print_error_exit("erkrord angam");
+			print_error_exit("Camera is specified twice");
 		else
 			flag |= 2;
 	}
@@ -83,7 +85,7 @@ static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 		light(obj->a_light, arr);
 		free_matrix(arr);
 		if (flag & 1)
-			print_error_exit("erkrord angam");
+			print_error_exit("Light is specified twice");
 		else
 			flag |= 1;
 	}
@@ -132,7 +134,7 @@ void	read_map(int fd, t_base *obj, int flag)
 			 (ft_strncmp(str, "cy", 2) == 0))
 				flag = nor_CPS(arr, obj, str, flag);
 			else
-				print_error_exit("eli sxal argument");
+				print_error_exit("Invalid element is specified");
 		}
 		free(line);
 		free(str);
