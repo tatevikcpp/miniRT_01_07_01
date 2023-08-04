@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 17:54:19 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/05 00:30:51 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 01:01:54 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int	is_str_float(char *s)
 
 	i = 0;
 	is_dot = 0;
-
 	len = ft_strlen(s);
 	if (!s || ('-' == s[0] && len < 4) || ('-' != s[0] && len < 3))
 		return (0);
@@ -134,7 +133,7 @@ int	is_in_float_limit(char *s)
 		return (0);
 	if ('-' == s[i] && ++i)
 		sign = 1;
-	if(is_str_float(s))
+	if (is_str_float(s))
 		while ('.' != s[i])
 			++i;
 	if (i++ > 40)
@@ -144,7 +143,7 @@ int	is_in_float_limit(char *s)
 		++j;
 	if (j > 6)
 		return (0);
-	num = str_to_double(s) * sign; //havanabar))
+	num = str_to_double(s) * sign;
 	if (num > FLT_MAX || num < -1 * FLT_MAX)
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:06 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/04 22:23:16 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 00:40:24 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static char *func_space(char *str)
 	{
 		if (!ft_strchr(SPACES, *str) && !ft_strchr(NUMBERS, *str) && *str != '\n')
 		{
-			printf("smb /%c/\n", *str);
-			print_error_exit("sxal simvol");
+			print_error_exit("Invalid symbol in map file");
 		}
 		else if (ft_strchr(SPACES, *str) || *str == '\n')
 			*str = '\1';
