@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
+static t_bool	sphere_intersect(t_ray *ray, t_sphere *sp, t_hit *hit)
 {
 	t_vec	*l;
 	float	tca;
