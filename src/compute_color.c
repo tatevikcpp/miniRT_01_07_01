@@ -6,9 +6,9 @@
 
 t_rgb	*compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col)
 {
-	p_col->r = max(p_col->r + amb_col->r, 0);
-	p_col->g = max(p_col->g + amb_col->g, 0);
-	p_col->b = max(p_col->b + amb_col->b, 0);
+	p_col->r = max(-255 + p_col->r + amb_col->r, 0);
+	p_col->g = max(-255 + p_col->g + amb_col->g, 0);
+	p_col->b = max(-255 + p_col->b + amb_col->b, 0);
 	return (p_col);
 }
 
@@ -24,7 +24,7 @@ t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor
 	light_ray = vec_sub(&base->a_light->coords, hit->phit);
 	// printf("light_ray = %ld\n", light_ray);
 	cosa = vec_dot_product(light_ray, hit->nhit) / vec_length(light_ray);
-
+	// printf("cosa = %f\n", cosa);
 	sum_ratio = ALBEDO + base->a_light->brigh * cosa;
 	//printf("sum_ratio = %f, cosa = %f\n", sum_ratio, cosa);
 	// sum_ratio = ALBEDO + base->a_amb->amb + base->a_light->brigh;

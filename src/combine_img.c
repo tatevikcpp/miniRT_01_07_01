@@ -36,7 +36,7 @@ void combine_img(t_base *data)
             if (min_hit)
             {
                 // printf("min_hit->nhit = %ld\n", min_hit->nhit);
-                light_ray(data->a_light, &data->utils->ray, min_hit);
+                light_ray(data->a_light, &data->utils->ray, hit_dup(min_hit));
                 if (is_in_shadow(data, &data->utils->ray))
 				{
                     printf("is_in_shadow\n");
