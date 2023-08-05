@@ -16,9 +16,9 @@ t_vec	cam_to_world(float m[4][4], t_vec *v)
 void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y) // TODO veranayel floatr to int
 {
     t_camera *cam;
-	double	a;
-	double	b;
-	double	c;
+	float	a;
+	float	b;
+	float	c;
 	int		max;
 
     cam = rt->cam;
@@ -30,12 +30,13 @@ void    cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y) // TODO vera
 	else
 		max = rt->height;
 	c = max / (2 * tan((to_rad(cam->fov * 0.5))));
-	ray->dir = *vec_num_mul(vec_normalize(&cam->norm), c);
-	ray->dir = *vec_sum(&ray->dir, vec_num_mul(new_vec(0, 1, 0), b));
-	ray->dir = *vec_sum(&ray->dir, vec_num_mul(new_vec(1, 0, 0), a));
+	vec_normalize(&cam->norm);
+	ray->dir = vec_num_mul(cam->norm, c);
+	ray->dir = vec_sum(ray->dir, vec_num_mul(new_vec(0, 1, 0), b));
+	ray->dir = vec_sum(ray->dir, vec_num_mul(new_vec(1, 0, 0), a));
     ray->hit.t = INFINITY;
     ray->hit.phit = new_vec(0, 0, 0);
-    ray->hit.nhit = NULL;
+    ray->hit.nhit = new_vec(0, 0, 0);
     ray->hit.obj = NULL;
     vec_normalize(&ray->dir);
 }

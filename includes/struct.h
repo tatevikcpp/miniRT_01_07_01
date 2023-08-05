@@ -107,6 +107,7 @@ typedef struct s_cylinder
 	float				hg;
 	t_vec				p1;
 	t_vec				p2;
+	int 				is_closed;
 	struct s_cylinder	*next;
 }						t_cylinder;
 
@@ -129,8 +130,8 @@ typedef struct s_plane
 
 typedef struct s_hit
 {
-	t_vec	*nhit;
-	t_vec	*phit;
+	t_vec 	nhit;
+	t_vec 	phit;
 	t_rgb	color;
 	void	*obj;
 	t_obj_id	obj_type;
@@ -192,11 +193,7 @@ typedef struct s_matrix_trans
 typedef struct s_rt
 {
 	t_camera	*cam;
-	t_vec		*forward;
-	t_vec		*right;
-	t_vec		*up;
 	float		inverse_view;
-	float		cam_matrix[4][4];
 	float		aspectratio;
 	int			widht;
 	int			height;

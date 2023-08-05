@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 17:54:19 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/05 05:11:45 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:47:44 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ float	str_to_float(char *s)
 	return (res * sign);
 }
 
-static double	str_to_double(char *s)
+static float	str_to_double(char *s)
 {
-	double	res;
-	double	div;
+	float	res;
+	float	div;
 	int		sign;
 	int		i;
 
@@ -122,7 +122,7 @@ static double	str_to_double(char *s)
 
 int	is_in_float_limit(char *s)
 {
-	double	num;
+	float	num;
 	int		i;
 	int		j;
 	int		sign;

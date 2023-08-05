@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:47:41 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/04/02 21:43:51 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst,  char *src, size_t dstsize)
 {
 	size_t		i;
 	size_t		j;

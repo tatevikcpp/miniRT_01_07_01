@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:12 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 01:09:16 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 07:26:10 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	check_valid_coords(t_vec *obj, char **split, int norm_flag)
 		obj->x = str_to_float(split[0]);
 		obj->y = str_to_float(split[1]);
 		obj->z = str_to_float(split[2]);
-		if (norm_flag && fabsf(vec_length(obj) - 1) > 0.01)
+		if (norm_flag && fabsf(vec_length(*obj) - 1) > 0.01)
 			print_error_exit("Invalid float argument");
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 12:11:05 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/04/02 13:11:06 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_first(char const *s1, char const *set)
+int	find_first(char  *s1, char  *set)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,7 @@ int	find_first(char const *s1, char const *set)
 	return (i);
 }
 
-int	find_last(char const *s1, char const *set)
+int	find_last(char  *s1, char  *set)
 {
 	int	i;
 	int	j;
@@ -51,7 +51,7 @@ int	find_last(char const *s1, char const *set)
 	return (count);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char  *s1, char  *set)
 {
 	char	*ptr;
 	int		first;

@@ -13,10 +13,10 @@
 #include "defines.h"
 #include "struct.h"
 
-void	zoom(t_param *f, double x, double y, double zoom)
+void	zoom(t_param *f, float x, float y, float zoom)
 {
-	double	xx;
-	double	yy;
+	float	xx;
+	float	yy;
 
 	xx = ((x / WIN_HEGHT) * (f->end_x - f->start_x)) + f->start_x;
 	yy = ((y / WIN_WIDTH) * (f->end_y - f->start_y)) + f->start_y;

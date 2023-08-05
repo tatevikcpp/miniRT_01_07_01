@@ -6,14 +6,14 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:17:45 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/03/24 12:03:53 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char  *s1, char  *s2)
 {
 	char	*ptr;
 	size_t	i;

@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:10:30 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/04/02 21:44:13 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp( char *s1,  char *s2, size_t n)
 {
 	size_t	i;
 

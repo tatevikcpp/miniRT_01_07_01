@@ -130,9 +130,13 @@ t_hit *get_closest_obj(t_base *data /*, t_ray *ray*/)
     final_hit = NULL;
 
     data->utils->ray.hit.t = INFINITY;
-    get_closest_pl(data, &data->utils->ray, &final_hit);
+    // get_closest_pl(data, &data->utils->ray, &final_hit);
+    // printf("data->utils->ray.hit.t  = %f\n", data->utils->ray.hit.t );
     get_closest_sp(data, &data->utils->ray, &final_hit);
-    get_closest_cy(data, &data->utils->ray, &final_hit);
+    // printf("data->utils->ray.hit.t  = %f\n", data->utils->ray.hit.t );
+
+    // get_closest_cy(data, &data->utils->ray, &final_hit);
+    // printf("data->utils->ray.hit.t get_closest_cy  = %f\n", data->utils->ray.hit.t );
     // if (res && tmp && tmp->t < res->t)
 
     // set_vec(&from_light->or, data->a_light->coords.x, data->a_light->coords.y, data->a_light->coords.z);

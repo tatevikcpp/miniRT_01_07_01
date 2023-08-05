@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:00:04 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/04/02 21:37:58 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char	*s, int c)
+char	*ft_strrchr( char	*s, int c)
 {
 	int		i;
 	int		j;

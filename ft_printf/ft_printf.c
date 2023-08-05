@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 20:23:21 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/03/22 18:54:23 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_print_percent(int fd)
 	return (1);
 }
 
-int	ft_convert(va_list arg, const char form, int fd)
+int	ft_convert(va_list arg,  char form, int fd)
 {
 	int	lenght;
 
@@ -42,7 +42,7 @@ int	ft_convert(va_list arg, const char form, int fd)
 	return (lenght);
 }
 
-int	ft_printf(int fd, const char *s, ...)
+int	ft_printf(int fd,  char *s, ...)
 {
 	int		i;
 	int		len;

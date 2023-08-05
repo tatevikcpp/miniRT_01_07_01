@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 18:15:29 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/04/02 21:35:43 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_sub_str(char const	*str, char c)
+int	count_sub_str(char 	*str, char c)
 {
 	int	i;
 	int	count;
@@ -30,7 +30,7 @@ int	count_sub_str(char const	*str, char c)
 	return (count);
 }
 
-char	*word_dup(char const	*str, int start, int finish)
+char	*word_dup(char 	*str, int start, int finish)
 {
 	int		i;
 	char	*word;
@@ -47,7 +47,7 @@ char	*word_dup(char const	*str, int start, int finish)
 	return (word);
 }
 
-char	**ft_split(char const	*s, char c)
+char	**ft_split(char 	*s, char c)
 {
 	int				i;
 	int				j;

@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 21:04:29 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/04 21:16:22 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 07:23:00 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ t_hit *hit_dup(t_hit *hit)
     return (new);
 }
 
-t_vec *vec_dup(t_vec *vec)
-{
-    t_vec *new_vec;
+// t_vec *vec_dup(t_vec vec)
+// {
+//     t_vec *new_vec;
 
-    new_vec = ft_calloc(sizeof(t_vec), 1);
-    new_vec->x = vec->x;
-    new_vec->y = vec->y;
-    new_vec->z = vec->z;
-    return (new_vec);
-}
+//     new_vec = ft_calloc(sizeof(t_vec), 1);
+//     new_vec->x = vec->x;
+//     new_vec->y = vec->y;
+//     new_vec->z = vec->z;
+//     return (new_vec);
+// }
 
 

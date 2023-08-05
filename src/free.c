@@ -54,12 +54,12 @@ void	free_base(t_base *obj)
 	// free_plane(obj->a_plane);
 }
 
-void	free_hit(t_hit *obj)
-{
-	free(obj->nhit);
-	obj->nhit = NULL;
-	free(obj->phit);
-	obj->phit = NULL;
-	free(obj);
-	obj = NULL;
-}
+// void	free_hit(t_hit *obj)
+// {
+// 	free(obj->nhit);
+// 	obj->nhit = NULL;
+// 	free(obj->phit);
+// 	obj->phit = NULL;
+// 	free(obj);
+// 	obj = NULL;
+// }

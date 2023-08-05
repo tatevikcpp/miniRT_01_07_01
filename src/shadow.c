@@ -2,9 +2,9 @@
 
 void light_ray(t_light *light, t_ray *ray, t_hit *min_hit)
 {
-    ray->or = *min_hit->phit;
-    ray->dir = *vec_sub(&light->coords, min_hit->phit);
-    ray->hit.t = vec_length(&ray->dir);
+    ray->or = min_hit->phit;
+    ray->dir = vec_sub(light->coords, min_hit->phit);
+    ray->hit.t = vec_length(ray->dir);
     vec_normalize(&ray->dir);
     // ray->hit.phit = min_hit->phit;
     // ray->hit.nhit = min_hit->nhit;
@@ -33,7 +33,7 @@ static t_bool   is_in_shadow_pl(t_base *base, t_ray *ray)
     float len;
     
 
-    len = vec_length(vec_sub(&ray->or, ray->hit.phit)) - 2 * EPSILON; // TODO eps?
+    len = vec_length(vec_sub(ray->or, ray->hit.phit)) - 2 * EPSILON; // TODO eps?
     tmp = base->a_plane;
     obj = ft_calloc(sizeof(t_hit), 1);
     while (tmp)
@@ -48,7 +48,7 @@ static t_bool   is_in_shadow_pl(t_base *base, t_ray *ray)
     return (FALSE);
 }
 
-// static t_bool   is_in_shadow_cy(t_base *base, t_ray *ray, t_vec *vec)
+// static t_bool   is_in_shadow_cy(t_base *base, t_ray *ray, t_vec vec)
 // {
     // t_cylinder *tmp;
     // t_hit *obj;

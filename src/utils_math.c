@@ -38,7 +38,7 @@ float	min(float a, float b)
 
 //use t_vec due to norminette limit for 4 arguments
 
-// int	quadratic_eq_solution(t_vec *vec, float *x1, float *x2)
+// int	quadratic_eq_solution(t_vec vec, float *x1, float *x2)
 // {
 // 	float	discr;
 
@@ -62,7 +62,7 @@ float	min(float a, float b)
 // 	return (1);
 // }
 
-float	to_rad(const float angle)
+float	to_rad( float angle)
 {
 	return (angle * PI / 180);
 }

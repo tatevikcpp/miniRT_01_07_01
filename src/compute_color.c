@@ -16,12 +16,12 @@ t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor
 {
 	float sum_ratio;
 	float cosa;
-	t_vec *light_ray;
+	t_vec light_ray;
 	// t_rgb *tmp;
 
 	// tmp = p_col;
 
-	light_ray = vec_sub(&base->a_light->coords, hit->phit);
+	light_ray = vec_sub(base->a_light->coords, hit->phit);
 	// printf("light_ray = %ld\n", light_ray);
 	cosa = vec_dot_product(light_ray, hit->nhit) / vec_length(light_ray);
 	// printf("cosa = %f\n", cosa);
@@ -52,7 +52,7 @@ t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor
 //  intensity += base->a_amb->amb;
 //
 //  amb_color = mul_rgb(base->a_amb->rgb, base->a_amb->amb);
-//  n_dot_l = dot_product(norm, L)
+//  n_dot_l = vec_dot_product(norm, L)
 //            if n_dot_l > 0
 //                i += light.intensity*n_dot_l/(length(N)*length(L))
 //

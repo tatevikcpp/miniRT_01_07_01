@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 20:15:13 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/03/22 18:44:14 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_nbr_count(long long int n, const char *base, int fd)
+int	ft_nbr_count(long long int n,  char *base, int fd)
 {
 	int	count;
 

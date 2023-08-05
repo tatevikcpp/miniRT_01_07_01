@@ -15,13 +15,13 @@
 # include "struct.h"
 
 //vec_utils.c
-t_vec		*new_vec(float x, float y, float z);
-t_vec		*vec_sum(t_vec *v1, t_vec *v2);
-t_vec		*vec_sub(t_vec *v1, t_vec *v2);
-float		vec_dot_product(t_vec *v1, t_vec *v2);
-float		vec_length(t_vec *vec);
-t_vec		*vec_normalize(t_vec *vec);
-t_vec		*rot_vec(t_vec *vec, float alpha, char axis);
+// t_vec		*new_vec(float x, float y, float z);
+// t_vec		*vec_sum(t_vec *v1, t_vec *v2);
+// t_vec		*vec_sub(t_vec *v1, t_vec *v2);
+// float		vec_dot_product(t_vec *v1, t_vec *v2);
+// float		vec_length(t_vec vec);
+// t_vec		*vec_normalize(t_vec vec);
+// t_vec		rot_vec(t_vec vec, float alpha, char axis);
 
 //sp_cam_utils.c
 t_sphere	*new_sphere(t_vec *center, float diameter, t_rgb *rgb);
@@ -40,6 +40,6 @@ int			is_int_in_range(int val, int left, int right);
 //utils_math.c
 // int			min(int a, int b);
 // int			max(int a, int b);
-// int			quadratic_eq_solution(t_vec *vec, float *x1, float *x2);
+// int			quadratic_eq_solution(t_vec vec, float *x1, float *x2);
 
 #endif

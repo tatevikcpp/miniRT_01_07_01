@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_p.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkhechoy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 14:42:54 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/02 11:49:24 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	count(unsigned long int nbr, const char *base, int fd)
+int	count(unsigned long int nbr,  char *base, int fd)
 {
 	int	counter;
 
