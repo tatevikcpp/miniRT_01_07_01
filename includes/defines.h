@@ -6,7 +6,7 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:39:55 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/02 11:40:36 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 07:34:10 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 # define ALBEDO 0.18
 //# define BG_COLOR 0
 # define BG_COLOR 16777215
+# define MOVE_STEP 20
 
 #endif
