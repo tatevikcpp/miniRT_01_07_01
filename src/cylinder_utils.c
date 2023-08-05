@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 06:39:02 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 12:19:32 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 13:35:50 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	calc(float *dist, float *x, float dist1, float x2)
 	*x = x2;
 }
 
-static void	calc_cy_normal(float x2[2],  t_cylinder cylinder, \
+static void	calc_cy_normal(float x2[2], t_cylinder cylinder, \
 	float dist1, float dist2)
 {
 	float	dist;
@@ -65,10 +65,10 @@ static void	calc_cy_normal(float x2[2],  t_cylinder cylinder, \
 	x2[0] = x;
 }
 
-static int	solve_cylinder(float x[2], t_ray ray,  t_cylinder cylinder)
+static int	solve_cylinder(float x[2], t_ray ray, t_cylinder cylinder)
 {
-	t_vec 	v;
-	t_vec 	u;
+	t_vec	v;
+	t_vec	u;
 	float	a;
 	float	b;
 	float	c;
@@ -88,7 +88,7 @@ static int	solve_cylinder(float x[2], t_ray ray,  t_cylinder cylinder)
 	return (1);
 }
 
-float	cy_intersection(t_ray ray,  t_cylinder cylinder)
+float	cy_intersection(t_ray ray, t_cylinder cylinder)
 {
 	float	x2[2];
 	float	dist1;
@@ -106,4 +106,3 @@ float	cy_intersection(t_ray ray,  t_cylinder cylinder)
 	calc_cy_normal(x2, cylinder, dist1, dist2);
 	return (x2[0]);
 }
-

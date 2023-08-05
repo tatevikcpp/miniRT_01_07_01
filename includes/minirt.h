@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:39:09 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 09:23:37 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 14:09:33 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "struct.h"
 # include "defines.h"
 
-int			ft_printf(int fd,  char *s, ...);
+int			ft_printf(int fd, char *s, ...);
 char		*get_next_line(int fd);
 void		print_error_exit(char *str);
 int			check_file(char *file);
@@ -86,10 +86,10 @@ void		ft_lstadd_front_obj(t_utils **lst, t_utils *new);
 t_vec		new_vec(float x, float y, float z);
 t_vec		vec_sum(t_vec v1, t_vec v2);
 t_vec		vec_sub(t_vec v1, t_vec v2);
-t_vec	    vec_mult(t_vec v1, t_vec v2);
-t_vec	    vec_num_mul(t_vec v, float mul);
+t_vec		vec_mult(t_vec v1, t_vec v2);
+t_vec		vec_num_mul(t_vec v, float mul);
 float		vec_dot_product(t_vec v1, t_vec v2);
-t_vec       cross_product(t_vec v1, t_vec v2);
+t_vec		cross_product(t_vec v1, t_vec v2);
 float		vec_length(t_vec vec);
 void		vec_normalize(t_vec *vec);
 t_vec		rot_vec(t_vec vec, float alpha, char axis);
@@ -112,48 +112,43 @@ void		look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt); // TODO 3x3
 void		function(t_rt *rt);
 t_rt		*new_rt(t_base *base);
 void		print_vec(char *s, t_vec vec);
-int         rgb_to_int(t_rgb *rgb);
+int			rgb_to_int(t_rgb *rgb);
 float		to_rad( float angle);
 
+// t_hit	   *get_closest_sp(t_base *base, t_ray *ray);
+// t_hit	   *get_closest_pl(t_base *base, t_ray *ray);
+// t_hit	   *get_closest_cy(t_base *base, t_ray *ray);
 
-// t_hit       *get_closest_sp(t_base *base, t_ray *ray);
-// t_hit       *get_closest_pl(t_base *base, t_ray *ray);
-// t_hit       *get_closest_cy(t_base *base, t_ray *ray);
-
-t_hit *get_closest_obj(t_base *base /*, t_ray *ray*/);
-void free_hit(t_hit *obj);
-t_vec   ray_mult(t_vec *dst, t_ray *r, float t);
-t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit);
-t_rgb	*mul_rgb(t_rgb *rgb, float mul);
-t_vec   *norm_sp(t_vec *c, t_vec *p);
-t_vec   cross_product(t_vec v1, t_vec v2);
-int	    quadratic_eq_solution(t_quadratic *q);
-void    light_ray(t_light *light, t_ray *ray, t_hit *min_hit);
-t_bool  is_in_shadow(t_base *base, t_ray *ray);
-t_rgb	*compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col);
-
+t_hit		*get_closest_obj(t_base *base /*, t_ray *ray*/);
+void		free_hit(t_hit *obj);
+t_vec		ray_mult(t_vec *dst, t_ray *r, float t);
+t_rgb		*compute_color(t_base *base, t_rgb *p_col, t_hit *hit);
+t_rgb		*mul_rgb(t_rgb *rgb, float mul);
+t_vec		*norm_sp(t_vec *c, t_vec *p);
+t_vec		cross_product(t_vec v1, t_vec v2);
+int			quadratic_eq_solution(t_quadratic *q);
+void		light_ray(t_light *light, t_ray *ray, t_hit *min_hit);
+t_bool		is_in_shadow(t_base *base, t_ray *ray);
+t_rgb		*compute_color_with_amb(t_rgb *p_col, t_rgb *amb_col);
 
 //utils_math.c
-
-int	max(int a, int b);
-float	min(float a, float b);
-
+int			max(int a, int b);
+float		min(float a, float b);
 
 //
-
-t_bool	cylinder_intersect(t_ray *r, t_cylinder *cy);
-t_vec	*vec_dup(t_vec vec);
-t_vec	get_closest_point_from_line(t_vec a, t_vec b, t_vec p);
-t_hit	*hit_dup(t_hit *hit);
-t_hit	*new_hit();
-t_ray	*new_ray();
-t_ray	*ray_dup(t_ray *ray);
-void	swap(float *x1, float *x2);
-void	move(t_camera *cam, int x_step, int y_step);
-float	cy_intersection(t_ray ray,  t_cylinder cylinder);
-int		sphere_intersect(t_ray *ray,  t_sphere sphere);
-t_vec	rot_vec(t_vec vec, float alpha, char axis);
-void	move(t_camera *cam, int x_step, int y_step);
-int		key_press(int keycode, t_base *obj);
+t_bool		cylinder_intersect(t_ray *r, t_cylinder *cy);
+t_vec		*vec_dup(t_vec vec);
+t_vec		get_closest_point_from_line(t_vec a, t_vec b, t_vec p);
+t_hit		*hit_dup(t_hit *hit);
+t_hit		*new_hit();
+t_ray		*new_ray();
+t_ray		*ray_dup(t_ray *ray);
+void		swap(float *x1, float *x2);
+void		move(t_camera *cam, int x_step, int y_step);
+float		cy_intersection(t_ray ray,  t_cylinder cylinder);
+int			sphere_intersect(t_ray *ray,  t_sphere sphere);
+t_vec		rot_vec(t_vec vec, float alpha, char axis);
+void		move(t_camera *cam, int x_step, int y_step);
+int			key_press(int keycode, t_base *obj);
 
 #endif

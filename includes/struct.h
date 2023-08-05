@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:36:55 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/02 11:50:12 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 13:51:10 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct s_cylinder
 	float				hg;
 	t_vec				p1;
 	t_vec				p2;
-	int 				is_closed;
+	int					is_closed;
 	struct s_cylinder	*next;
 }						t_cylinder;
 
@@ -130,12 +130,12 @@ typedef struct s_plane
 
 typedef struct s_hit
 {
-	t_vec 	nhit;
-	t_vec 	phit;
-	t_rgb	color;
-	void	*obj;
+	t_vec		nhit;
+	t_vec		phit;
+	t_rgb		color;
+	void		*obj;
 	t_obj_id	obj_type;
-	float	t;
+	float		t;
 }			t_hit;
 
 typedef struct s_ray

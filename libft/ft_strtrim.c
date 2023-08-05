@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 12:11:05 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 06:48:26 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 13:54:25 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_first(char  *s1, char  *set)
+int	find_first(char *s1, char *set)
 {
 	int	i;
 	int	j;
@@ -24,13 +24,13 @@ int	find_first(char  *s1, char  *set)
 		if (s1[i] == set[j] && set[j] != '\0')
 		{
 			j = -1;
-			i++;
+			++i;
 		}
 	}
 	return (i);
 }
 
-int	find_last(char  *s1, char  *set)
+int	find_last(char *s1, char *set)
 {
 	int	i;
 	int	j;
@@ -44,14 +44,14 @@ int	find_last(char  *s1, char  *set)
 		if (s1[i] == set[j] && set[j] != '\0')
 		{
 			j = -1;
-			i--;
+			--i;
 			count++;
 		}
 	}
 	return (count);
 }
 
-char	*ft_strtrim(char  *s1, char  *set)
+char	*ft_strtrim(char *s1, char *set)
 {
 	char	*ptr;
 	int		first;
@@ -65,6 +65,5 @@ char	*ft_strtrim(char  *s1, char  *set)
 		return (ptr);
 	}
 	else
-			return (ft_strdup(s1));
-	// return (0);
+		return (ft_strdup(s1));
 }

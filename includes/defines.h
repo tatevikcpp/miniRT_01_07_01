@@ -6,14 +6,14 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:39:55 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/05 08:40:53 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 14:01:19 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-#include <math.h>
+# include <math.h>
 
 # define WIN_WIDTH 1200
 # define WIN_HEGHT 720
@@ -35,6 +35,5 @@
 
 # define SPACES " \t\v\f\r"
 # define NUMBERS ".,-0123456789"
-# define PI acos(-1)
 
 #endif
