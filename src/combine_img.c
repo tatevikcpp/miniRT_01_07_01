@@ -6,7 +6,7 @@
 /*   By: tkhechoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 10:49:42 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 10:52:11 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 12:32:38 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	print_hit(t_hit *hit)
 
 void	combine_img(t_base *data)
 {
-	int i;
-	int j;
-	// int hit_color;
-	t_hit *min_hit;
-	int color;
+	int		i;
+	int		j;
+	t_hit	*min_hit;
+	int		color;
 	t_rgb	*tmp_col;
+	// int hit_color;
 
 	i = 0;
 	// function(data->rt);
@@ -53,15 +53,13 @@ void	combine_img(t_base *data)
 				else
 				{
 					// printf("is_in_shadow\n");
-
 					color = rgb_to_int(compute_color(data, &min_hit->color, min_hit));
 					// color = 0xff0000;
 				}
 				my_mlx_pixel_put(&data->img_data, i, j, color);
 			}
-			j++;
+			++j;
 		}
-		i++;
+		++i;
 	}
 }
-

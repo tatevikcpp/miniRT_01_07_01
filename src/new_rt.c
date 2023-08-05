@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   new_rt.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkhechoy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/05 12:12:24 by tkhechoy          #+#    #+#             */
+/*   Updated: 2023/08/05 12:12:56 by mavardan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
-t_rt *new_rt(t_base *base)
+t_rt	*new_rt(t_base *base)
 {
-    t_rt    *rt;
+	t_rt	*rt;
 
-    rt = ft_calloc(sizeof(t_rt), 1);
-    rt->cam = base->a_camera;
-    return (rt);
+	rt = ft_calloc(sizeof(t_rt), 1);
+	rt->cam = base->a_camera;
+	return (rt);
 }

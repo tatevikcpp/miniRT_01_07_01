@@ -6,13 +6,13 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 21:45:38 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/02 11:53:54 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 12:17:07 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	ft_lstadd_front_sp(t_sphere **lst,t_sphere *new)
+void	ft_lstadd_front_sp(t_sphere **lst, t_sphere *new)
 {
 	if (!lst || !new)
 		return ;

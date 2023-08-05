@@ -6,11 +6,9 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 06:38:58 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 09:15:04 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 12:31:44 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../includes/minirt.h"
 
@@ -18,7 +16,6 @@ float	distance(t_vec p, t_vec q)
 {
 	return (sqrt(pow(q.x - p.x, 2) + pow(q.y - p.y, 2) + pow(q.z - p.z, 2)));
 }
-
 
 float	solve_plane(t_vec o, t_vec d, t_vec plane_p, t_vec plane_nv)
 {
@@ -34,7 +31,7 @@ float	solve_plane(t_vec o, t_vec d, t_vec plane_p, t_vec plane_nv)
 	return (INFINITY);
 }
 
-static t_vec	caps_int(t_ray ray,  t_cylinder cylinder, \
+static t_vec	caps_int(t_ray ray, t_cylinder cylinder, \
 	float *id1, float *id2)
 {
 	t_vec	c2;
@@ -45,7 +42,7 @@ static t_vec	caps_int(t_ray ray,  t_cylinder cylinder, \
 	return (c2);
 }
 
-static float	caps_intersection(t_ray ray,  t_cylinder cylinder)
+static float	caps_intersection(t_ray ray, t_cylinder cylinder)
 {
 	float	id1;
 	float	id2;
@@ -74,8 +71,8 @@ static float	caps_intersection(t_ray ray,  t_cylinder cylinder)
 	return (INFINITY);
 }
 
-static float	cylinder_intersection( t_ray ray, \
-	 t_cylinder cylinder, int *is_on_side)
+static float	cylinder_intersection(t_ray ray, \
+		t_cylinder cylinder, int *is_on_side)
 {
 	float	cylinder_inter;
 	float	caps_inter;
@@ -101,11 +98,12 @@ static float	cylinder_intersection( t_ray ray, \
 t_hit	*ray_cylinders( t_ray ray, t_base *base, \
 	t_hit *hit)
 {
-	t_hit *result = NULL;
 	t_cylinder	*cylinder;
+	t_hit		*result;
 	float		tmp;
 	int			is_on_side;
 
+	result = NULL;
 	cylinder = base->a_cylinder;
 	while (cylinder)
 	{

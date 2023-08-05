@@ -6,16 +6,16 @@
 /*   By: tkhechoy <tkhechoy@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:47 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/06/25 12:37:48 by tkhechoy         ###   ########seoul.kr  */
+/*   Updated: 2023/08/05 12:18:53 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-char *ft_strcat(char *start, int len)
+char	*ft_strcat(char *start, int len)
 {
-	int i;
-	char *ptr;
+	int		i;
+	char	*ptr;
 
 	ptr = (char *)calloc(len + 1, sizeof(char));
 	if (!ptr || !start)

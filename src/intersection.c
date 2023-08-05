@@ -6,7 +6,7 @@
 /*   By: tkhechoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 06:04:11 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 10:25:07 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 12:16:02 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,19 +124,18 @@ t_bool	cylinder_intersect(t_ray *ray, t_cylinder *cy)
 
 	pl.coord = cy->p1;
 	pl.norm = cy->norm;
-	if (plane_intersect(ray, &pl, &tmp_hit)
-			&& vec_length(vec_sub(tmp_hit.phit, cy->p1))
-			<= cy->dm * 0.5 && ray->hit.t > tmp_hit.t)
+	if (plane_intersect(ray, &pl, &tmp_hit) && \
+		vec_length(vec_sub(tmp_hit.phit, cy->p1)) <= cy->dm * 0.5 && \
+		ray->hit.t > tmp_hit.t)
 		ray->hit = tmp_hit;
 	pl.coord = cy->p2;
-	if (plane_intersect(ray, &pl, &tmp_hit)
-			&& vec_length(vec_sub(tmp_hit.phit, cy->p2)) <= cy->dm * 0.5
-			&& ray->hit.t > tmp_hit.t)
+	if (plane_intersect(ray, &pl, &tmp_hit) \
+		&& vec_length(vec_sub(tmp_hit.phit, cy->p2)) <= cy->dm * 0.5 && \
+		ray->hit.t > tmp_hit.t)
 		ray->hit = tmp_hit;
-	if (infinite_cyl_intersect(ray, cy, &tmp_hit)
-			&& pow(vec_length(vec_sub(cy->center, tmp_hit.phit)), 2)
-			<= pow(cy->hg * 0.5, 2) + cy->rd
-			&& ray->hit.t > tmp_hit.t)
+	if (infinite_cyl_intersect(ray, cy, &tmp_hit) && \
+		pow(vec_length(vec_sub(cy->center, tmp_hit.phit)), 2) <= \
+		pow(cy->hg * 0.5, 2) + cy->rd && ray->hit.t > tmp_hit.t)
 		ray->hit = tmp_hit;
 	return (ray->hit.t < INFINITY && ray->hit.t > EPSILON);
 }
