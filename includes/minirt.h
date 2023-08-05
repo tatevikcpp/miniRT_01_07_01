@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:39:09 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 00:54:40 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 03:15:57 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void		cam_ray(t_rt *rt, t_ray *ray, float pixel_x, float pixel_y);
 void		look_at(t_rt *rt);
 
 // intersection
-t_bool		sphere_intersect(t_ray *ray, t_sphere *sp);
 t_bool		plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit);
 
 //
@@ -153,4 +152,6 @@ t_hit *new_hit();
 t_ray *new_ray();
 t_ray *ray_dup(t_ray *ray);
 void	swap(float *x1, float *x2);
+int	sphere_intersect(t_ray *ray,  t_sphere sphere);
+t_bool	cylinder_intersect(t_ray *r, t_cylinder *cy);
 #endif

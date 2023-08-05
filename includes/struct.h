@@ -139,7 +139,6 @@ typedef struct s_hit
 
 typedef struct s_ray
 {
-	int ray_type;
 	t_vec	or;
 	t_vec	dir;
 	t_hit	hit;
@@ -154,6 +153,8 @@ typedef struct s_utils
 	// t_obj_id id;
 	// t_obj_union objects;
 	t_ray			ray;
+	t_ray			light_ray;
+	t_hit			hit;
 	struct s_utils	*next;
 	// clcor;
 }					t_utils;

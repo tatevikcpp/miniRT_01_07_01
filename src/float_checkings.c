@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 17:54:19 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/05 01:01:54 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 05:11:45 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	is_in_float_limit(char *s)
 		return (0);
 	if ('-' == s[i] && ++i)
 		sign = 1;
-	if (is_str_float(s))
+	if (!is_str_float_wo_point(s))
 		while ('.' != s[i])
 			++i;
 	if (i++ > 40)
