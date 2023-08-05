@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:39:09 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 08:10:28 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:54:26 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <math.h>
 # include "../includes/mlx.h"
 # include "../libft/libft.h"
 # include "struct.h"
 # include "defines.h"
-
-# define SPACES " \t\v\f\r"
-# define NUMBERS ".,-0123456789"
-# define PI acos(-1)
 
 int			ft_printf(int fd,  char *s, ...);
 char		*get_next_line(int fd);
@@ -157,4 +152,8 @@ void	swap(float *x1, float *x2);
 void	move(t_camera *cam, int x_step, int y_step);
 float	cy_intersection(t_ray ray,  t_cylinder cylinder);
 int		sphere_intersect(t_ray *ray,  t_sphere sphere);
+t_vec	rot_vec(t_vec vec, float alpha, char axis);
+void	move(t_camera *cam, int x_step, int y_step);
+int		key_press(int keycode, t_base *obj);
+
 #endif

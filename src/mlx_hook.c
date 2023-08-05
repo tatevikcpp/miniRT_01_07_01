@@ -1,9 +1,9 @@
 #include <mlx.h>
 #include "struct.h"
-#include "minirt.h"
 #include "defines.h"
+#include "minirt.h"
 
-void    key_press(int keycode, t_base *obj)
+int    key_press(int keycode, t_base *obj)
 {
     if (keycode == KEY_X)
         rot_vec(obj->a_camera->norm,  PI/12, 'x');
@@ -19,4 +19,5 @@ void    key_press(int keycode, t_base *obj)
         move(obj->a_camera, 0, MOVE_STEP);
     if (keycode == DOWN)
         move(obj->a_camera, 0, -MOVE_STEP);
+	return (1);
 }
