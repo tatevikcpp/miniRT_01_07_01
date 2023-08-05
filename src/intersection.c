@@ -6,7 +6,7 @@
 /*   By: tkhechoy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 06:04:11 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 06:09:47 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:20:01 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ int	solve_quadratic( t_vec point, float *x0, float *x1)
 	return (1);
 }
 
-int	sphere_intersect(t_ray *ray,  t_sphere sphere)
+int	sphere_intersect(t_ray *ray, t_sphere sphere)
 {
 	float	x0;
 	float	x1;
 	t_vec	vect;
-	
+
 	vect = vec_sub(ray->or, sphere.center);
-	if (!solve_quadratic(new_vec(vec_dot_product(ray->dir, ray->dir),
-				2 * vec_dot_product(ray->dir, vect),
-				vec_dot_product(vect, vect) - sphere.r2), &x0, &x1))
+	if (!solve_quadratic(new_vec(vec_dot_product(ray->dir, ray->dir), \
+		2 * vec_dot_product(ray->dir, vect), \
+		vec_dot_product(vect, vect) - sphere.r2), &x0, &x1))
 		return (0);
 	if ((x0 < 0 && x1 < 0) || (x0 > ray->hit.t && x1 > ray->hit.t))
 		return (0);
@@ -68,10 +68,10 @@ int	sphere_intersect(t_ray *ray,  t_sphere sphere)
 t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 {
 	float	denom;
-	t_vec 	tmp;
-	float 	t;
+	t_vec	tmp;
+	float	t;
 
-	denom = vec_dot_product(pl->norm , ray->dir);
+	denom = vec_dot_product(pl->norm, ray->dir);
 	if (fabs(denom) < EPSILON)
 		return (FALSE);
 	tmp = vec_sub(pl->coord, ray->or);
@@ -84,7 +84,7 @@ t_bool	plane_intersect(t_ray *ray, t_plane *pl, t_hit *hit)
 	hit->nhit = pl->norm;
 	hit->obj_type = id_plane;
 	hit->obj = (void *)pl;
-	hit->color = pl->rgb;;
+	hit->color = pl->rgb;
 	// if (vec_dot_product(hit->nhit, &ray->dir) > 0) //TODO chgitem ?
 	// 	hit->nhit = vec_inv(hit->nhit);
 	return (TRUE);
@@ -95,7 +95,6 @@ static t_bool	infinite_cyl_intersect(t_ray *ray, t_cylinder *cy, t_hit *hit)
 	t_quadratic	q;
 	t_vec		u;
 	t_vec		v;
-
 
 	u = cross_product(ray->dir, cy->norm);
 	v = vec_sub(cy->center, ray->or);
@@ -126,18 +125,18 @@ t_bool	cylinder_intersect(t_ray *ray, t_cylinder *cy)
 	pl.coord = cy->p1;
 	pl.norm = cy->norm;
 	if (plane_intersect(ray, &pl, &tmp_hit)
-		&& vec_length(vec_sub(tmp_hit.phit, cy->p1))
-		<= cy->dm * 0.5 && ray->hit.t > tmp_hit.t)
+			&& vec_length(vec_sub(tmp_hit.phit, cy->p1))
+			<= cy->dm * 0.5 && ray->hit.t > tmp_hit.t)
 		ray->hit = tmp_hit;
 	pl.coord = cy->p2;
 	if (plane_intersect(ray, &pl, &tmp_hit)
-		&& vec_length(vec_sub(tmp_hit.phit, cy->p2)) <= cy->dm * 0.5
-		&& ray->hit.t > tmp_hit.t)
+			&& vec_length(vec_sub(tmp_hit.phit, cy->p2)) <= cy->dm * 0.5
+			&& ray->hit.t > tmp_hit.t)
 		ray->hit = tmp_hit;
 	if (infinite_cyl_intersect(ray, cy, &tmp_hit)
-		&& pow(vec_length(vec_sub(cy->center, tmp_hit.phit)), 2)
-		<= pow(cy->hg * 0.5, 2) + cy->rd
-		&& ray->hit.t > tmp_hit.t)
+			&& pow(vec_length(vec_sub(cy->center, tmp_hit.phit)), 2)
+			<= pow(cy->hg * 0.5, 2) + cy->rd
+			&& ray->hit.t > tmp_hit.t)
 		ray->hit = tmp_hit;
 	return (ray->hit.t < INFINITY && ray->hit.t > EPSILON);
 }

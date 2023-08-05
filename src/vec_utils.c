@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:24:09 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/05 08:07:05 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 09:38:54 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include "../includes/minirt.h"
 #include "utils.h"
 
-t_vec new_vec(float x, float y, float z)
+t_vec	new_vec(float x, float y, float z)
 {
-	t_vec vec;
+	t_vec	vec;
 
 	vec.x = x;
 	vec.y = y;
@@ -35,22 +35,22 @@ void	set_vec(t_vec *vec, float x, float y, float z)
 	vec->z = z;
 }
 
-t_vec vec_sum(t_vec v1, t_vec v2)
+t_vec	vec_sum(t_vec v1, t_vec v2)
 {
 	return (new_vec(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z));
 }
 
-t_vec vec_mult(t_vec v1, t_vec v2)
+t_vec	vec_mult(t_vec v1, t_vec v2)
 {
 	return (new_vec(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z));
 }
 
-t_vec vec_sub(t_vec v1, t_vec v2)
+t_vec	vec_sub(t_vec v1, t_vec v2)
 {
 	return (new_vec(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z));
 }
 
-t_vec vec_num_mul(t_vec v, float mul)
+t_vec	vec_num_mul(t_vec v, float mul)
 {
 	return (new_vec(v.x * mul, v.y * mul, v.z * mul));
 }
@@ -65,7 +65,7 @@ float	vec_length(t_vec vec)
 	return (sqrt(vec_dot_product(vec, vec)));
 }
 
-t_vec ray_mult(t_vec *dst, t_ray *r, float t)
+t_vec	ray_mult(t_vec *dst, t_ray *r, float t)
 {
 	dst->x = r->or.x + t * r->dir.x;
 	dst->y = r->or.y + t * r->dir.y;
@@ -73,10 +73,12 @@ t_vec ray_mult(t_vec *dst, t_ray *r, float t)
 	return (new_vec(dst->x, dst->y, dst->z));
 }
 
-void vec_normalize(t_vec *vec) // TODO return type ?
+void	vec_normalize(t_vec *vec)
 {
 	float	len;
 
+	if (!vec)
+		print_error_exit("Null pointer");
 	len = vec_length(*vec);
 	if (0 == len)
 		print_error_exit("Try to normalize 0 vector");
@@ -85,7 +87,7 @@ void vec_normalize(t_vec *vec) // TODO return type ?
 	vec->z /= len;
 }
 
-t_vec matrix_vec_mul(float mat[3][3], t_vec vec)
+t_vec	matrix_vec_mul(float mat[3][3], t_vec vec)
 {
 	float	x;
 	float	y;
@@ -97,7 +99,7 @@ t_vec matrix_vec_mul(float mat[3][3], t_vec vec)
 	return (new_vec(x, y, z));
 }
 
-t_vec cross_product(t_vec v1, t_vec v2)
+t_vec	cross_product(t_vec v1, t_vec v2)
 {
 	float	x;
 	float	y;
@@ -124,7 +126,7 @@ t_vec cross_product(t_vec v1, t_vec v2)
 // 	return (sqrt(x + y + z));
 // }
 
-t_vec vec_inv(t_vec v)
+t_vec	vec_inv(t_vec v)
 {
 	v.x = -v.x;
 	v.y = -v.y;
@@ -145,7 +147,7 @@ static void	set_3x3_mat(float mat[3][3], t_vec row1, t_vec row2, t_vec row3)
 	mat[2][2] = row3.z;
 }
 
-t_vec rot_vec(t_vec vec, float alpha, char axis)
+t_vec	rot_vec(t_vec vec, float alpha, char axis)
 {
 	float	mat[3][3];
 	float	cosinus;
@@ -175,7 +177,8 @@ t_vec rot_vec(t_vec vec, float alpha, char axis)
 //from - camera's coordinates, to - what the camera is looking at
 //??????? 3x4 dardznel, 3 hat,0-ner@ kareli a chgrel, qani vor 0 e init arvum
 //???????tox-syun
-// void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt) // TODO 3x3 vra havanabar ))
+//TODO 3x3 vra havanabar ))
+// void	look_at(/*t_vec *from, t_vec *to, float mat[4][4]*/ t_rt *rt)))
 // {
 // 	t_vec forward;
 // 	t_vec right;

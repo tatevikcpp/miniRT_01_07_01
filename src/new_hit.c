@@ -6,34 +6,34 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 21:04:29 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 07:23:00 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:09:41 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_hit *new_hit()
+t_hit	*new_hit(void)
 {
-    t_hit *new;
+	t_hit	*new;
 
-    new = ft_calloc(sizeof(t_hit), 1);
+	new = ft_calloc(sizeof(t_hit), 1);
 	new->obj_type = id_null;
 	new->t = INFINITY;
-    return (new);
+	return (new);
 }
 
-t_hit *hit_dup(t_hit *hit)
+t_hit	*hit_dup(t_hit *hit)
 {
-    t_hit *new;
+	t_hit	*new;
 
-    new = ft_calloc(sizeof(t_hit), 1);
+	new = ft_calloc(sizeof(t_hit), 1);
 	new->t = INFINITY;
-   	new->nhit = hit->nhit;
+	new->nhit = hit->nhit;
 	new->phit = hit->phit;
 	new->color = hit->color;
 	new->obj = hit->obj;
 	new->obj_type = hit->obj_type;
-    return (new);
+	return (new);
 }
 
 // t_vec *vec_dup(t_vec vec)
@@ -46,5 +46,3 @@ t_hit *hit_dup(t_hit *hit)
 //     new_vec->z = vec->z;
 //     return (new_vec);
 // }
-
-

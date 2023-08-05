@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:36 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 08:32:46 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:13:00 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int c, char **v)
 {
 	int				fd;
 	unsigned char	flag;
-	t_base	*obj;
+	t_base			*obj;
 	// void	*mlx;
 	// void	*mlx_win;
 
@@ -45,7 +45,7 @@ int	main(int c, char **v)
 	init_base(obj);
 	fd = check_file(v[1]); // esim
 	if (fd)
-		read_map(fd, obj, flag);  // TODO check if
+		read_map(fd, obj, flag); // TODO check if
 	// struct_tree(obj);
 	// free_base(obj);
 	/////*************************
@@ -53,11 +53,11 @@ int	main(int c, char **v)
 	obj->img_data.img = mlx_new_image(obj->mlx.mlx_ptr, WIN_WIDTH, WIN_HEGHT);
 	obj->mlx.win_ptr = mlx_new_window(obj->mlx.mlx_ptr, WIN_WIDTH, WIN_HEGHT, "Hello world!");
 	obj->img_data.addr = mlx_get_data_addr(obj->img_data.img, &obj->img_data.bits_per_pixel, &obj->img_data.line_length,
-		&obj->img_data.endian);
+			&obj->img_data.endian);
 	obj->rt->widht = WIN_WIDTH;
 	obj->rt->height = WIN_HEGHT;
 	// mlx_get_screen_size(obj->mlx.mlx_ptr, &obj->rt->widht, &obj->rt->height);
-    obj->rt->aspectratio = (float) obj->rt->widht / obj->rt->height;
+	obj->rt->aspectratio = (float) obj->rt->widht / obj->rt->height;
 	combine_img(obj);
 	mlx_put_image_to_window(obj->mlx.mlx_ptr, obj->mlx.win_ptr, obj->img_data.img, 0, 0);
 	/////*************************

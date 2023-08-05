@@ -6,7 +6,7 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:46:25 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/02 12:17:33 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:01:27 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ float	min(float a, float b)
 
 float	to_rad( float angle)
 {
-	return (angle * PI / 180);
+	float	pi;
+
+	pi = acos(-1);
+	return (angle * pi / 180);
 }
 
 int	quadratic_eq_solution(t_quadratic *q)

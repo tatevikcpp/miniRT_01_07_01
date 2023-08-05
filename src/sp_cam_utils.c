@@ -6,7 +6,7 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 20:28:47 by mavardan          #+#    #+#             */
-/*   Updated: 2023/07/12 20:57:26 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 09:44:44 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 t_sphere	*new_sphere(t_vec *center, float diameter, t_rgb *rgb)
 {
-	t_sphere *sp;
+	t_sphere	*sp;
 
 	sp = malloc(sizeof(t_sphere));
 	if (!sp)
