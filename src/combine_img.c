@@ -27,6 +27,9 @@ void combine_img(t_base *data)
             cam_ray(data->rt, &data->utils->ray, i, j);
             min_hit = get_closest_obj(data /*, &data->utils->ray*/);
             // printf("min_hit = %ld\n", min_hit);
+            // min_hit = &data->utils->hit;
+            // min_hit = data->utils->hit;
+            // if (min_hit->obj)
             if (min_hit)
             {
                 light_ray(data->a_light, &data->utils->ray, min_hit);

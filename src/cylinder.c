@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 06:38:58 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 07:24:05 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 09:15:04 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,20 +98,22 @@ static float	cylinder_intersection( t_ray ray, \
 	return (INFINITY);
 }
 
-void	ray_cylinders( t_ray ray, t_base *base, \
-	t_hit *hit, void **object)
+t_hit	*ray_cylinders( t_ray ray, t_base *base, \
+	t_hit *hit)
 {
+	t_hit *result = NULL;
 	t_cylinder	*cylinder;
 	float		tmp;
 	int			is_on_side;
 
 	cylinder = base->a_cylinder;
-	while (cylinder->next)
+	while (cylinder)
 	{
 		tmp = cylinder_intersection(ray, *cylinder, &is_on_side);
 		if (tmp < hit->t && tmp > 0)
 		{
-			*object = cylinder;
+			printf("tmp = %f\n", tmp);
+			hit->obj = cylinder;
 			hit->t = tmp;
 			hit->phit = new_vec(tmp * ray.dir.x, tmp * ray.dir.y,
 					tmp * ray.dir.z);
@@ -121,7 +123,9 @@ void	ray_cylinders( t_ray ray, t_base *base, \
 					cylinder->center, cylinder->p2, hit->phit), hit->phit);
 			vec_normalize(&hit->nhit);
 			hit->obj_type = id_cylinder;
+			result = hit_dup(hit);
 		}
 		cylinder = cylinder->next;
 	}
+	return (result);
 }

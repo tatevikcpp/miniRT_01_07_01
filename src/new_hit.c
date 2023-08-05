@@ -6,7 +6,11 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 21:04:29 by tkhechoy          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/08/05 10:09:41 by mavardan         ###   ########.fr       */
+=======
+/*   Updated: 2023/08/05 08:22:17 by tkhechoy         ###   ########.fr       */
+>>>>>>> ddf3a0766a22efb2c079fff1b0d903351951194d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +30,15 @@ t_hit	*hit_dup(t_hit *hit)
 {
 	t_hit	*new;
 
+<<<<<<< HEAD
 	new = ft_calloc(sizeof(t_hit), 1);
 	new->t = INFINITY;
 	new->nhit = hit->nhit;
+=======
+    new = ft_calloc(sizeof(t_hit), 1);
+	new->t = hit->t;
+   	new->nhit = hit->nhit;
+>>>>>>> ddf3a0766a22efb2c079fff1b0d903351951194d
 	new->phit = hit->phit;
 	new->color = hit->color;
 	new->obj = hit->obj;
