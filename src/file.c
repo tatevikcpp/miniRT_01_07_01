@@ -6,16 +6,16 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:06 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 00:40:24 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:48:25 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <fcntl.h>
 
-static char *func_space(char *str)
+static char	*func_space(char *str)
 {
-	char *new;
+	char	*new;
 
 	new = str;
 	while (*str)
@@ -31,9 +31,9 @@ static char *func_space(char *str)
 	return (new);
 }
 
-int		check_file(char *file)
+int	check_file(char *file)
 {
-	int 	fd;
+	int	fd;
 
 	fd = 0;
 	if (ft_strcmp(file + (ft_strlen(file) - 3), ".rt"))
@@ -47,19 +47,18 @@ int		check_file(char *file)
 	return (fd);
 }
 
-static char **helper(char *str, int flag)
+static char	**helper(char *str, int flag)
 {
-	char *ptr;
-	char **arr;
+	char	*ptr;
+	char	**arr;
 
 	ptr = func_space(str + flag);
 	arr = ft_split(ptr, '\1');
 	return (arr);
 }
 
-static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
+static unsigned char	nor_alc(char **arr, t_base *obj, char *str, int flag)
 {
-
 	arr = helper(str, 1);
 	if (*str == 'A')
 	{
@@ -91,7 +90,7 @@ static unsigned char nor_ALC(char **arr, t_base *obj, char *str, int flag)
 	return (flag);
 }
 
-static unsigned char nor_CPS(char **arr, t_base *obj, char *str, int flag)
+static unsigned char	nor_cps(char **arr, t_base *obj, char *str, int flag)
 {
 	flag |= 8;
 	arr = helper(str, 2);
@@ -110,14 +109,14 @@ static unsigned char nor_CPS(char **arr, t_base *obj, char *str, int flag)
 		cylinder(&obj->a_cylinder, arr);
 		free_matrix(arr);
 	}
-	return(flag);
+	return (flag);
 }
 
 void	read_map(int fd, t_base *obj, int flag)
 {
-	char *line;
-	char *str;
-	char **arr;
+	char	*line;
+	char	*str;
+	char	**arr;
 
 	arr = 0;
 	flag = 0;
@@ -126,12 +125,12 @@ void	read_map(int fd, t_base *obj, int flag)
 	{
 		str = ft_strtrim(line, SPACES); // TODO free str
 		if (*str == 'A' || *str == 'L' || *str == 'C')
-				flag = nor_ALC(arr, obj, str, flag);
+			flag = nor_alc(arr, obj, str, flag);
 		else if (*str && *str != '\n')
 		{
-			if ((ft_strncmp(str, "pl", 2) == 0) ||  (ft_strncmp(str, "sp", 2) == 0) ||
-			 (ft_strncmp(str, "cy", 2) == 0))
-				flag = nor_CPS(arr, obj, str, flag);
+			if ((ft_strncmp(str, "pl", 2) == 0) || (ft_strncmp(str, "sp", 2) == 0) || \
+					(ft_strncmp(str, "cy", 2) == 0))
+				flag = nor_cps(arr, obj, str, flag);
 			else
 				print_error_exit("Invalid element is specified");
 		}
