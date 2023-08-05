@@ -155,7 +155,7 @@ typedef struct s_utils
 	// t_obj_union objects;
 	t_ray			ray;
 	t_ray			light_ray;
-	t_hit			hit;
+	t_hit			*hit;
 	struct s_utils	*next;
 	// clcor;
 }					t_utils;

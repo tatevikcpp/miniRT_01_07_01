@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 06:06:25 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/05 06:07:53 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:00:03 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,8 @@ t_rgb	*compute_color(t_base *base, t_rgb *p_col, t_hit *hit) // TODO piti vor
 
 	// tmp = p_col;
 
-<<<<<<< HEAD
 	light_ray = vec_sub(base->a_light->coords, hit->phit);
 	// printf("light_ray = %ld\n", light_ray);
-=======
-	light_ray = vec_sub(&base->a_light->coords, hit->phit);
->>>>>>> 012afe1d9e788c4c2829bff7ddbd2504586f06c4
 	cosa = vec_dot_product(light_ray, hit->nhit) / vec_length(light_ray);
 	if (cosa <= 0)
 		cosa = 0;

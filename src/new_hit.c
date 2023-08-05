@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 21:04:29 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 07:23:00 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:22:17 by tkhechoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_hit *hit_dup(t_hit *hit)
     t_hit *new;
 
     new = ft_calloc(sizeof(t_hit), 1);
-	new->t = INFINITY;
+	new->t = hit->t;
    	new->nhit = hit->nhit;
 	new->phit = hit->phit;
 	new->color = hit->color;

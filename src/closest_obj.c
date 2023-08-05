@@ -2,7 +2,7 @@
 
 
 
-static t_hit *get_closest_sp(t_base *base, t_ray *ray, t_hit **final_hit)
+static t_hit *get_closest_sp(t_base *base, t_ray *ray, t_hit *final_hit)
 {
     t_sphere *tmp;
     t_hit   *result;
@@ -12,40 +12,50 @@ static t_hit *get_closest_sp(t_base *base, t_ray *ray, t_hit **final_hit)
     // ray->hit.t = INFINITY;
     while (tmp)
     {
+            // printf("ray->hit.t = %f\n\n, ray->hit.t", ray->hit.t);
         if (sphere_intersect(ray, *tmp))
         {
             // printf("sphere_intersect\n");
             ray->hit.obj = (void *)tmp;
             ray->hit.obj_type = id_sphere;
-            free(*final_hit);
-            *final_hit = hit_dup(&ray->hit);
+            // free(*final_hit);
+            // if (ray->hit.t < (*final_hit).t)
+            // {
+            // base->utils->hit = hit_dup(&ray->hit);
+                // *final_hit = ray->hit;
+            result = hit_dup(&ray->hit); // TODO free
         }
         tmp = tmp->next;
     }
     return (result);
 }
 
-static t_hit *get_closest_cy(t_base *base, t_ray *ray, t_hit **final_hit)
+static t_hit *get_closest_cy(t_base *base, t_ray *ray, t_hit *final_hit)
 {
     t_cylinder *tmp;
+    t_hit   *result;
 
+    result = NULL;
     tmp = base->a_cylinder;
     while (tmp)
     {
         if (cylinder_intersect(ray, tmp))
         {
-            // printf("cylinder_intersect\n");
+            printf("cylinder_intersect\n");
             ray->hit.obj = (void *)tmp;
             ray->hit.obj_type = id_cylinder;
-            free(*final_hit);
-            *final_hit = hit_dup(&ray->hit);
+            // free(*final_hit);
+            // *final_hit = hit_dup(&ray->hit);
+            // if (ray->hit.t < (*final_hit).t)
+            //     *final_hit = ray->hit;
+            result = hit_dup(&ray->hit); // TODO free
         }
         tmp = tmp->next;
     }
-    return (NULL);
+    return (result);
 }
 
-static t_hit *get_closest_pl(t_base *base, t_ray *ray, t_hit **final_hit)
+static t_hit *get_closest_pl(t_base *base, t_ray *ray, t_hit *final_hit)
 {
     t_plane *tmp;
 
@@ -57,8 +67,10 @@ static t_hit *get_closest_pl(t_base *base, t_ray *ray, t_hit **final_hit)
             // printf("plane_intersect\n");
             ray->hit.obj = (void *)tmp;
             ray->hit.obj_type = id_cylinder;
-            free(*final_hit);
-            *final_hit = hit_dup(&ray->hit);
+            // free(*final_hit);
+            // *final_hit = hit_dup(&ray->hit);
+            if (ray->hit.t < (*final_hit).t)
+                *final_hit = ray->hit;
             // printf("*final_hit = %ld\n", *final_hit);
         }
         tmp = tmp->next;
@@ -121,21 +133,25 @@ static t_hit *get_closest_pl(t_base *base, t_ray *ray, t_hit **final_hit)
 //     return (min_obj);
 // }
 
+
+t_hit	*ray_cylinders( t_ray ray, t_base *base, t_hit *hit);
+
 t_hit *get_closest_obj(t_base *data /*, t_ray *ray*/)
 {
     // t_hit *obj;
     // t_hit *tmp;
-    t_hit *final_hit;
+    t_hit *final_hit = NULL;
 
-    final_hit = NULL;
 
-    data->utils->ray.hit.t = INFINITY;
+    // data->utils->ray.hit.t = INFINITY;
+    // final_hit.t = INFINITY;
+
     // get_closest_pl(data, &data->utils->ray, &final_hit);
     // printf("data->utils->ray.hit.t  = %f\n", data->utils->ray.hit.t );
-    get_closest_sp(data, &data->utils->ray, &final_hit);
+    final_hit = get_closest_sp(data, &data->utils->ray, NULL);
     // printf("data->utils->ray.hit.t  = %f\n", data->utils->ray.hit.t );
 
-    // get_closest_cy(data, &data->utils->ray, &final_hit);
+    final_hit = ray_cylinders(data->utils->ray, data, &data->utils->ray.hit);
     // printf("data->utils->ray.hit.t get_closest_cy  = %f\n", data->utils->ray.hit.t );
     // if (res && tmp && tmp->t < res->t)
 
