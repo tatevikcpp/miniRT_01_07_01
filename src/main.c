@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 12:37:36 by tkhechoy          #+#    #+#             */
-/*   Updated: 2023/08/05 01:16:38 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:32:46 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int c, char **v)
 	combine_img(obj);
 	mlx_put_image_to_window(obj->mlx.mlx_ptr, obj->mlx.win_ptr, obj->img_data.img, 0, 0);
 	/////*************************
+	mlx_key_hook(obj->mlx.win_ptr, key_press, &obj);
 	mlx_loop(obj->mlx.mlx_ptr);
 	// free(obj);
 	pause();

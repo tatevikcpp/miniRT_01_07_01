@@ -6,7 +6,7 @@
 /*   By: tkhechoy <tkhechoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:24:09 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/05 07:29:54 by tkhechoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:07:05 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,46 +132,44 @@ t_vec vec_inv(t_vec v)
 	return (v);
 }
 
-// static void	set_3x3_mat(float mat[3][3], t_vec row1, t_vec row2, t_vec row3)
-// {
-// 	if (!row1 || !row2 || !row3)
-// 		print_error_exit("NULL pointer");
-// 	mat[0][0] = row1->x;
-// 	mat[1][0] = row2->x;
-// 	mat[2][0] = row3->x;
-// 	mat[0][1] = row1->y;
-// 	mat[1][1] = row2->y;
-// 	mat[2][1] = row3->y;
-// 	mat[0][2] = row1->z;
-// 	mat[1][2] = row2->z;
-// 	mat[2][2] = row3->z;
-// }
+static void	set_3x3_mat(float mat[3][3], t_vec row1, t_vec row2, t_vec row3)
+{
+	mat[0][0] = row1.x;
+	mat[1][0] = row2.x;
+	mat[2][0] = row3.x;
+	mat[0][1] = row1.y;
+	mat[1][1] = row2.y;
+	mat[2][1] = row3.y;
+	mat[0][2] = row1.z;
+	mat[1][2] = row2.z;
+	mat[2][2] = row3.z;
+}
 
-// t_vec rot_vec(t_vec vec, float alpha, char axis)
-// {
-// 	float	mat[3][3];
-// 	float	cosinus;
-// 	float	sinus;
+t_vec rot_vec(t_vec vec, float alpha, char axis)
+{
+	float	mat[3][3];
+	float	cosinus;
+	float	sinus;
 
-// 	cosinus = cos(alpha);
-// 	sinus = sin(alpha);
-// 	if ('x' == axis)
-// 	{
-// 		set_3x3_mat(mat, new_vec(1, 0, 0),
-// 			new_vec(0, cosinus, -sinus), new_vec(0, sinus, cosinus));
-// 	}
-// 	else if ('y' == axis)
-// 	{
-// 		set_3x3_mat(mat, new_vec(cosinus, 0, -sinus),
-// 			new_vec(0, 1, 0), new_vec(sinus, 0, cosinus));
-// 	}
-// 	else if ('z' == axis)
-// 	{
-// 		set_3x3_mat(mat, new_vec(cosinus, sinus, 0),
-// 			new_vec(-sinus, cosinus, 0), new_vec(0, 0, 1));
-// 	}
-// 	return (matrix_vec_mul(mat, vec));
-// }
+	cosinus = cos(alpha);
+	sinus = sin(alpha);
+	if ('x' == axis)
+	{
+		set_3x3_mat(mat, new_vec(1, 0, 0),
+			new_vec(0, cosinus, -sinus), new_vec(0, sinus, cosinus));
+	}
+	else if ('y' == axis)
+	{
+		set_3x3_mat(mat, new_vec(cosinus, 0, -sinus),
+			new_vec(0, 1, 0), new_vec(sinus, 0, cosinus));
+	}
+	else if ('z' == axis)
+	{
+		set_3x3_mat(mat, new_vec(cosinus, sinus, 0),
+			new_vec(-sinus, cosinus, 0), new_vec(0, 0, 1));
+	}
+	return (matrix_vec_mul(mat, vec));
+}
 
 //camera-to-world matrix calculation
 //from - camera's coordinates, to - what the camera is looking at

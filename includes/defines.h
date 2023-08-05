@@ -6,12 +6,14 @@
 /*   By: mavardan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 11:39:55 by mavardan          #+#    #+#             */
-/*   Updated: 2023/08/02 11:40:36 by mavardan         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:40:53 by mavardan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
+
+#include <math.h>
 
 # define WIN_WIDTH 1200
 # define WIN_HEGHT 720
@@ -25,8 +27,14 @@
 # define UP 126
 # define ESC 53
 # define CLOSE_BTN 17
+
 # define ALBEDO 0.18
-//# define BG_COLOR 0
-# define BG_COLOR 16777215
+# define BG_COLOR 0
+
+# define MOVE_STEP 20
+
+# define SPACES " \t\v\f\r"
+# define NUMBERS ".,-0123456789"
+# define PI acos(-1)
 
 #endif
