@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   intersection.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkhechoy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/05 06:04:11 by tkhechoy          #+#    #+#             */
+/*   Updated: 2023/08/05 06:09:47 by mavardan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
 int	solve_quadratic(const t_vec point, float *x0, float *x1)
@@ -11,7 +23,7 @@ int	solve_quadratic(const t_vec point, float *x0, float *x1)
 	else if (discr == 0)
 	{
 		*x0 = -0.5 * point.y / point.x;
-		*x1 = -0.5 * point.y / point.x;
+		*x1 = *x0;
 	}
 	else
 	{
